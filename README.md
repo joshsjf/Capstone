@@ -5,7 +5,7 @@
 # Group A 
 
 
-# This is the collaborative repository for our groups capstone project
+# This is the collaborative repository for our groups capstone project: Tech Palmy Web Application.
 
 
 # Team:
