@@ -1,6 +1,14 @@
-# Capstone
+# Capstone 2018
 
-# This is the collaborative repository for our groups capstone project.
+# TECH PALMY PROJECT
+
+# Group A 
+
+
+# This is the collaborative repository for our groups capstone project
+
+
+# Team:
 
 # Glen Ward		    ID: 13051097
 # Judah McNicholl	ID: 16058955
