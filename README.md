@@ -1,7 +1,5 @@
 # Capstone 2018
 
-# ** edit branch test **
-
 # TECH PALMY PROJECT
 
 # Group A 
