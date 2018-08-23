@@ -41,7 +41,6 @@
 
 /* nav bar */
 ul {
-    /* display: block; */
 	list-style-type: none;
 	background-color: #333;
 	overflow: hidden;
@@ -49,7 +48,7 @@ ul {
 }
 
 li a{
-	padding:8px 2.5px;
+	padding:1% 0.3%;
     display:inline-block;
     min-width: 11%;
 	color: white;
