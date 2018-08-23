@@ -1,3 +1,7 @@
+body {
+
+}
+
 .bg{
   /* Set rules to fill background */
   min-height: 100%;
@@ -33,11 +37,12 @@
 }
 
 .mainbody{
-      position: absolute;
-	  font-size: 1vw;
+  float: none;
+      position: sticky;
+	    font-size: 1vw;
       padding-left: 10%;
       padding-right: 10%;
-  }
+}
 
 /* nav bar */
 ul {
@@ -67,8 +72,9 @@ li a{
 /* nav bar */
 
 .title {
-    float:top;
-    top: 0;
-    bottom: 0;
+  margin: 0px;
+    /* float:top; */
+    /* top: 0; */
+    /* bottom: 0; */
     font-size: 50px;
 }
