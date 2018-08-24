@@ -6,7 +6,7 @@
   /* Set up proportionate scaling */
   width: 100%;
   height: auto;
-
+  /* background-repeat: repeat; */
   /* Set up positioning */
   position: fixed;
   top: 0;
@@ -20,9 +20,8 @@
   min-width: 80%;
   padding-left: 10%;
   padding-right: 10%;
-
   /* Set up proportionate scaling */
-  width: 80.8%;
+  width: 80%;
   height: auto;
 
   /* Set up positioning */
@@ -32,13 +31,20 @@
 
 }
 
+body {
+  width: 80%;
+  margin: 0 auto;
+  border: 1px solid green;
+}
+
 .mainbody{
+  border: 1px solid pink;
   float: none;
-      position: sticky;
-	    font-size: 1vw;
-      padding-left: 10%;
-      padding-right: 10%;
-    height:auto;
+  position: sticky;
+	font-size: 1vw;
+  /* padding-left: 10%; */
+  /* padding-right: 1px; */
+  height:auto;
 }
 
 /* nav bar */
@@ -76,7 +82,7 @@ nav a{
 
 .title {
   margin: 0px;
-    font-size: 50px;
+  font-size: 50px;
 }
 
 /* For the search bar */
