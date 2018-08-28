@@ -38,7 +38,7 @@ body {
 }
 
 .mainbody{
-  border: 1px solid pink;
+  /* border: 1px solid pink; */
   float: none;
   position: sticky;
 	font-size: 1vw;
