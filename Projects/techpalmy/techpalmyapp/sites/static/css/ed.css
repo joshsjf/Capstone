@@ -2,7 +2,7 @@
 .column {
   float: left;
   width: 29%;
-  padding: 0 33px;
+  padding: 0 2.15%;
 }
 
 /* Remove extra left and right margins, due to padding */
