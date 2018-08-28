@@ -63,20 +63,24 @@ nav ul {
 
 nav a{
 	padding:1% 0.3%;
-    display:inline-block;
-    min-width: 11%;
+  display:inline-block;
+  min-width: 11%;
 	color: white;
 	text-decoration: none;
 	font-size: 12px;
 	text-align: center;
 	float:left;
 	letter-spacing: 2px;
-    border-left: 1px solid #fff;
-    border-right: 1px solid #fff;
+  border-left: 1px solid #fff;
+  border-right: 1px solid #fff;
 }
 
 .active {
     background-color: red;
+}
+
+li a:hover {
+    background-color: #111;
 }
 /* end nav bar */
 
@@ -98,7 +102,7 @@ nav a{
 }
 .right {
   position:absolute;
-  bottom: 0;
-  right:0;
+  bottom: 20%;
+  right: 1%;
 }
 /* End search bar */
