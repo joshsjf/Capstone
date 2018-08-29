@@ -1,7 +1,5 @@
 # Capstone 2018
 
-# branch issue-4 edit
-
 # TECH PALMY PROJECT
 
 # Group A
