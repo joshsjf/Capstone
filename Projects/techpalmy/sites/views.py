@@ -1,10 +1,12 @@
 from django.shortcuts import render
-from django.views.generic import TemplateView
-
+from django.views.generic import TemplateView, ListView
+from sites.models import Companies
 # Create your views here.
-class HomePageView(TemplateView):
+class HomePageView(ListView):
 	def get(self, request, **kwargs):
-		return render(request, 'index.html', context=None)
+		data = Companies.objects.all()
+		args = {'data': data}
+		return render(request, 'index.html', args)
 
 class ConsultantsPageView(TemplateView):
     template_name = "consultants.html"
