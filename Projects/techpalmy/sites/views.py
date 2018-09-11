@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 from sites.models import Companies
+
 # Create your views here.
 class HomePageView(ListView):
 	def get(self, request, **kwargs):

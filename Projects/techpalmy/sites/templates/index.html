@@ -17,7 +17,7 @@
       <p class="title">
           TechpalmyNZ
           {% for entry in data %}
-          <h1> {{entry.Companiescol}} </h1>
+            <img src="{% entry.image.url %}">
           {% endfor %}
       </p>
     </div>
