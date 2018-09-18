@@ -1,7 +1,6 @@
 from django.db import models
 
+
 class Companies(models.Model):
-    # idCompanies = models.IntegerField(max_length=11)
+    id = models.IntegerField(primary_key=True)
     Companiescol = models.CharField(max_length=45)
-    image = models.ImageField(upload_to='images/')
-# Create your models here.
