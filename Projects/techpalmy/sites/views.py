@@ -10,6 +10,7 @@ class PostPageView(ListView):
 	template_name = 'sites/index.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
+	paginate_by = 3
 
 class PostDetailView(DetailView):
 	model = Post
