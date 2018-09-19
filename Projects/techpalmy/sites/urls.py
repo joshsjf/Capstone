@@ -2,9 +2,15 @@
 
 from django.urls import path
 from sites import views
+from .views import PostPageView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
 
 urlpatterns = [
-    path('', views.HomePageView.as_view(), name='sites-home'),
+    path('', PostPageView.as_view(), name='sites-home'),
+    path('post/<int:pk>/', PostDetailView.as_view(), name='post-detail'),
+    path('post/new/', PostCreateView.as_view(), name='post-create'),
+    path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
+    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
+    
     path('AboutUs/', views.AboutPageView.as_view(), name='sites-aboutus'),
     path('Consultants/', views.ConsultantsPageView.as_view(), name='sites-consultants'),
     path('Companies/', views.CompaniesPageView.as_view(), name='sites-companies'),
