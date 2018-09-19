@@ -1,11 +1,12 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView, ListView
 from sites.models import Companies
+from sites.models import Post
 
-# Create your views here.
+
 class HomePageView(ListView):
 	def get(self, request, **kwargs):
-		data = Companies.objects.all()
+		data = Post.objects.all()
 		args = {'data': data}
 		return render(request, 'index.html', args)
 
