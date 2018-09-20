@@ -18,3 +18,25 @@ class Post(models.Model):
 
     def get_absolute_url(self):
         return reverse('post-detail', kwargs={'pk': self.pk})
+
+# class JobListing(models.Model):
+#     def __str__(self):
+#         return self.title
+#
+#     #All the fields Jobs will have
+#     user = models.OneToOneField(User, on_delete=models.CASCADE)
+#     #Get user company, name, ph
+#     category = models.CharField(max_length = 20)
+#     title = models.CharField(max_length = 20)
+#     location = models.CharField(max_length = 20)
+#
+#     payrate = models.IntegerField()
+#     referencenumber = models.CharField(max_length = 20)
+#
+#     summary = models.TextField()
+#     description = models.TextField()
+#
+#     contactname = models.ForeignKey(User, on_delete=models.CASCADE)
+#     phonenumber = models.ForeignKey(User, on_delete=models.CASCADE)
+#
+#     instructions = models.CharField(max_length = 20)
