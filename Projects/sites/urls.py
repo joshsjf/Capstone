@@ -2,7 +2,10 @@
 
 from django.urls import path
 from sites import views
-from .views import PostPageView, UserPostPageView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import (PostPageView, UserPostPageView,
+                    PostDetailView, PostCreateView,
+                    PostUpdateView, PostDeleteView)
+from .views import (JobCreateView)
 
 urlpatterns = [
     path('', PostPageView.as_view(), name='sites-home'),
@@ -12,6 +15,7 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
 
+    path('job/new/', JobCreateView.as_view(), name='job-create'),
 
     path('AboutUs/', views.AboutPageView.as_view(), name='sites-aboutus'),
     path('Consultants/', views.ConsultantsPageView.as_view(), name='sites-consultants'),
