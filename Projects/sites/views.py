@@ -1,11 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
-from sites.models import Companies
-from sites.models import Post, JobListing
+from sites.models import Companies, Post, JobListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-
 
 class PostPageView(ListView):
 	model = Post
@@ -56,21 +54,12 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		post = self.get_object()
 		return self.request.user == post.author
 
-# 
-# @login_required
-# def job(request):
-# 	if request.method == 'POST':
-# 		j_form = JobCreateForm(request.POST)
-# 		if j_form.is_valid():
-# 		    j_form.save()
-# 		    return redirect('login')
-# 	else:
-# 		j_form = UserRegisterForm(initial={
-# 			'phonenumber':request.user.profile.phonenumber,
-# 			'company': request.user.profile.company})
-# 	return render(request, 'joblistng_form.html', {'j_form': j_form})
-#
 
+class JobCreateView(LoginRequiredMixin, CreateView):
+	model = JobListing
+	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
+			'summary', 'description', 'phonenumber', 'company', 'instructions']
+	
 
 
 
