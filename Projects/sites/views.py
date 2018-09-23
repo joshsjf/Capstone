@@ -67,8 +67,18 @@ class JobCreateView(LoginRequiredMixin, CreateView):
 class JobPageView(ListView):
 	model = JobListing
 	template_name = 'sites/jobs.html'
-	context_object_name = 'jobs'
+	context_object_name = 'data'
 	ordering = ['-date_posted']
+
+class UserJobPageView(ListView):
+	model = JobListing
+	template_name = 'sites/user_jobs.html'
+	context_object_name = 'data'
+	paginate_by = 3
+
+	def get_queryset(self):
+		user = get_object_or_404(User, username=self.kwargs.get('username'))
+		return JobListing.objects.filter(author=user).order_by('-date_posted')
 
 class JobDetailView(DetailView):
 	model = JobListing
