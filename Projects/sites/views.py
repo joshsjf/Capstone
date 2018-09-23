@@ -44,7 +44,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 	def test_func(self):
 		post = self.get_object()
-		return self.request.user == post.author
+		return self.request.user == post.author		# do we need a conditional true/false here??
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -52,7 +52,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	success_url = '/'
 	def test_func(self):
 		post = self.get_object()
-		return self.request.user == post.author
+		return self.request.user == post.author		# do we need a conditional true/false here??
 
 
 class JobCreateView(LoginRequiredMixin, CreateView):
