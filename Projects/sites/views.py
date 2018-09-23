@@ -4,6 +4,8 @@ from sites.models import Companies
 from sites.models import Post, JobListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.decorators import login_required
+
 
 class PostPageView(ListView):
 	model = Post
@@ -54,15 +56,22 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		post = self.get_object()
 		return self.request.user == post.author
 
+# 
+# @login_required
+# def job(request):
+# 	if request.method == 'POST':
+# 		j_form = JobCreateForm(request.POST)
+# 		if j_form.is_valid():
+# 		    j_form.save()
+# 		    return redirect('login')
+# 	else:
+# 		j_form = UserRegisterForm(initial={
+# 			'phonenumber':request.user.profile.phonenumber,
+# 			'company': request.user.profile.company})
+# 	return render(request, 'joblistng_form.html', {'j_form': j_form})
+#
 
-class JobCreateView(LoginRequiredMixin, CreateView):
-	model = JobListing
-	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-			'summary', 'description', {'phonenumber':model.user.email}, 'company', 'instructions']
 
-	def form_valid(self, form):
-		form.instance.author = self.request.user
-		return super().form_valid(form)
 
 
 class ConsultantsPageView(TemplateView):
