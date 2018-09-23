@@ -59,9 +59,19 @@ class JobCreateView(LoginRequiredMixin, CreateView):
 	model = JobListing
 	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
 			'summary', 'description', 'phonenumber', 'company', 'instructions']
-	
 
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
 
+class JobPageView(ListView):
+	model = JobListing
+	template_name = 'sites/jobs.html'
+	context_object_name = 'jobs'
+	ordering = ['-date_posted']
+
+class JobDetailView(DetailView):
+	model = JobListing
 
 class ConsultantsPageView(TemplateView):
     template_name = "sites/consultants.html"
@@ -71,9 +81,6 @@ class CompaniesPageView(TemplateView):
 
 class EventsPageView(TemplateView):
     template_name = "sites/events.html"
-
-class JobsPageView(TemplateView):
-    template_name = "sites/jobs.html"
 
 class GroupsPageView(TemplateView):
     template_name = "sites/groups.html"

@@ -25,7 +25,8 @@ class JobListing(models.Model):
         return self.title
 
     #All the fields Jobs will have
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(default = timezone.now)
     #Get user company, name, ph
     category = models.CharField(max_length = 20)
     title = models.CharField(max_length = 20)
@@ -41,3 +42,6 @@ class JobListing(models.Model):
     company = models.CharField(max_length = 20)
 
     instructions = models.CharField(max_length = 20)
+
+    def get_absolute_url(self):
+        return reverse('job-detail', kwargs={'pk': self.pk})
