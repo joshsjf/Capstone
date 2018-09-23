@@ -80,6 +80,28 @@ class UserJobPageView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return JobListing.objects.filter(author=user).order_by('-date_posted')
 
+class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = JobListing
+	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
+			'summary', 'description', 'phonenumber', 'company', 'instructions']
+
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
+
+	def test_func(self):
+		job = self.get_object()
+		return self.request.user == job.author		# do we need a conditional true/false here??
+
+
+class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+	model = JobListing
+	success_url = '/'
+	def test_func(self):
+		job = self.get_object()
+		return self.request.user == job.author
+
+
 class JobDetailView(DetailView):
 	model = JobListing
 
