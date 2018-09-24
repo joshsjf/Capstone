@@ -28,7 +28,7 @@ class UserCompanyPageView(ListView):
 
 	def get_queryset(self):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
-		return JobListing.objects.filter(author=user).order_by('-date_posted')
+		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
 class CompanyUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = CompanyListing
