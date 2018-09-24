@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from users.models import Profile
 
-class CompanyListing(models.Model):
+class CompanListing(models.Model):
     def __str__(self):
         return self.title
 
@@ -12,20 +12,20 @@ class CompanyListing(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
     #Get user company, name, ph
-    category = models.CharField(max_length = 20)
-    title = models.CharField(max_length = 20)
-    location = models.CharField(max_length = 20)
+    companyName = models.CharField(max_length = 20)
+    contactName = models.CharField(max_length = 20)
+    email = models.EmailField()
+    phoneNumber = models.CharField(max_length = 20)
+    website = models.CharField(max_length = 20)
+    numEmployees = models.IntegerField()
 
-    payrate = models.IntegerField()
-    referencenumber = models.CharField(max_length = 20)
+    industry = models.CharField(max_length = 20)
+    specialistArea = models.CharField(max_length = 20)
+    typeOfBusiness = models.CharField(max_length = 20)
 
-    summary = models.TextField()
+    receive_newsletter = models.BooleanField()
     description = models.TextField()
-
-    phonenumber = models.CharField(max_length = 20)
-    company = models.CharField(max_length = 20)
-
-    instructions = models.CharField(max_length = 20)
+    tscs = models.BooleanField()
 
     def get_absolute_url(self):
         return reverse('company-detail', kwargs={'pk': self.pk})
