@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from users.models import Profile
 
-class CompanListing(models.Model):
+class CompanyListing(models.Model):
     def __str__(self):
         return self.title
 
