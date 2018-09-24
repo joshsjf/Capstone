@@ -1,17 +1,17 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
-<h1 class="mb-3"> Posts by {{view.kwargs.username }} ({{ page_obj.paginator.count }})</h1>
-  {% for post in data %}
+<h1 class="mb-3"> Companies by {{view.kwargs.username}} ({{ page_obj.paginator.count }})</h1>
+  {% for job in data %}
       <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ post.author.profile.image.url }}">
+        <img class="rounded-circle article-img" src="{{ job.author.profile.image.url }}">
         <div class="media-body">
           <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
-            <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
+            <a class="mr-2" href="{% url 'user-jobs' job.author.username %}">{{ company.author }}</a>
+            <small class="text-muted">{{ company.date_jobed|date:"F d, Y" }}</small>
           </div>
-          <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
-          <p class="article-content">{{ post.content }}</p>
+          <h2><a class="article-title" href="{% url 'job-detail' job.id %}">{{ company.title }}</a></h2>
+          <p class="article-content">{{ company.content }}</p>
         </div>
       </article>
   {% endfor %}

@@ -85,6 +85,10 @@ a.article-title:hover {
 }
 /* Additions */
 
+.navbar {
+    background-color: #009959;
+}
+
 html, body {
     height: 100%;
 }

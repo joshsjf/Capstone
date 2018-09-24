@@ -18,6 +18,7 @@ from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
 from jobs import views as job_views
+from companies import views as company_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -35,6 +36,13 @@ urlpatterns = [
     path('user/<str:username>/jobs', job_views.UserJobPageView.as_view(), name='user-jobs'),
     path('job/<int:pk>/update/', job_views.JobUpdateView.as_view(), name='job-update'),
     path('job/<int:pk>/delete/', job_views.JobDeleteView.as_view(), name='job-delete'),
+
+    path('companies/', company_views.CompanyPageView.as_view(), name='sites-company'),
+    path('company/<int:pk>/', company_views.CompanyDetailView.as_view(), name='company-detail'),
+    path('company/new/', company_views.CompanyCreateView.as_view(), name='company-create'),
+    path('user/<str:username>/company', company_views.UserCompanyPageView.as_view(), name='user-company'),
+    path('company/<int:pk>/update/', company_views.CompanyUpdateView.as_view(), name='company-update'),
+    path('company/<int:pk>/delete/', company_views.CompanyDeleteView.as_view(), name='company-delete'),
 
     path('password-reset/',
         auth_views.PasswordResetView.as_view(
