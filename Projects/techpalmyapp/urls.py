@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
+from jobs import views as job_views
 from django.conf import settings
 from django.conf.urls.static import static
 
@@ -27,6 +28,13 @@ urlpatterns = [
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
     path('logout/', auth_views.LogoutView.as_view(template_name='users/logout.html'), name='logout'),
     path('profile/', user_views.profile, name='profile'),
+
+    path('jobs/', job_views.JobPageView.as_view(), name='sites-jobs'),
+    path('job/<int:pk>/', job_views.JobDetailView.as_view(), name='job-detail'),
+    path('job/new/', job_views.JobCreateView.as_view(), name='job-create'),
+    path('user/<str:username>/jobs', job_views.UserJobPageView.as_view(), name='user-jobs'),
+    path('job/<int:pk>/update/', job_views.JobUpdateView.as_view(), name='job-update'),
+    path('job/<int:pk>/delete/', job_views.JobDeleteView.as_view(), name='job-delete'),
 
     path('password-reset/',
         auth_views.PasswordResetView.as_view(

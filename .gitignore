@@ -1,3 +1,4 @@
 Projects/env/
 migrations/
 __pycache__/
+*.pyc

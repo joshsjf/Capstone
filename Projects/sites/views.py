@@ -1,10 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
-from sites.models import Companies
-from sites.models import Post
+from sites.models import Companies, Post
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-
+from django.contrib.auth.decorators import login_required
 
 class PostPageView(ListView):
 	model = Post
@@ -45,7 +44,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
 	def test_func(self):
 		post = self.get_object()
-		return self.request.user == post.author
+		return self.request.user == post.author		# do we need a conditional true/false here??
 
 
 class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
@@ -53,9 +52,7 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	success_url = '/'
 	def test_func(self):
 		post = self.get_object()
-		return self.request.user == post.author
-
-
+		return self.request.user == post.author		# do we need a conditional true/false here??
 
 class ConsultantsPageView(TemplateView):
     template_name = "sites/consultants.html"
@@ -65,9 +62,6 @@ class CompaniesPageView(TemplateView):
 
 class EventsPageView(TemplateView):
     template_name = "sites/events.html"
-
-class JobsPageView(TemplateView):
-    template_name = "sites/jobs.html"
 
 class GroupsPageView(TemplateView):
     template_name = "sites/groups.html"
