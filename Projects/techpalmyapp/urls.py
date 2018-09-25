@@ -25,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('sites.urls')),                # HOME Page included here
 
-    path('classompanies', include('companies.urls')),   # Companies URL's now in companies
+    path('companies', include('companies.urls')),   # Companies URL's now in companies
     path('jobs', include('jobs.urls')),
 
     path('register/', user_views.register, name='register'),
