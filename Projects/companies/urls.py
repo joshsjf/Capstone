@@ -3,7 +3,7 @@ from . views import CompanyPageView, CompanyDetailView, CompanyCreateView, Compa
 from . import views
 
 urlpatterns = [
-    path('all/', CompanyPageView.as_view(), name='sites-companies'),
+    path('', CompanyPageView.as_view(), name='sites-companies'),
     path('<int:pk>/', CompanyDetailView.as_view(), name='company-detail'),
     path('new/', CompanyCreateView.as_view(), name='company-create'),
     path('user/<str:username>/companies', UserCompanyPageView.as_view(), name='user-company'),
