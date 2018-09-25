@@ -9,8 +9,8 @@
            <a class="mr-2" href="{% url 'user-company' company.author.username %}">{{ company.author }}</a>
            <small class="text-muted">{{ company.date_posted|date:"F d, Y" }}</small>
          </div>
-         <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.title }}</a></h2>
-         <p class="article-content">{{ company.payrate }}</p>
+         <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.companyName }}</a></h2>
+         <p class="article-content">{{ company.description }}</p>
        </div>
      </article>
  {% endfor %}
