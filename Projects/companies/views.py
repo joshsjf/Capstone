@@ -7,8 +7,8 @@ from django.contrib.auth.decorators import login_required
 
 class CompanyCreateView(LoginRequiredMixin, CreateView):
 	model = CompanyListing
-	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-			'summary', 'description', 'phonenumber', 'company', 'instructions']
+	fields = ['companyName', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees'
+			'industry', 'specialistArea', 'typeOfBusiness', 'company', 'receive_newsletter' 'description', 'ts&cs']
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
@@ -28,12 +28,12 @@ class UserCompanyPageView(ListView):
 
 	def get_queryset(self):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
-		return JobListing.objects.filter(author=user).order_by('-date_posted')
+		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
 class CompanyUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = CompanyListing
-	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-			'summary', 'description', 'phonenumber', 'company', 'instructions']
+	fields = ['companyName', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees'
+			'industry', 'specialistArea', 'typeOfBusiness', 'company', 'receive_newsletter' 'description', 'ts&cs']
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
