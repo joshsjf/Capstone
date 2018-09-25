@@ -9,9 +9,23 @@
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-jobs' job.author.username %}">{{ job.author }}</a>
             <small class="text-muted">{{ job.date_jobed|date:"F d, Y" }}</small>
+            {% if job.author == user %}
+            <div>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'job-update' job.id %}">Update</a>
+              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'job-delete' job.id %}">Delete</a>
+            </div>
+            {% endif %}
           </div>
           <h2><a class="article-title" href="{% url 'job-detail' job.id %}">{{ job.title }}</a></h2>
-          <p class="article-content">{{ job.content }}</p>
+          <p class="article-content">Category: {{ job.category }}</p>
+          <p class="article-content">Location: {{ job.location }}</p>
+          <p class="article-content">Payrate ${{ job.payrate }}</p>
+          <p class="article-content">Reference #{{ job.referencenumber }}</p>
+          <p class="article-content">Summary<br/>{{ job.summary }}</p>
+          <p class="article-content">Description<br/>{{ job.description }}</p>
+          <p class="article-content">Phone: {{ job.phonenumber }}</p>
+          <p class="article-content">Company: {{ job.company }}</p>
+          <p class="article-content">Instructions: {{ job.instructions }}</p>
         </div>
       </article>
   {% endfor %}

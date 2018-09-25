@@ -10,7 +10,15 @@
            <small class="text-muted">{{ job.date_posted|date:"F d, Y" }}</small>
          </div>
          <h2><a class="article-title" href="{% url 'job-detail' job.id %}">{{ job.title }}</a></h2>
-         <p class="article-content">{{ job.payrate }}</p>
+         <p class="article-content">Category: {{ job.category }}</p>
+         <p class="article-content">Location: {{ job.location }}</p>
+         <p class="article-content">Payrate ${{ job.payrate }}</p>
+         <p class="article-content">Reference #{{ job.referencenumber }}</p>
+         <p class="article-content">Summary<br/>{{ job.summary }}</p>
+         <p class="article-content">Description<br/>{{ job.description }}</p>
+         <p class="article-content">Phone: {{ job.phonenumber }}</p>
+         <p class="article-content">Company: {{ job.company }}</p>
+         <p class="article-content">Instructions: {{ job.instructions }}</p>
        </div>
      </article>
  {% endfor %}
