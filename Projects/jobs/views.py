@@ -1,18 +1,36 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, reverse, get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import JobListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 
-class JobCreateView(LoginRequiredMixin, CreateView):
-	model = JobListing
-	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-			'summary', 'description', 'phonenumber', 'company', 'instructions']
+from jobs.forms import JobCreateForm
 
-	def form_valid(self, form):
-		form.instance.author = self.request.user
-		return super().form_valid(form)
+# class JobCreateView(LoginRequiredMixin, CreateView):
+# 	model = JobListing
+# 	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
+# 			'summary', 'description', 'phonenumber', 'company', 'instructions']
+#
+# 	def form_valid(self, form):
+# 		form.instance.author = self.request.user
+# 		return super().form_valid(form)
+
+def job_create(request):
+	if request.method == 'POST':
+		j_form = JobCreateForm(request.POST)
+		if j_form.is_valid():
+			j_form.instance.author = request.user
+			j_form.save()
+			return redirect('')
+	else:
+		j_form = JobCreateForm(initial={
+			'phonenumber': request.user.profile.phone_number,
+			'company': request.user.profile.company
+			}
+		)
+	return render(request, 'jobs/new.html', {'j_form': j_form})
+
 
 class JobPageView(ListView):
 	model = JobListing
