@@ -10,7 +10,15 @@
            <small class="text-muted">{{ company.date_posted|date:"F d, Y" }}</small>
          </div>
          <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.companyName }}</a></h2>
-         <p class="article-content">{{ company.description }}</p>
+         <p class="article-content">Contact Name: {{ object.contactName }}</p>
+         <p class="article-content">Company Email: {{ object.email }}</p>
+         <p class="article-content">Phone Number: {{ object.phonenumber }}</p>
+         <p class="article-content">Web Site:{{ object.website }}</p>
+         <p class="article-content">Number of Employees: {{ object.numEmployees }}</p>
+         <p class="article-content">Industry: {{ object.industry }}</p>
+         <p class="article-content">Specialist Area: {{ object.specialistArea }}</p>
+         <p class="article-content">Type of Business: {{ object.typeOfBusiness }}</p>
+         <p class="article-content">Description: {{ company.description }}</p>
        </div>
      </article>
  {% endfor %}
