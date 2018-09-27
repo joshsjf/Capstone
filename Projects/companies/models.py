@@ -2,16 +2,17 @@ from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
-from users.models import Profile
+
 
 class CompanyListing(models.Model):
     def __str__(self):
-        return self.title
+        return self.companyName
 
-    #All the fields Jobs will have
+    # All the fields Companies have:
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
-    #Get user company, name, ph
+
+    # Get user company, name, ph
     companyName = models.CharField(max_length = 20)
     contactName = models.CharField(max_length = 20)
     email = models.EmailField()
@@ -30,8 +31,12 @@ class CompanyListing(models.Model):
     def get_absolute_url(self):
         return reverse('company-detail', kwargs={'pk': self.pk})
 
-    def clean_is_student(self):
-        is_student = self.cleaned_data.get('is_student')
-        if not is_student:
-            raise forms.ValidationError('This field is required')
-        return is_student
+    def save(self, **kwargs):
+        super().save()
+
+        img = Image.open(self.image.path)
+
+        if img.height > 300 or img.width > 300:
+            output_size = (300, 300)
+            img.thumbnail(output_size)
+            img.save(self.image.path)
