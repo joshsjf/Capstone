@@ -21,8 +21,8 @@ def job_create(request):
 		j_form = JobCreateForm(request.POST)
 		if j_form.is_valid():
 			j_form.instance.author = request.user
-			j_form.save()
-			return redirect('')
+			form = j_form.save()
+			return redirect(reverse('job-detail', kwargs={'pk': form.pk}))
 	else:
 		j_form = JobCreateForm(initial={
 			'phonenumber': request.user.profile.phone_number,

@@ -26,6 +26,3 @@ class JobListing(models.Model):
     company = models.CharField(max_length = 20)
 
     instructions = models.CharField(max_length = 20)
-
-    def get_absolute_url(self):
-        return reverse('job-detail', kwargs={'pk': self.pk})
