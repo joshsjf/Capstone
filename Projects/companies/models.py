@@ -30,8 +30,6 @@ class CompanyListing(models.Model):
 
     def get_absolute_url(self):
         return reverse('company-detail', kwargs={'pk': self.pk})
-<<<<<<< HEAD
-=======
 
     def save(self, **kwargs):
         super().save()
@@ -42,4 +40,3 @@ class CompanyListing(models.Model):
             output_size = (300, 300)
             img.thumbnail(output_size)
             img.save(self.image.path)
->>>>>>> companies
