@@ -9,18 +9,18 @@ from jobs.forms import JobCreateForm
 
 def job_create(request):
 	if request.method == 'POST':
-		j_form = JobCreateForm(request.POST)
-		if j_form.is_valid():
-			j_form.instance.author = request.user
-			form = j_form.save()
+		form = JobCreateForm(request.POST)
+		if form.is_valid():
+			form.instance.author = request.user
+			form = form.save()
 			return redirect(reverse('job-detail', kwargs={'pk': form.pk}))
 	else:
-		j_form = JobCreateForm(initial={
+		form = JobCreateForm(initial={
 			'phonenumber': request.user.profile.phone_number,
 			'company': request.user.profile.company
 			}
 		)
-	return render(request, 'jobs/joblisting_form.html', {'j_form': j_form})
+	return render(request, 'jobs/joblisting_form.html', {'form': form})
 
 
 class JobPageView(ListView):
