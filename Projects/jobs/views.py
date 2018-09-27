@@ -29,7 +29,7 @@ def job_create(request):
 			'company': request.user.profile.company
 			}
 		)
-	return render(request, 'jobs/new.html', {'j_form': j_form})
+	return render(request, 'jobs/joblisting_form.html', {'j_form': j_form})
 
 
 class JobPageView(ListView):
