@@ -1,6 +1,10 @@
 from django import forms
-from django.contrib.auth.models import Companies
-from django.contrib.auth.forms import UserCreationForm
+from .models import CompanyListing
 
-class MyForm(forms.Form):
-    check = forms.BooleanField(required = True)
+class CompanyCreateView(forms.ModelForm):
+    tscs = forms.BooleanField(required=True)
+
+    class Meta:
+        model = CompanyListing
+        fields = ['companyName', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
+    				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
