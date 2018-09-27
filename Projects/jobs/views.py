@@ -7,15 +7,6 @@ from django.contrib.auth.decorators import login_required
 
 from jobs.forms import JobCreateForm
 
-# class JobCreateView(LoginRequiredMixin, CreateView):
-# 	model = JobListing
-# 	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-# 			'summary', 'description', 'phonenumber', 'company', 'instructions']
-#
-# 	def form_valid(self, form):
-# 		form.instance.author = self.request.user
-# 		return super().form_valid(form)
-
 def job_create(request):
 	if request.method == 'POST':
 		j_form = JobCreateForm(request.POST)
