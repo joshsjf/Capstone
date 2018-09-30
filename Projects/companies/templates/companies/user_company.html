@@ -1,17 +1,31 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
-<h1 class="mb-3"> Companies by {{view.kwargs.username}} ({{ page_obj.paginator.count }})</h1>
-  {% for job in data %}
+<h1 class="mb-3"> Companies by {{view.kwargs.username}}: {{ page_obj.paginator.count }}</h1>
+  {% for company in data %}
       <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ job.author.profile.image.url }}">
+        <img class="rounded-circle article-img" src="{{ company.author.profile.image.url }}">
         <div class="media-body">
           <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-jobs' job.author.username %}">{{ company.author }}</a>
+            <a class="mr-2" href="{% url 'user-company' company.author.username %}">{{ company.author }}</a>
             <small class="text-muted">{{ company.date_jobed|date:"F d, Y" }}</small>
+            {% if company.author == user %}
+            <div>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'company-update' company.id %}">Update</a>
+              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'company-delete' company.id %}">Delete</a>
+            </div>
+            {% endif %}
           </div>
-          <h2><a class="article-title" href="{% url 'job-detail' job.id %}">{{ company.title }}</a></h2>
-          <p class="article-content">{{ company.content }}</p>
+          <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.companyName }}</a></h2>
+          <p class="article-content">Contact Name: {{ company.contactName }}</p>
+          <p class="article-content">Company Email: {{ company.email }}</p>
+          <p class="article-content">Phone Number: {{ company.phonenumber }}</p>
+          <p class="article-content">Web Site:{{ company.website }}</p>
+          <p class="article-content">Number of Employees: {{ company.numEmployees }}</p>
+          <p class="article-content">Industry: {{ company.industry }}</p>
+          <p class="article-content">Specialist Area: {{ company.specialistArea }}</p>
+          <p class="article-content">Type of Business: {{ company.typeOfBusiness }}</p>
+          <p class="article-content">Description: {{ company.description }}</p>
         </div>
       </article>
   {% endfor %}
