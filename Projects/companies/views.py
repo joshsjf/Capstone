@@ -53,8 +53,7 @@ def CompanyUpdateView(request, pk):
 		if c_form.is_valid():
 			c_form.instance.author = request.user
 			camp = c_form.save()
-			instance = CompanyListing.objects.get(pk=pk)
-			if (instance.isAConsultant == True):
+			if (camp.isAConsultant == True):
 				messages.success(request, "Consultant profile has been updated!")
 				return redirect(reverse('consultant-detail', kwargs={'pk': camp.pk}))
 			messages.success(request, "Your Company has been updated!")
