@@ -6,5 +6,13 @@ class CompanyCreateView(forms.ModelForm):
 
     class Meta:
         model = CompanyListing
-        fields = ['companyName', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
+        fields = ['companyName', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
+    				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
+
+class CompanyUpdateForm(forms.ModelForm):
+    pk = ''
+    id = ''
+    class Meta:
+        model = CompanyListing
+        fields = ['companyName', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
     				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
