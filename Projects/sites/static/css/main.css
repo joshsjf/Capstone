@@ -97,12 +97,16 @@ html, body {
     margin-bottom: -50px;
     padding-bottom: 50px;
 }
+.nav {
+  color: #FFFFFF;
+}
 
 footer {
     height: 50px;
     margin-top:50px;
-/*    position: relative;*/
+    position: relative;
     background: #343434;
     color: #FFFFFF;
     text-align: center;
 }
+
