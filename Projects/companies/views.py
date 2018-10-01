@@ -47,7 +47,7 @@ def CompanyUpdateView(request, pk):
 			return redirect(reverse('company-update', kwargs={'pk': c_form.pk}))
 	else:
 		c_form = CompanyUpdateForm()
-	return render(request, 'companies/companylisting_detail.html', {'c_form': c_form})
+	return render(request, 'companies/companyupdate_form.html', {'c_form': c_form})
 
 
 class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
