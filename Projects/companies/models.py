@@ -3,6 +3,7 @@ from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from PIL import Image
 
 
 class CompanyListing(models.Model):
