@@ -1,18 +1,21 @@
 from django.db import models
+from django import forms
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.urls import reverse
+from PIL import Image
 
 
 class CompanyListing(models.Model):
     def __str__(self):
         return self.companyName
 
-    # All the fields Companies have:
+    #All the fields Companies will have
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
 
-    # Get user company, name, ph
+    image = models.ImageField(default='default.jpg', upload_to='profile_pics')
+
     companyName = models.CharField(max_length = 20)
     contactName = models.CharField(max_length = 20)
     email = models.EmailField()

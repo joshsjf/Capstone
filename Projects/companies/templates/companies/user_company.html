@@ -9,12 +9,12 @@
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-company' company.author.username %}">{{ company.author }}</a>
             <small class="text-muted">{{ company.date_jobed|date:"F d, Y" }}</small>
-            {% if company.author == user %}
+            <!-- {% if company.author == user %}
             <div>
               <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'company-update' company.id %}">Update</a>
               <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'company-delete' company.id %}">Delete</a>
             </div>
-            {% endif %}
+            {% endif %} -->
           </div>
           <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.companyName }}</a></h2>
           <p class="article-content">Contact Name: {{ company.contactName }}</p>
