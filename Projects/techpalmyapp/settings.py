@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'sites.apps.SitesConfig',
     'users.apps.UsersConfig',
     'jobs.apps.JobsConfig',
+    'companies.apps.CompaniesConfig',
     'crispy_forms',
 ]
 
@@ -82,7 +83,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'techpalmy',
         'USER': 'root',
-        'PASSWORD': 'cr49oSse'
+        'PASSWORD': 'Capstoners!123'
     }
 }
 
