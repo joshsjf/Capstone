@@ -9,3 +9,9 @@ Glen Ward ID: 13051097 </br>
 Judah McNicholl ID: 16058955 </br>
 Josh Fleet ID: 15390549 </br>
 Kenton Dyer ID: 14270246
+
+## Sprint Tags
+
+Sprint 2 - Tag v1.2
+
+Sprint 3 - Tag v3.1
