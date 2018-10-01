@@ -7,3 +7,7 @@ from users.models import Profile
 class EventListing(models.Model):
     def __str__(self):
         return self.title
+
+
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    date_posted = models.DateTimeField(default = timezone.now)
