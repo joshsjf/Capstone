@@ -16,19 +16,19 @@ class EventCreateView(LoginRequiredMixin, CreateView):
 
 class EventPageView(ListView):
 	model = EventListing
-	template_name = 'companies/company.html'
+	template_name = 'events/event.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
 
-class EventCompanyPageView(ListView):
+class UserEventPageView(ListView):
 	model = EventListing
-	template_name = 'companies/user_company.html'
+	template_name = 'events/user_event.html'
 	context_object_name = 'data'
 	paginate_by = 3
 
 	def get_queryset(self):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
-		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
+		return EventListing.objects.filter(author=user).order_by('-date_posted')
 
 class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = EventListing
@@ -39,16 +39,16 @@ class EventUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 		return super().form_valid(form)
 
 	def test_func(self):
-		company = self.get_object()
-		return self.request.user == company.author		# do we need a conditional true/false here??
+		event = self.get_object()
+		return self.request.user == event.author		# do we need a conditional true/false here??
 
 
 class EventDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = EventListing
 	success_url = '/'
 	def test_func(self):
-		company = self.get_object()
-		return self.request.user == company.author
+		event = self.get_object()
+		return self.request.user == event.author
 
 
 class EventDetailView(DetailView):
