@@ -11,7 +11,7 @@ from django.urls import reverse
 @login_required
 def companyCreate(request):
 	if request.method == 'POST':
-		form = CompanyCreateView(request.POST)
+		form = CompanyCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
@@ -40,7 +40,7 @@ class UserCompanyPageView(ListView):
 
 def CompanyUpdateView(request, pk):
 	if request.method  == 'POST':
-		c_form = CompanyUpdateForm(request.POST)
+		c_form = CompanyUpdateForm(request.POST, request.FILES)
 		if c_form.is_valid():
 			c_form.instance.author = request.user
 			camp = c_form.save()

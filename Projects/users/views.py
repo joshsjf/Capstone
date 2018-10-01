@@ -13,7 +13,6 @@ def register(request):
             profile = p_form.save(commit=False)
             profile.user = user
             profile.save()
-            # user.save()
             username = u_form.cleaned_data.get('username')
             messages.success(request, "Your account has been created! You are now able to login.")
             return redirect('login')
