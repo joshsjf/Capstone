@@ -9,7 +9,6 @@ urlpatterns = [
 
     path('AboutUs/', views.AboutPageView.as_view(), name='sites-aboutus'),
     path('Consultants/', views.ConsultantsPageView.as_view(), name='sites-consultants'),
-    path('Companies/', views.CompaniesPageView.as_view(), name='sites-companies'),
     path('Education/', views.EducationPageView.as_view(), name='sites-education'),
     path('Events/', views.EventsPageView.as_view(), name='sites-events'),
     path('Groups/', views.GroupsPageView.as_view(), name='sites-groups'),

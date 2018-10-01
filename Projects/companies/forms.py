@@ -6,7 +6,7 @@ class CompanyCreateView(forms.ModelForm):
 
     class Meta:
         model = CompanyListing
-        fields = ['companyName', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
+        fields = ['companyName', 'isAConsultant', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
     				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
 
 class CompanyUpdateForm(forms.ModelForm):
@@ -14,5 +14,5 @@ class CompanyUpdateForm(forms.ModelForm):
     id = ''
     class Meta:
         model = CompanyListing
-        fields = ['companyName', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
+        fields = ['companyName', 'isAConsultant', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
     				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
