@@ -21,3 +21,6 @@ class EducationPageView(TemplateView):
 
 class AboutPageView(TemplateView):
     template_name = "sites/about.html"
+
+class ContactPageView(TemplateView):
+    template_name = "sites/contact.html"
