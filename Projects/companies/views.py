@@ -37,14 +37,16 @@ class UserCompanyPageView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
-@login_required
-def CompanyUpdateView(request, pk):
+
+def CompanyUpdateView(request, **kwargs):
+	# instance = CompanyListing.objects.get()
 	if request.method  == 'POST':
 		c_form = CompanyUpdateForm(request.POST)
 		if c_form.is_valid():
-			c_form.save()
+			c_form.instance.author = request.user
+			camp = c_form.save()
 			messages.success(request, "Your Company has been updated!")
-			return redirect(reverse('company-update', kwargs={'pk': c_form.pk}))
+			return redirect(reverse('company-detail', kwargs={'pk': camp.pk}))
 	else:
 		c_form = CompanyUpdateForm()
 	return render(request, 'companies/companyupdate_form.html', {'c_form': c_form})
