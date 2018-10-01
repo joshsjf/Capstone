@@ -8,18 +8,17 @@ from django.contrib.auth.decorators import login_required
 from companies.forms import CompanyCreateView, CompanyUpdateForm
 from django.urls import reverse
 
-@login_required
+
 def companyCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = CompanyCreateView(request.POST, request.FILES)
+		form = CompanyCreateView(request.POST, request.FILES,)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
-			instance = CompanyListing.objects.get(pk=pk)
-			if (instance.isAConsultant == True):
+			if (comp.isAConsultant == True):
 				messages.success(request, "Consultant profile has been created!")
 				return redirect(reverse('consultant-detail', kwargs={'pk': comp.pk}))
-			messages.success(request, "Your company has been created!")
+			messages.success(request, "Your Company has been created!")
 			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = CompanyCreateView()
