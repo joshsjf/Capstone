@@ -17,15 +17,18 @@
             {% endif %}
           </div>
           <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.companyName }}</a></h2>
-          <p class="article-content">Contact Name: {{ company.contactName }}</p>
-          <p class="article-content">Company Email: {{ company.email }}</p>
-          <p class="article-content">Phone Number: {{ company.phonenumber }}</p>
           <p class="article-content">Web Site:{{ company.website }}</p>
           <p class="article-content">Number of Employees: {{ company.numEmployees }}</p>
           <p class="article-content">Industry: {{ company.industry }}</p>
           <p class="article-content">Specialist Area: {{ company.specialistArea }}</p>
           <p class="article-content">Type of Business: {{ company.typeOfBusiness }}</p>
           <p class="article-content">Description: {{ company.description }}</p>
+
+          <br>
+          <p class=""> Contact:</p>
+          <p class="article-content">Contact Name: {{ company.contactName }}</p>
+          <p class="article-content">Company Email: {{ company.email }}</p>
+          <p class="article-content">Phone Number: {{ company.phonenumber }}</p>
         </div>
       </article>
   {% endfor %}

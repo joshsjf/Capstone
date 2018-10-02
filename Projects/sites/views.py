@@ -4,9 +4,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 
-class ConsultantsPageView(TemplateView):
-    template_name = "sites/consultants.html"
-
 class EventsPageView(TemplateView):
     template_name = "sites/events.html"
 
