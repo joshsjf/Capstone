@@ -15,7 +15,6 @@ class CompanyListing(models.Model):
     date_posted = models.DateTimeField(default = timezone.now)
 
     image = models.ImageField(default='default.jpg', upload_to='company_pics')
-    
     companyName = models.CharField(max_length = 20)
     contactName = models.CharField(max_length = 20)
     email = models.EmailField()

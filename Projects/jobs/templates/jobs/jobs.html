@@ -1,6 +1,6 @@
 {% extends "sites/base.html" %}
 {% block content %}
- <p> Job </p>
+ <h1>Jobs</h1>
  {% for job in data %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ job.author.profile.image.url }}">

@@ -8,14 +8,14 @@ from django.contrib.auth.decorators import login_required
 from companies.forms import CompanyCreateView, CompanyUpdateForm
 from django.urls import reverse
 
-@login_required
-def companyCreate(request):
+
+def companyCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = CompanyCreateView(request.POST, request.FILES)
+		form = CompanyCreateView(request.POST, request.FILES,)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
-			messages.success(request, "Your company has been created!")
+			messages.success(request, "Your Company has been created!")
 			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = CompanyCreateView()
@@ -26,6 +26,7 @@ class CompanyPageView(ListView):
 	template_name = 'companies/company.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
+
 
 class UserCompanyPageView(ListView):
 	model = CompanyListing
@@ -38,7 +39,7 @@ class UserCompanyPageView(ListView):
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
 
-def CompanyUpdateView(request, pk):
+def companyUpdateView(request, pk):
 	if request.method  == 'POST':
 		c_form = CompanyUpdateForm(request.POST, request.FILES)
 		if c_form.is_valid():
@@ -53,7 +54,7 @@ def CompanyUpdateView(request, pk):
 
 class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = CompanyListing
-	success_url = '/'
+	success_url = '/companies'
 	def test_func(self):
 		company = self.get_object()
 		return self.request.user == company.author

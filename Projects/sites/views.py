@@ -34,9 +34,6 @@ class IndexView(ListView):
 class ConsultantsPageView(TemplateView):
     template_name = "sites/consultants.html"
 
-class CompaniesPageView(TemplateView):
-    template_name = "sites/companies.html"
-
 class EventsPageView(TemplateView):
     template_name = "sites/events.html"
 
