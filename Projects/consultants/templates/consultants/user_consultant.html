@@ -17,6 +17,13 @@
             {% endif %}
           </div>
           <h2><a class="article-title" href="{% url 'cons-detail' consultant.id %}">{{ consultant.consultantName }}</a></h2>
+          <img class="rounded-circle account-img" src="{{ consultant.image.url }}">
+          <p class="article-content">Specialist Area: {{ consultant.specialistArea }}</p>
+          <p class="article-content">Description: {{ consultant.description }}</p>
+
+          <p class="article-content">Email: {{ consultant.email }}</p>
+          <p class="article-content">Contact Number: {{ consultant.phoneNumber }}</p>
+          <p class="article-content">Website: {{ consultant.website }}</p>
         </div>
       </article>
   {% endfor %}

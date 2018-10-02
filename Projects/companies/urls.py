@@ -5,7 +5,6 @@ from . import views as company_views
 urlpatterns = [
     path('', CompanyPageView.as_view(), name='companies-home'),
     path('<int:pk>/', CompanyDetailView.as_view(), name='company-detail'),
-    path('consultant/<int:pk>/', ConsultantDetailView.as_view(), name='consultant-detail'),
     path('new/', company_views.companyCreate, name='company-create'),
     path('<str:username>/companies', UserCompanyPageView.as_view(), name='user-company'),
     path('<int:pk>/update/',company_views.companyUpdateView, name='company-update'),

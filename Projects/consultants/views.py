@@ -54,13 +54,6 @@ class UserConsultantPageView(ListView):
 
 class ConsultantDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = ConsultantListing
-	success_url = '/consultants'
-	def test_func(self):
-		consultant = self.get_object()
-		return self.request.user == consultant.author
-
-class ConsultantDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = ConsultantListing
 	template_name = 'consultants/consultantlisting_confirm_delete.html'
 	success_url = '/consultants'
 	def test_func(self):
@@ -68,8 +61,6 @@ class ConsultantDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		return self.request.user == company.author
 
 
-class ConsultantDetailView(DetailView):
-	model = ConsultantListing
 
 class ConsultantDetailView(DetailView):
 	model = ConsultantListing
