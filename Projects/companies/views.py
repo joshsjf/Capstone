@@ -30,11 +30,6 @@ class CompanyPageView(ListView):
 	context_object_name = 'data'
 	ordering = ['-date_posted']
 
-class ConsultantPageView(ListView):
-	model = CompanyListing
-	template_name = 'companies/consultant.html'
-	context_object_name = 'data'
-	ordering = ['-date_posted']
 
 class UserCompanyPageView(ListView):
 	model = CompanyListing
@@ -70,18 +65,6 @@ class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		company = self.get_object()
 		return self.request.user == company.author
 
-class ConsultantDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = CompanyListing
-	template_name = 'companies/consultantlisting_confirm_delete.html'
-	success_url = '/consultants'
-	def test_func(self):
-		company = self.get_object()
-		return self.request.user == company.author
-
 
 class CompanyDetailView(DetailView):
 	model = CompanyListing
-
-class ConsultantDetailView(DetailView):
-	model = CompanyListing
-	template_name = 'companies/consultantlisting_detail.html'
