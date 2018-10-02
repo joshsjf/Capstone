@@ -20,6 +20,8 @@ from users import views as user_views
 from django.conf import settings
 from django.conf.urls.static import static
 
+from jobs.views import JobDetailView
+
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('sites.urls')),                # HOME Page included here
