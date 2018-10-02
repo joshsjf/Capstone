@@ -15,9 +15,10 @@ class EventListing(models.Model):
     eventWhen = models.CharField(max_length = 20)
     eventWhere = models.CharField(max_length = 20)
 
-    ageRestriction = models.IntegerField()
     registrationCost = models.IntegerField()
     eventWebsite = models.CharField(max_length = 200)
+
+    eventDescription = models.TextField()
 
     def get_absolute_url(self):
         return reverse('event-detail', kwargs={'pk': self.pk})
