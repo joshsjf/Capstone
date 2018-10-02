@@ -31,9 +31,6 @@ class IndexView(ListView):
     def get_queryset(self):
         return JobListing.objects.order_by('-date_posted')
 
-class ConsultantsPageView(TemplateView):
-    template_name = "sites/consultants.html"
-
 class EventsPageView(TemplateView):
     template_name = "sites/events.html"
 
