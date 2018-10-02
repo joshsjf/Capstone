@@ -112,6 +112,5 @@ footer {
 }
 
 .above-header {
-    height: 50px;
-
+    display:block;
 }
