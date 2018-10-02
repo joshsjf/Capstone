@@ -107,12 +107,17 @@ footer {
     margin-top:50px;
     position: relative;
     background: #343434;
-    color: #FFFFFF;
+    color: #000000;
     text-align: center;
 }
 
 .above-nav {
     width: 100%;
-    background-color: #FFFFFF;
-    display:block;
+    background-color: #000000;
+}
+
+.search-bar {
+    float:right;
+    text-align: right;
+    background-color: #000000;
 }
