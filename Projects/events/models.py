@@ -11,3 +11,13 @@ class EventListing(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
+
+    eventWhen = models.CharField(max_length = 20)
+    eventWhere = models.CharField(max_length = 20)
+
+    ageRestriction = models.IntegerField()
+    registrationCost = models.IntegerField()
+    eventWebsite = models.CharField(max_length = 200)
+
+    def get_absolute_url(self):
+        return reverse('event-detail', kwargs={'pk': self.pk})
