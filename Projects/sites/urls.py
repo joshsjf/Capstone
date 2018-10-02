@@ -2,10 +2,9 @@
 
 from django.urls import path
 from sites import views
-from jobs.views import JobPageView
 
 urlpatterns = [
-    path('', JobPageView.as_view(), name='sites-home'),
+    path('', views.home, name='sites-home'),
 
     path('AboutUs/', views.AboutPageView.as_view(), name='sites-about'),
     path('Contact/', views.ContactPageView.as_view(), name='sites-contact'),
