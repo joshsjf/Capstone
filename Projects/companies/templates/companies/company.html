@@ -2,7 +2,6 @@
 {% block content %}
 <h1>Companies</h1>
   {% for company in data %}
-    {% if company.isAConsultant != True %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ company.author.profile.image.url }}">
        <div class="media-body">
@@ -20,13 +19,12 @@
          <p class="article-content">Description: {{ company.description }}</p>
 
          <br>
-         <p class=""> Contact:</p>
+         <h5> Contact:</h5>
          <p class="article-content">Contact Name: {{ company.contactName }}</p>
          <p class="article-content">Company Email: {{ company.email }}</p>
          <p class="article-content">Phone Number: {{ company.phoneNumber }}</p>
 
        </div>
      </article>
-   {% endif %}
  {% endfor %}
 {% endblock content %}
