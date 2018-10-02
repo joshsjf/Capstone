@@ -47,7 +47,7 @@ class UserCompanyPageView(ListView):
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
 
-def CompanyUpdateView(request, pk):
+def companyUpdateView(request, pk):
 	if request.method  == 'POST':
 		c_form = CompanyUpdateForm(request.POST, request.FILES)
 		if c_form.is_valid():

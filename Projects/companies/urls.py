@@ -9,7 +9,7 @@ urlpatterns = [
     path('consultant/<int:pk>/', ConsultantDetailView.as_view(), name='consultant-detail'),
     path('new/', company_views.companyCreate, name='company-create'),
     path('<str:username>/companies', UserCompanyPageView.as_view(), name='user-company'),
-    path('<int:pk>/update/',company_views.CompanyUpdateView, name='company-update'),
+    path('<int:pk>/update/',company_views.companyUpdateView, name='company-update'),
     path('<int:pk>/company/delete/', CompanyDeleteView.as_view(), name='company-delete'),
     path('<int:pk>/consultant/delete/', ConsultantDeleteView.as_view(), name='consultant-delete'),
 ]
