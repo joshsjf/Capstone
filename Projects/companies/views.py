@@ -15,9 +15,6 @@ def companyCreate(request, **kwargs):
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
-			if (comp.isAConsultant == True):
-				messages.success(request, "Consultant profile has been created!")
-				return redirect(reverse('consultant-detail', kwargs={'pk': comp.pk}))
 			messages.success(request, "Your Company has been created!")
 			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
@@ -48,9 +45,6 @@ def companyUpdateView(request, pk):
 		if c_form.is_valid():
 			c_form.instance.author = request.user
 			camp = c_form.save()
-			if (camp.isAConsultant == True):
-				messages.success(request, "Consultant profile has been updated!")
-				return redirect(reverse('consultant-detail', kwargs={'pk': camp.pk}))
 			messages.success(request, "Your Company has been updated!")
 			return redirect(reverse('company-detail', kwargs={'pk': camp.pk}))
 	else:
