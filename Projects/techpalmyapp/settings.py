@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'jobs.apps.JobsConfig',
     'companies.apps.CompaniesConfig',
+    'consultants.apps.ConsultantsConfig',
     'crispy_forms',
 ]
 
