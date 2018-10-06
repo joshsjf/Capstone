@@ -27,5 +27,7 @@ class JobListing(models.Model):
 
     instructions = models.CharField(max_length = 20)
 
+    is_expired = models.BooleanField(default=False)
+
     def get_absolute_url(self):
         return reverse('job-detail', kwargs={'pk': self.pk})
