@@ -2,9 +2,8 @@
 
 {% block content %}
   {% for item in all_items_feed %}
-    <p> {{ item.date_posted }} </p>
-
     {% if item.type == 'job' %}
+      {% if item.is_expired == false %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
         <div class="media-body">
@@ -20,11 +19,11 @@
           <p class="article-content">Summary<br/>{{ item.summary }}</p>
           <p class="article-content">Description<br/>{{ item.description }}</p>
           <p class="article-content">Phone: {{ item.phonenumber }}</p>
-          <p class="article-content">item: {{ item.item }}</p>
+          <p class="article-content">Company: {{ job.company }}</p>
           <p class="article-content">Instructions: {{ item.instructions }}</p>
         </div>
       </article>
-
+      {% endif %}
     {% else %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
@@ -37,7 +36,7 @@
           <h2 class="article-title">{{ object.image.url }}</h2>
           <img class="rounded-circle account-img" src="{{ item.image.url }}">
           <p class="article-content">Contact Name: {{ item.contactName }}</p>
-          <p class="article-content">item Email: {{ item.email }}</p>
+          <p class="article-content">Company Email: {{ item.email }}</p>
           <p class="article-content">Phone Number: {{ item.phonenumber }}</p>
           <p class="article-content">Web Site:{{ item.website }}</p>
           <p class="article-content">Number of Employees: {{ item.numEmployees }}</p>

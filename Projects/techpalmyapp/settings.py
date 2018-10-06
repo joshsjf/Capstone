@@ -28,6 +28,11 @@ DEBUG = True
 ALLOWED_HOSTS = []
 
 
+CRON_CLASSES = [
+    "techpalmyapp.auto_task.MyCronJob",
+    # ...
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -43,6 +48,7 @@ INSTALLED_APPS = [
     'companies.apps.CompaniesConfig',
     'consultants.apps.ConsultantsConfig',
     'crispy_forms',
+    'django_cron',
 ]
 
 MIDDLEWARE = [
