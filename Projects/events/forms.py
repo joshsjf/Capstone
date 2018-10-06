@@ -5,4 +5,4 @@ from events.models import EventListing
 class EventCreateForm(forms.ModelForm):
     class Meta:
         model = JobListing
-        fields = ['author', 'date_posted', 'eventWhen', 'eventWhere', 'eventDescription', 'registrationCost', 'eventWebsite']
+        fields = ['author', 'date_posted', 'eventName', 'eventWhen', 'eventLocation', 'eventDescription', 'registrationCost', 'eventWebsite']
