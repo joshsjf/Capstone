@@ -103,18 +103,6 @@ html, body {
     padding-bottom: 50px;
 }
 
-/*
-footer {
-    margin-top:50px;
-    height: 50px;
-    bottom: 0;
-    position: relative;
-    background: #343434;
-    color: #FFFFFF;
-    /*flex: 0 0 auto;*/
-    /*text-align: center;
-}*/
-
 footer {
   position: fixed;
   line-height: 200%;
