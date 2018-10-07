@@ -5,11 +5,22 @@ from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 
+@login_required
+def eventCreate(request):
+	if request.method == 'POST':
+		form = EventCreateView(request.POST, request.FILES)
+		if form.is_valid():
+			form.instance.author = request.user
+			form = form.save()
+			messages.success(request, "Event created.")
+			return redirect(reverse('event-detail', kwargs={'pk': form.pk}))
+	else:
+		form = EventCreateView()
+	return render(request, 'events/eventlisting_form.html', {'form': form})
+
 class EventCreateView(LoginRequiredMixin, CreateView):
 	model = EventListing
 	fields = [] #models go here
-
-
 	def form_valid(self, form):
 		form.instance.author = self.request.user
 		return super().form_valid(form)
