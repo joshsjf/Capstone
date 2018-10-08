@@ -4,7 +4,7 @@ from .models import JobListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-
+import datetime
 from jobs.forms import JobCreateForm
 
 def job_create(request):
@@ -16,7 +16,7 @@ def job_create(request):
 			return redirect(reverse('job-detail', kwargs={'pk': form.pk}))
 	else:
 		form = JobCreateForm(initial={
-			'phonenumber': request.user.profile.phone_number,
+			'phone_Number': request.user.profile.phone_Number,
 			'company': request.user.profile.company
 			}
 		)
@@ -28,6 +28,13 @@ class JobPageView(ListView):
 	template_name = 'jobs/jobs.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
+
+	def get_queryset(self):
+		posts = JobListing.objects.all().order_by('-date_posted')
+		# items = JobListing.objects.filter(date_posted__lte=datetime.datetime.today(),
+		# 	date_posted__gt=datetime.datetime.today()-datetime.timedelta(days=2))
+		items = JobListing.objects.filter(date_posted__gte=datetime.datetime.now()-datetime.timedelta(days=7))
+		return items
 
 class UserJobPageView(ListView):
 	model = JobListing
@@ -41,8 +48,8 @@ class UserJobPageView(ListView):
 
 class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = JobListing
-	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-			'summary', 'description', 'phonenumber', 'company', 'instructions']
+	fields = ['category', 'title', 'location', 'pay_Rate', 'reference_Number',
+			'summary', 'description', 'phone_Number', 'company', 'instructions', 'terms_And_Conditions',]
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user
