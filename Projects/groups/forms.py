@@ -1,16 +1,14 @@
 from django import forms
-from .models import ConsultantListing
+from .models import GroupListing
 
 class GroupCreateView(forms.ModelForm):
-    termsAndConditions = forms.BooleanField(required=True)
+    terms_And_Conditions = forms.BooleanField(required=True)
 
     class Meta:
         model = GroupListing
-        fields = ['groupName', 'image', 'description', 'termsAndConditions']
+        fields = ['group_Name', 'image', 'date', 'location', 'description', 'terms_And_Conditions']
 
 class GroupUpdateForm(forms.ModelForm):
-    pk = ''
-    id = ''
     class Meta:
         model = GroupListing
-        fields = ['groupName', 'image', 'description', 'termsAndConditions']
+        fields = ['group_Name', 'image', 'date', 'location', 'description', 'terms_And_Conditions']

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
-from consultants.forms import GroupCreateView, GroupUpdateForm
+from groups.forms import GroupCreateView, GroupUpdateForm
 from django.urls import reverse
 
 
@@ -36,14 +36,14 @@ def groupUpdateView(request, pk):
 
 
 class GroupPageView(ListView):
-	model = ConsultantListing
+	model = GroupListing
 	template_name = 'groups/group.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
 
 class UserGroupPageView(ListView):
 	model = GroupListing
-	template_name = 'groups/user_group.html'
+	template_name = 'groups/user_groups.html'
 	context_object_name = 'data'
 	paginate_by = 3
 

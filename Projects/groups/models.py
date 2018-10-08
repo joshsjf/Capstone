@@ -13,14 +13,16 @@ class GroupListing(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
 
-    groupName = models.CharField(max_length = 20)
-    image = models.ImageField(default='default.jpg', upload_to='consultant_pics')
+    group_Name = models.CharField(max_length = 20)
+    image = models.ImageField(default='default.jpg', upload_to='group_pics')
 
+    date = models.CharField(max_length = 20)
+    location = models.CharField(max_length = 20)
     description = models.TextField()
-    termsAndConditions = models.BooleanField()
+    terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
-        return reverse('cons-detail', kwargs={'pk': self.pk})
+        return reverse('group-detail', kwargs={'pk': self.pk})
 
     def save(self, **kwargs):
         super().save()
