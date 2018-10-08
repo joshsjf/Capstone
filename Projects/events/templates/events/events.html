@@ -1,17 +1,17 @@
 {% extends "sites/base.html" %}
 {% block content %}
- <p> Company </p>
+ <p> Event </p>
  {% for company in data %}
      <article class="media content-section">
-       <img class="rounded-circle article-img" src="{{ company.author.profile.image.url }}">
+       <img class="rounded-circle article-img" src="{{ event.author.profile.image.url }}">
        <div class="media-body">
          <div class="article-metadata">
-           <a class="mr-2" href="{% url 'user-company' company.author.username %}">{{ event.author }}</a>
+           <a class="mr-2" href="{% url 'user-event' event.author.username %}">{{ event.author }}</a>
            <small class="text-muted">{{ event.date_posted|date:"F d, Y" }}</small>
          </div>
          <h2><a class="article-title" href="{% url 'event-detail' event.id %}">{{ event.eventName }}</a></h2>
-         <!-- <h2 class="article-title">{{ object.image.url }}</h2> -->
-         <!-- <img class="rounded-circle account-img" src="{{ company.image.url }}"> -->
+         <!-- <h2 class="article-title">{{ object.image.url }}</h2>
+         <img class="rounded-circle account-img" src="{{ event.image.url }}"> -->
          <p class="article-content">Event Name: {{ event.eventName }}</p>
          <p class="article-content">Event Time: {{ event.eventWhen }}</p>
          <p class="article-content">Event Location: {{ event.eventLocation }}</p>
