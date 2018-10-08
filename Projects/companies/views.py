@@ -15,7 +15,7 @@ def companyCreate(request, **kwargs):
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
-			messages.success(request, "Your Company has been created!")
+			messages.success(request, "Your company has been created!")
 			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = CompanyCreateView()
