@@ -62,20 +62,11 @@
               <br>
               <ul class="list-group">
 
-<<<<<<< HEAD
-              {% if user.is_authenticated %}
-              <a class="list-group-item list-group-item-light" href="{% url 'cons-create' %}">New Consultant</a>
-              <a class="list-group-item list-group-item-light" href="{% url 'company-create' %}">New Company</a>
-              <a class="list-group-item list-group-item-light" href="{% url 'group-create' %}">New Group</a>
-              <a class="list-group-item list-group-item-light" href="{% url 'job-create' %}">New Job</a>
-
-=======
                 {% if user.is_authenticated %}
                 <a class="list-group-item list-group-item-light" href="{% url 'consultant-create' %}">New Consultant</a>
                 <a class="list-group-item list-group-item-light" href="{% url 'company-create' %}">New Company</a>
                 <a class="list-group-item list-group-item-light" href="{% url 'group-create' %}">New Group</a>
                 <a class="list-group-item list-group-item-light" href="{% url 'job-create' %}">New Job</a>
->>>>>>> b0f7c6aecdf9368c4f9032de13922ed0cb809cbf
 
               <br>
               {% else %}
