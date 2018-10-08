@@ -1,0 +1,18 @@
+{% extends "sites/base.html" %}
+{% block content %}
+ <h1>Groups</h1>
+ {% for group in data %}
+     <article class="media content-section">
+       <img class="rounded-circle article-img" src="{{ group.author.profile.image.url }}">
+       <div class="media-body">
+         <div class="article-metadata">
+           <a class="mr-2" href="{% url 'user-group' group.author.username %}">{{ group.author }}</a>
+           <small class="text-muted">{{ group.date_posted|date:"F d, Y" }}</small>
+         </div>
+         <h2><a class="article-title" href="{% url 'group-detail' group.id %}">{{ group.group_Name }}</a></h2>
+         <img class="rounded-circle account-img" src="{{ group.image.url }}">
+         <p class="article-content">Description: {{ group.description }}</p>
+       </div>
+     </article>
+ {% endfor %}
+{% endblock content %}
