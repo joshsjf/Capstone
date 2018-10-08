@@ -8,27 +8,27 @@ from PIL import Image
 
 class CompanyListing(models.Model):
     def __str__(self):
-        return self.companyName
+        return self.company_Name
 
     #All the fields Companies will have
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
 
     image = models.ImageField(default='default.jpg', upload_to='company_pics')
-    companyName = models.CharField(max_length = 20)
-    contactName = models.CharField(max_length = 20)
+    company_Name = models.CharField(max_length = 20)
+    contact_Name = models.CharField(max_length = 20)
     email = models.EmailField()
-    phoneNumber = models.CharField(max_length = 20)
+    phone_Number = models.CharField(max_length = 20)
     website = models.CharField(max_length = 20)
-    numEmployees = models.IntegerField()
+    number_Of_Employees = models.IntegerField()
 
     industry = models.CharField(max_length = 20)
-    specialistArea = models.CharField(max_length = 20)
-    typeOfBusiness = models.CharField(max_length = 20)
+    specialist_Area = models.CharField(max_length = 20)
+    type_Of_Business = models.CharField(max_length = 20)
 
     receive_newsletter = models.BooleanField()
     description = models.TextField()
-    tscs = models.BooleanField()
+    terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
         return reverse('company-detail', kwargs={'pk': self.pk})

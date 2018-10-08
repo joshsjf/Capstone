@@ -3,11 +3,11 @@ from . views import  ConsultantCreateView, UserConsultantPageView, ConsultantDet
 from . import views as consultant_views
 
 urlpatterns = [
-    path('', ConsultantPageView.as_view(), name='cons-home'),
-    path('<int:pk>/', ConsultantDetailView.as_view(), name='cons-detail'),
-    path('consultant/<int:pk>/', ConsultantDetailView.as_view(), name='cons-detail'),
-    path('new/', consultant_views.consultantCreate, name='cons-create'),
-    path('<str:username>/consultants', UserConsultantPageView.as_view(), name='user-cons'),
-    path('<int:pk>/update/',consultant_views.consultantUpdateView, name='cons-update'),
-    path('<int:pk>/consultant/delete/', ConsultantDeleteView.as_view(), name='cons-delete'),
+    path('', ConsultantPageView.as_view(), name='consultants-home'),
+    path('<int:pk>/', ConsultantDetailView.as_view(), name='consultant-detail'),
+    path('consultant/<int:pk>/', ConsultantDetailView.as_view(), name='consultant-detail'),
+    path('new/', consultant_views.consultantCreate, name='consultant-create'),
+    path('<str:username>/consultants', UserConsultantPageView.as_view(), name='user-consultant'),
+    path('<int:pk>/update/',consultant_views.consultantUpdateView, name='consultant-update'),
+    path('<int:pk>/consultant/delete/', ConsultantDeleteView.as_view(), name='consultant-delete'),
 ]

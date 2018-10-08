@@ -2,17 +2,15 @@ from django import forms
 from .models import ConsultantListing
 
 class ConsultantCreateView(forms.ModelForm):
-    tscs = forms.BooleanField(required=True)
+    terms_And_Conditions = forms.BooleanField(required=True)
 
     class Meta:
         model = ConsultantListing
-        fields = ['consultantName', 'image', 'email', 'phoneNumber', 'website',
-    				'industry', 'specialistArea', 'receive_newsletter', 'description', 'tscs']
+        fields = ['consultant_Name', 'image', 'email', 'phone_Number', 'website',
+    				'industry', 'specialist_Area', 'receive_Newsletter', 'description', 'terms_And_Conditions']
 
 class ConsultantUpdateForm(forms.ModelForm):
-    pk = ''
-    id = ''
     class Meta:
         model = ConsultantListing
-        fields = ['consultantName', 'image', 'email', 'phoneNumber', 'website',
-    				'industry', 'specialistArea', 'receive_newsletter', 'description', 'tscs']
+        fields = ['consultant_Name', 'image', 'email', 'phone_Number', 'website',
+    				'industry', 'specialist_Area', 'receive_Newsletter', 'description', 'terms_And_Conditions']

@@ -16,7 +16,7 @@ def consultantCreate(request, **kwargs):
 			form.instance.author = request.user
 			comp = form.save()
 			messages.success(request, "Consultant profile has been created!")
-			return redirect(reverse('cons-detail', kwargs={'pk': comp.pk}))
+			return redirect(reverse('consultant-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = ConsultantCreateView()
 	return render(request, 'consultants/consultantlisting_form.html', {'form': form})
@@ -29,7 +29,7 @@ def consultantUpdateView(request, pk):
 			c_form.instance.author = request.user
 			camp = c_form.save()
 			messages.success(request, "Consultant profile has been updated!")
-			return redirect(reverse('cons-detail', kwargs={'pk': camp.pk}))
+			return redirect(reverse('consultant-detail', kwargs={'pk': camp.pk}))
 	else:
 		c_form = ConsultantUpdateForm(instance = ConsultantListing.objects.get(pk=pk))
 	return render(request, 'consultants/consultantupdate_form.html', {'c_form': c_form})
