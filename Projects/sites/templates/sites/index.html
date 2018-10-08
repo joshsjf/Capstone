@@ -74,8 +74,6 @@
             <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'event-detail' item.id %}">{{ item.event_Name }}</a></h2>
-          <!-- <h2 class="article-title">{{ object.image.url }}</h2>
-          <img class="rounded-circle account-img" src="{{ event.image.url }}"> -->
           <p class="article-content">Event Name: {{ item.event_Name }}</p>
           <p class="article-content">Time: {{ item.event_When }}</p>
           <p class="article-content">Location: {{ item.event_Location }}</p>
