@@ -4,7 +4,7 @@
 <h1>Home</h1>
   {% for item in all_items_feed %}
     {% if item.type == 'job' %}
-      {% if item.is_expired == False %}
+      {% if item.is_Expired == False %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
         <div class="media-body">

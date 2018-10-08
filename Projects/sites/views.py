@@ -5,6 +5,9 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from jobs.models import JobListing
 from companies.models import CompanyListing
+from consultants.models import ConsultantListing
+from groups.models import GroupListing
+from events.models import EventListing
 from django.db.models import Value, CharField, Q
 
 
@@ -15,7 +18,7 @@ def home(request):
 	groups = GroupListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
 
 	results = list(jobs) + list(events) + list(companies) + list(groups)
-	results = sorted(all_items, key=lambda obj: obj.date_posted, reverse=True)
+	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
 	return render(request, 'sites/index.html', {'all_items_feed': results})
 
@@ -25,12 +28,12 @@ def search(request):
 	query = request.GET.get('q')
 
 	jobs = JobListing.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('job', CharField()))
-	events = EventListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('event', CharField()))
-	companies = CompanyListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('company', CharField()))
-	groups = GroupListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('group', CharField()))
+	events = EventListing.objects.filter(Q(event_Name__icontains=query) | Q(event_Description__icontains=query)).annotate(type=Value('event', CharField()))
+	companies = CompanyListing.objects.filter(Q(company_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('company', CharField()))
+	groups = GroupListing.objects.filter(Q(group_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('group', CharField()))
 
 	results = list(jobs) + list(events) + list(companies) + list(groups)
-	results = sorted(all_items, key=lambda obj: obj.date_posted, reverse=True)
+	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
 	context = {'data': results}
 
