@@ -16,7 +16,7 @@ def job_create(request):
 			return redirect(reverse('job-detail', kwargs={'pk': form.pk}))
 	else:
 		form = JobCreateForm(initial={
-			'phonenumber': request.user.profile.phone_number,
+			'phone_Number': request.user.profile.phone_Number,
 			'company': request.user.profile.company
 			}
 		)
@@ -48,8 +48,8 @@ class UserJobPageView(ListView):
 
 class JobUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 	model = JobListing
-	fields = ['category', 'title', 'location', 'payrate', 'referencenumber',
-			'summary', 'description', 'phonenumber', 'company', 'instructions']
+	fields = ['category', 'title', 'location', 'pay_Rate', 'reference_Number',
+			'summary', 'description', 'phone_Number', 'company', 'instructions', 'terms_And_Conditions',]
 
 	def form_valid(self, form):
 		form.instance.author = self.request.user

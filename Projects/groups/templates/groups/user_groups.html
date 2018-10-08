@@ -8,7 +8,7 @@
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-group' group.author.username %}">{{ group.author }}</a>
-            <small class="text-muted">{{ group.date_jobed|date:"F d, Y" }}</small>
+            <small class="text-muted">{{ group.date_posted|date:"F d, Y" }}</small>
             {% if group.author == user %}
             <div>
               <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'group-update' group.id %}">Update</a>
