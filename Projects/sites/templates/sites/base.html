@@ -53,10 +53,14 @@
             <img src="{% static 'jj-logo.png' %}" alt="Techpalmy" width="100%" height="60%">
             <br>
             <br>
-            <form class="form-inline"  method="GET" action="{% url 'search' %}">
-               <input class="form-control mr-sm-2" type="search" name='q' value="{{request.GET.q}}" placeholder="Search" aria-label="Search">
-               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            
+              <div class="input-group" method="GET" action="{% url 'search' %}">
+                <input type="search" name='q'  value="{{request.GET.q}}" class="form-control" placeholder="Search..."/>
+                <span class="input-group-btn">    
+                  <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>Search</button>
+                </span>
+              </div>
+
              <br>
               <ul class="list-group">
 
