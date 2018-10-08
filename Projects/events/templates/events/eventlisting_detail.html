@@ -5,7 +5,7 @@
     <img class="rounded-circle article-img" src="{{ object.author.profile.image.url }}">
     <div class="media-body">
       <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-events' object.author.username %}">{{ object.author }}</a>
+        <a class="mr-2" href="{% url 'user-event' object.author.username %}">{{ object.author }}</a>
         <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
         {% if object.author == user %}
         <div>
@@ -15,12 +15,12 @@
         {% endif %}
 
       </div>
-      <p class="article-content">Event Name: {{ object.eventName }}</p>
-      <p class="article-content">Event Time: {{ object.eventWhen }}</p>
-      <p class="article-content">Event Location: {{ object.eventLocation }}</p>
-      <p class="article-content">Registration Cost: {{ object.registrationCost }}</p>
-      <p class="article-content">Event Website: {{ object.eventWebsite }}</p>
-      <p class="article-content">Description: {{ object.eventDescription }}</p>
+      <p class="article-content">Event Name: {{ object.event_Name }}</p>
+      <p class="article-content">Time: {{ object.event_When }}</p>
+      <p class="article-content">Location: {{ object.event_Location }}</p>
+      <p class="article-content">Registration Cost: {{ object.registration_Cost }}</p>
+      <p class="article-content">Website: {{ object.event_Website }}</p>
+      <p class="article-content">Description: {{ object.event_Description }}</p>
     </div>
   </article>
 {% endblock %}

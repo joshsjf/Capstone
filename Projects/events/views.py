@@ -1,9 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import TemplateView, ListView, DetailView, CreateView, UpdateView, DeleteView
 from .models import EventListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from events.forms import EventCreateView, EventUpdateForm
+from django.contrib import messages
+from django.urls import reverse
 
 @login_required
 def eventCreate(request):
@@ -18,12 +21,24 @@ def eventCreate(request):
 		form = EventCreateView()
 	return render(request, 'events/eventlisting_form.html', {'form': form})
 
-class EventCreateView(LoginRequiredMixin, CreateView):
-	model = EventListing
-	fields = [] #models go here
-	def form_valid(self, form):
-		form.instance.author = self.request.user
-		return super().form_valid(form)
+def eventUpdateView(request, pk):
+	if request.method  == 'POST':
+		e_form = EventUpdateForm(request.POST, request.FILES)
+		if e_form.is_valid():
+			e_form.instance.author = request.user
+			camp = e_form.save()
+			messages.success(request, "Your event has been updated!")
+			return redirect(reverse('event-detail', kwargs={'pk': camp.pk}))
+	else:
+		e_form = EventUpdateForm(instance = EventListing.objects.get(pk=pk))
+	return render(request, 'events/eventupdate_form.html', {'e_form': e_form})
+
+# class EventCreateView(LoginRequiredMixin, CreateView):
+# 	model = EventListing
+# 	fields = [] #models go here
+# 	def form_valid(self, form):
+# 		form.instance.author = self.request.user
+# 		return super().form_valid(form)
 
 class EventPageView(ListView):
 	model = EventListing
