@@ -65,10 +65,10 @@
             <img src="{% static 'jj-logo.png' %}" alt="Smiley face" width="300" height="100">
             <br>
             <br>
-             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-             </form>
+            <form class="form-inline"  method="GET" action="{% url 'search' %}">
+               <input class="form-control mr-sm-2" type="search" name='q' value="{{request.GET.q}}" placeholder="Search" aria-label="Search">
+               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
              <br>
               <ul class="list-group">
                 <li class="list-group-item list-group-item-light">Latest Posts</li>
@@ -105,9 +105,9 @@
           <a class="nav-item nav-link text-white" href="{% url 'sites-about' %}">About Us</a>
           <a class="nav-item nav-link text-white" href="{% url 'sites-contact' %}">Contact Us</a>
         </div>
-       
+
       </div>
-      
+
     </footer>
 
 </body>

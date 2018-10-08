@@ -2,7 +2,7 @@
 {% block content %}
  <h1>Jobs</h1>
  {% for job in data %}
-  {% if job.is_expired == false %}
+  {% if job.is_expired == False %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ job.author.profile.image.url }}">
        <div class="media-body">
@@ -24,4 +24,10 @@
      </article>
   {% endif %}
  {% endfor %}
+ <form class="form-inline"  method="GET" action="{% url 'jobs-home' %}">
+    <input class="form-control mr-sm-2" type="search" name='q' value="{{request.GET.q}}" placeholder="Search" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+ </form>
+
+
 {% endblock content %}
