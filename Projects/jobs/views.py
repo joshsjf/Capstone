@@ -4,6 +4,7 @@ from .models import JobListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 import datetime
 from jobs.forms import JobCreateForm
 
@@ -28,13 +29,6 @@ class JobPageView(ListView):
 	template_name = 'jobs/jobs.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
-
-	def get_queryset(self):
-		posts = JobListing.objects.all().order_by('-date_posted')
-		# items = JobListing.objects.filter(date_posted__lte=datetime.datetime.today(),
-		# 	date_posted__gt=datetime.datetime.today()-datetime.timedelta(days=2))
-		items = JobListing.objects.filter(date_posted__gte=datetime.datetime.now()-datetime.timedelta(days=7))
-		return items
 
 class UserJobPageView(ListView):
 	model = JobListing
@@ -70,3 +64,11 @@ class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 class JobDetailView(DetailView):
 	model = JobListing
+
+# class JobSearchView(ListView):
+# 	model = JobListing
+# 	template_name = 'jobs/jobs.html'
+# 	context_object_name = 'data'
+# 	ordering = ['-date_posted']
+#
+# 	def get_queryset

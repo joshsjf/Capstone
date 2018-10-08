@@ -1,0 +1,51 @@
+{% extends "sites/base.html" %}
+
+{% block content %}
+<h1 class="mb-3"> Events by {{view.kwargs.username}}: {{ page_obj.paginator.count }}</h1>
+  {% for event in data %}
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ event.author.profile.image.url }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="{% url 'user-event' event.author.username %}">{{ event.author }}</a>
+            <small class="text-muted">{{ event.date_jobed|date:"F d, Y" }}</small>
+            {% if event.author == user %}
+            <div>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'event-update' event.id %}">Update</a>
+              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'event-delete' event.id %}">Delete</a>
+            </div>
+            {% endif %}
+          </div>
+          <h2><a class="article-title" href="{% url 'event-detail' event.id %}">{{ event.event_Name }}</a></h2>
+          <p class="article-content">Event Name: {{ event.event_Name }}</p>
+          <p class="article-content">Time: {{ event.event_When }}</p>
+          <p class="article-content">Location: {{ event.event_Location }}</p>
+          <p class="article-content">Registration Cost: {{ event.registration_Cost }}</p>
+          <p class="article-content">Website: {{ event.event_Website }}</p>
+          <p class="article-content">Description: {{ event.event_Description }}</p>
+        </div>
+      </article>
+  {% endfor %}
+
+  {% if is_paginated %}
+
+    {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1"> First </a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"> Previous </a>
+    {% endif %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}"> {{ num }} </a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}"> {{ num }} </a>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}"> Next </a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"> Last </a>
+    {% endif %}
+
+  {% endif %}
+
+{% endblock %}

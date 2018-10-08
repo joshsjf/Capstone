@@ -12,7 +12,7 @@ class UserRegisterForm(UserCreationForm):
         fields = ['username', 'email' ,'password1', 'password2']
 
 class ProfileRegistrationForm(forms.ModelForm):
-    phone_number = forms.CharField()
+    phone_Number = forms.CharField()
     company = forms.CharField()
 
     class Meta:
