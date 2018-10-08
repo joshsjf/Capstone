@@ -1,6 +1,6 @@
 {% extends "sites/base.html" %}
 {% block content %}
-<h1>Companies</h1>
+<h2 class="border-bottom mb-3">Companies in Palmy</h2>
   {% for company in data %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ company.author.profile.image.url }}">
@@ -20,7 +20,7 @@
 
          <br>
          <h5> Contact:</h5>
-         <p class="article-content">Contact Name: {{ company.contact_Name }}</p>
+         <!-- <p class="article-content">Contact Name: {{ company.contact_Name }}</p> -->
          <p class="article-content">Company Email: {{ company.email }}</p>
          <p class="article-content">Phone Number: {{ company.phone_Number }}</p>
 
