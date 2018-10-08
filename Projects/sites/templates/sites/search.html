@@ -1,7 +1,7 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
-<h4>Welcome to Tech Palmy's homepage</h4>
+<h4 class="border-bottom mb-3">Search Results for: {{ data }}</h4>
   {% for item in data %}
     {% if item.type == 'job' %}
       {% if item.is_Expired == False %}
@@ -74,7 +74,6 @@
             <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'event-detail' item.id %}">{{ item.event_Name }}</a></h2>
-          <p class="article-content">Event Name: {{ item.event_Name }}</p>
           <p class="article-content">Time: {{ item.event_When }}</p>
           <p class="article-content">Location: {{ item.event_Location }}</p>
           <p class="article-content">Registration Cost: {{ item.registration_Cost }}</p>

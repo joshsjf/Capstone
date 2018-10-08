@@ -3,7 +3,7 @@ from . views import  EventPageView, EventDetailView, EventDeleteView, UserEventP
 from . import views as event_views
 
 urlpatterns = [
-    path('', EventPageView.as_view(), name='sites-events'),
+    path('', EventPageView.as_view(), name='events-home'),
     path('<int:pk>/', EventDetailView.as_view(), name='event-detail'),
     path('new/', event_views.eventCreate, name='event-create'),
     path('<str:username>/events', UserEventPageView.as_view(), name='user-event'),
