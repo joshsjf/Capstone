@@ -53,10 +53,14 @@
             <img src="{% static 'jj-logo.png' %}" alt="Techpalmy" width="100%" height="60%">
             <br>
             <br>
-            <form class="form-inline"  method="GET" action="{% url 'search' %}">
-               <input class="form-control mr-sm-2" type="search" name='q' value="{{request.GET.q}}" placeholder="Search" aria-label="Search">
-               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            
+              <div class="input-group" method="GET" action="{% url 'search' %}">
+                <input type="search" name='q'  value="{{request.GET.q}}" class="form-control" placeholder="Search..."/>
+                <span class="input-group-btn">    
+                  <button type="submit" class="btn btn-default bg-success text-white">Search</button>
+                </span>
+              </div>
+
              <br>
               <ul class="list-group">
 
@@ -94,16 +98,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     </div>
-
-<!--     <footer class ="footer">
-        <div class ="container">
-          <p>&copy; 2018 Capstone Group A Inc. All rights reserved. </p>
-            <div class="nav justify-content-center" >
-              <a class="nav-item nav-link" href="{% url 'sites-about' %}">About Us</a>
-              <a class="nav-item nav-link" href="{% url 'sites-contact' %}">Contact Us</a>
-            </div>
-        </div>
-    </footer> -->
 
     <footer class="footer" id="contact">
       <div class="container">
