@@ -1,6 +1,7 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
+<h1>Home</h1>
   {% for item in all_items_feed %}
     {% if item.type == 'job' %}
       {% if item.is_expired == false %}
