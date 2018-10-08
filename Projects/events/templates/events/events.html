@@ -1,6 +1,6 @@
 {% extends "sites/base.html" %}
 {% block content %}
- <p> Event </p>
+<h2 class="border-bottom mb-3">Events in Palmy</h2>
  {% for event in data %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ event.author.profile.image.url }}">

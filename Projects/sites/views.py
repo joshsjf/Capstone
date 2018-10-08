@@ -15,9 +15,10 @@ def home(request):
 	jobs = JobListing.objects.all().order_by('-date_posted').annotate(type=Value('job', CharField()))
 	companies = CompanyListing.objects.all().order_by('-date_posted').annotate(type=Value('company', CharField()))
 	events = EventListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
-	groups = GroupListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
+	groups = GroupListing.objects.all().order_by('-date_posted').annotate(type=Value('group', CharField()))
+	consultants = ConsultantListing.objects.all().order_by('-date_posted').annotate(type=Value('consultant', CharField()))
 
-	results = list(jobs) + list(events) + list(companies) + list(groups)
+	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
 	return render(request, 'sites/index.html', {'all_items_feed': results})
@@ -31,8 +32,9 @@ def search(request):
 	events = EventListing.objects.filter(Q(event_Name__icontains=query) | Q(event_Description__icontains=query)).annotate(type=Value('event', CharField()))
 	companies = CompanyListing.objects.filter(Q(company_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('company', CharField()))
 	groups = GroupListing.objects.filter(Q(group_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('group', CharField()))
+	consultants = ConsultantListing.objects.filter(Q(consultant_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('consultant', CharField()))
 
-	results = list(jobs) + list(events) + list(companies) + list(groups)
+	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
 	context = {'data': results}
