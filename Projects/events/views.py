@@ -27,7 +27,7 @@ class EventCreateView(LoginRequiredMixin, CreateView):
 
 class EventPageView(ListView):
 	model = EventListing
-	template_name = 'events/event.html'
+	template_name = 'events/events.html'
 	context_object_name = 'data'
 	ordering = ['-date_posted']
 
