@@ -1,6 +1,7 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
+<h1>Home</h1>
   {% for item in all_items_feed %}
     {% if item.type == 'job' %}
       {% if item.is_expired == false %}
@@ -14,12 +15,12 @@
           <h2><a class="article-title" href="{% url 'job-detail' item.id %}">{{ item.title }}</a></h2>
           <p class="article-content">Category: {{ item.category }}</p>
           <p class="article-content">Location: {{ item.location }}</p>
-          <p class="article-content">Payrate ${{ item.payrate }}</p>
-          <p class="article-content">Reference #{{ item.referencenumber }}</p>
+          <p class="article-content">Payrate ${{ item.pay_Rate }}</p>
+          <p class="article-content">Reference #{{ item.reference_Number }}</p>
           <p class="article-content">Summary<br/>{{ item.summary }}</p>
           <p class="article-content">Description<br/>{{ item.description }}</p>
-          <p class="article-content">Phone: {{ item.phonenumber }}</p>
-          <p class="article-content">Company: {{ job.company }}</p>
+          <p class="article-content">Phone: {{ item.phone_Number }}</p>
+          <p class="article-content">Company: {{ item.company }}</p>
           <p class="article-content">Instructions: {{ item.instructions }}</p>
         </div>
       </article>
@@ -32,18 +33,20 @@
             <a class="mr-2" href="{% url 'user-company' item.author.username %}">{{ item.author }}</a>
             <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
           </div>
-          <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.companyName }}</a></h2>
-          <h2 class="article-title">{{ object.image.url }}</h2>
+          <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
           <img class="rounded-circle account-img" src="{{ item.image.url }}">
-          <p class="article-content">Contact Name: {{ item.contactName }}</p>
-          <p class="article-content">Company Email: {{ item.email }}</p>
-          <p class="article-content">Phone Number: {{ item.phonenumber }}</p>
-          <p class="article-content">Web Site:{{ item.website }}</p>
-          <p class="article-content">Number of Employees: {{ item.numEmployees }}</p>
+          <p class="article-content">Web Site: {{ item.website }}</p>
+          <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
           <p class="article-content">Industry: {{ item.industry }}</p>
-          <p class="article-content">Specialist Area: {{ item.specialistArea }}</p>
-          <p class="article-content">Type of Business: {{ item.typeOfBusiness }}</p>
+          <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
+          <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
           <p class="article-content">Description: {{ item.description }}</p>
+
+          <br>
+          <h5> Contact:</h5>
+          <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
+          <p class="article-content">Company Email: {{ item.email }}</p>
+          <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
         </div>
       </article>
 
