@@ -11,7 +11,7 @@ from django.db.models import Value, CharField, Q
 def home(request):
 	jobs = JobListing.objects.all().order_by('-date_posted').annotate(type=Value('job', CharField()))
 	companies = CompanyListing.objects.all().order_by('-date_posted').annotate(type=Value('company', CharField()))
-	# events = EventListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
+	events = EventListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
 	groups = GroupListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
 
 	results = list(jobs) + list(events) + list(companies) + list(groups)
@@ -25,7 +25,7 @@ def search(request):
 	query = request.GET.get('q')
 
 	jobs = JobListing.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('job', CharField()))
-	# events = EventListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('event', CharField()))
+	events = EventListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('event', CharField()))
 	companies = CompanyListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('company', CharField()))
 	groups = GroupListing.object.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('group', CharField()))
 
