@@ -8,26 +8,26 @@ from PIL import Image
 
 class ConsultantListing(models.Model):
     def __str__(self):
-        return self.consultantName
+        return self.consultant_Name
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
 
     image = models.ImageField(default='default.jpg', upload_to='consultant_pics')
 
-    consultantName = models.CharField(max_length = 20)
+    consultant_Name = models.CharField(max_length = 20)
     email = models.EmailField()
-    phoneNumber = models.CharField(max_length = 20)
+    phone_Number = models.CharField(max_length = 20)
     website = models.CharField(max_length = 20)
     industry = models.CharField(max_length = 20)
-    specialistArea = models.CharField(max_length = 20)
+    specialist_Area = models.CharField(max_length = 20)
 
-    receive_newsletter = models.BooleanField()
+    receive_Newsletter = models.BooleanField()
     description = models.TextField()
-    tscs = models.BooleanField()
+    terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
-        return reverse('cons-detail', kwargs={'pk': self.pk})
+        return reverse('consultant-detail', kwargs={'pk': self.pk})
 
     def save(self, **kwargs):
         super().save()

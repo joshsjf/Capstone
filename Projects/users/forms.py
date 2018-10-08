@@ -17,7 +17,7 @@ class ProfileRegistrationForm(forms.ModelForm):
 
     class Meta:
         model = Profile
-        fields = ['phone_number', 'company']
+        fields = ['phone_Number', 'company']
 
 class UserUpdateForm(forms.ModelForm):
     email = forms.EmailField()
@@ -30,4 +30,4 @@ class UserUpdateForm(forms.ModelForm):
 class ProfileUpdateForm(forms.ModelForm):
     class Meta:
         model = Profile
-        fields = ['image', 'company', 'phone_number']
+        fields = ['image', 'company', 'phone_Number']

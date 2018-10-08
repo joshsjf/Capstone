@@ -8,7 +8,7 @@
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-group' group.author.username %}">{{ group.author }}</a>
-            <small class="text-muted">{{ group.date_jobed|date:"F d, Y" }}</small>
+            <small class="text-muted">{{ group.date_posted|date:"F d, Y" }}</small>
             {% if group.author == user %}
             <div>
               <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'group-update' group.id %}">Update</a>
@@ -16,7 +16,7 @@
             </div>
             {% endif %}
           </div>
-          <h2><a class="article-title" href="{% url 'group-detail' group.id %}">{{ group.groupName }}</a></h2>
+          <h2><a class="article-title" href="{% url 'group-detail' group.id %}">{{ group.group_Name }}</a></h2>
           <img class="rounded-circle account-img" src="{{ group.image.url }}">
           <p class="article-content">Description: {{ consultant.description }}</p>
         </div>
