@@ -34,17 +34,19 @@
             <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
-          <h2 class="article-title">{{ object.image.url }}</h2>
           <img class="rounded-circle account-img" src="{{ item.image.url }}">
-          <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
-          <p class="article-content">Company Email: {{ item.email }}</p>
-          <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
-          <p class="article-content">Web Site:{{ item.website }}</p>
+          <p class="article-content">Web Site: {{ item.website }}</p>
           <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
           <p class="article-content">Industry: {{ item.industry }}</p>
           <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
           <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
           <p class="article-content">Description: {{ item.description }}</p>
+
+          <br>
+          <h5> Contact:</h5>
+          <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
+          <p class="article-content">Company Email: {{ item.email }}</p>
+          <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
         </div>
       </article>
 

@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'companies.apps.CompaniesConfig',
     'consultants.apps.ConsultantsConfig',
     'groups.apps.GroupsConfig',
+    'events.apps.EventsConfig',
     'crispy_forms',
     'django_cron',
 ]
