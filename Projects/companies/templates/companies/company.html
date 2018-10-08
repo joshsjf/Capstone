@@ -9,20 +9,20 @@
            <a class="mr-2" href="{% url 'user-company' company.author.username %}">{{ company.author }}</a>
            <small class="text-muted">{{ company.date_posted|date:"F d, Y" }}</small>
          </div>
-         <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.companyName }}</a></h2>
+         <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.company_Name }}</a></h2>
          <img class="rounded-circle account-img" src="{{ company.image.url }}">
          <p class="article-content">Web Site: {{ company.website }}</p>
-         <p class="article-content">Number of Employees: {{ company.numEmployees }}</p>
+         <p class="article-content">Number of Employees: {{ company.number_Of_Employees }}</p>
          <p class="article-content">Industry: {{ company.industry }}</p>
-         <p class="article-content">Specialist Area: {{ company.specialistArea }}</p>
-         <p class="article-content">Type of Business: {{ company.typeOfBusiness }}</p>
+         <p class="article-content">Specialist Area: {{ company.specialist_Area }}</p>
+         <p class="article-content">Type of Business: {{ company.type_Of_Business }}</p>
          <p class="article-content">Description: {{ company.description }}</p>
 
          <br>
          <h5> Contact:</h5>
-         <p class="article-content">Contact Name: {{ company.contactName }}</p>
+         <p class="article-content">Contact Name: {{ company.contact_Name }}</p>
          <p class="article-content">Company Email: {{ company.email }}</p>
-         <p class="article-content">Phone Number: {{ company.phoneNumber }}</p>
+         <p class="article-content">Phone Number: {{ company.phone_Number }}</p>
 
        </div>
      </article>

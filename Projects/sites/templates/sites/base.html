@@ -12,10 +12,11 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
     <title> Techpalmy </title>
     </head>
-    <body>
+
     <div class="wrapper">
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
+    <header class="site-header fixed-top">
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel">
+
         <div class="container">
           <a class="navbar-brand mr-4" href="{% url 'sites-home' %}">Techpalmy</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -25,17 +26,14 @@
             <div class="navbar-nav mr-auto">
               <a class="nav-item nav-link" href="{% url 'sites-home' %}">Home</a>
               <a class="nav-item nav-link" href="{% url 'companies-home' %}">Companies</a>
-              <a class="nav-item nav-link" href="{% url 'cons-home' %}">Consultants</a>
+              <a class="nav-item nav-link" href="{% url 'consultants-home' %}">Consultants</a>
               <a class="nav-item nav-link" href="{% url 'sites-events' %}">Events</a>
-              <a class="nav-item nav-link" href="{% url 'sites-groups' %}">Groups & Meetups</a>
+              <a class="nav-item nav-link" href="{% url 'groups-home' %}">Groups</a>
               <a class="nav-item nav-link" href="{% url 'jobs-home' %}">Jobs</a>
             </div>
-            <!-- Navbar Right Side -->
+            <!-- Navbar Left Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'cons-create' %}">New Cons</a>
-                <a class="nav-item nav-link" href="{% url 'company-create' %}">New Comp</a>
-                <a class="nav-item nav-link" href="{% url 'job-create' %}">New Job</a>
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
               {% else %}
@@ -50,19 +48,9 @@
 
     <main role="main" class="container">
       <div class="row">
-        <div class="col-md-8">
-          {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                {{ message }}
-              </div>
-            {% endfor %}
-          {% endif %}
-          {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           <div class="content-section">
-            <img src="{% static 'jj-logo.png' %}" alt="Smiley face" width="300" height="100">
+            <img src="{% static 'jj-logo.png' %}" alt="Techpalmy" width="100%" height="60%">
             <br>
             <br>
             <form class="form-inline"  method="GET" action="{% url 'search' %}">
@@ -71,12 +59,30 @@
             </form>
              <br>
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+
+                {% if user.is_authenticated %}
+                <a class="list-group-item list-group-item-light" href="{% url 'consultant-create' %}">New Consultant</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'company-create' %}">New Company</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'group-create' %}">New Group</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'job-create' %}">New Job</a>
+
+              <br>
+              {% else %}
+
+              {% endif %}
               </ul>
           </div>
+        </div>
+
+        <div class="col-md-8">
+          {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+          {% endfor %}
+          {% endif %}
+          {% block content %}{% endblock %}
         </div>
       </div>
     </main>

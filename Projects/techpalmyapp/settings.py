@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'jobs.apps.JobsConfig',
     'companies.apps.CompaniesConfig',
     'consultants.apps.ConsultantsConfig',
+    'groups.apps.GroupsConfig',
     'crispy_forms',
     'django_cron',
 ]

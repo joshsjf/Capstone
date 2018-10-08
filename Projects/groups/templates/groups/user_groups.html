@@ -1,29 +1,24 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
-<h1 class="mb-3"> Consultants by {{view.kwargs.username}}: {{ page_obj.paginator.count }}</h1>
-  {% for consultant in data %}
+<h1 class="mb-3"> Groups by {{view.kwargs.username}}: {{ page_obj.paginator.count }}</h1>
+  {% for group in data %}
       <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ consultant.author.profile.image.url }}">
+        <img class="rounded-circle article-img" src="{{ group.author.profile.image.url }}">
         <div class="media-body">
           <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-consultant' consultant.author.username %}">{{ consultant.author }}</a>
-            <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
-            {% if consultant.author == user %}
+            <a class="mr-2" href="{% url 'user-group' group.author.username %}">{{ group.author }}</a>
+            <small class="text-muted">{{ group.date_posted|date:"F d, Y" }}</small>
+            {% if group.author == user %}
             <div>
-              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'consultant-update' consultant.id %}">Update</a>
-              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'consultant-delete' consultant.id %}">Delete</a>
+              <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'group-update' group.id %}">Update</a>
+              <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'group-delete' group.id %}">Delete</a>
             </div>
             {% endif %}
           </div>
-          <h2><a class="article-title" href="{% url 'consultant-detail' consultant.id %}">{{ consultant.consultant_Name }}</a></h2>
-          <img class="rounded-circle account-img" src="{{ consultant.image.url }}">
-          <p class="article-content">Specialist Area: {{ consultant.specialist_Area }}</p>
+          <h2><a class="article-title" href="{% url 'group-detail' group.id %}">{{ group.group_Name }}</a></h2>
+          <img class="rounded-circle account-img" src="{{ group.image.url }}">
           <p class="article-content">Description: {{ consultant.description }}</p>
-
-          <p class="article-content">Email: {{ consultant.email }}</p>
-          <p class="article-content">Contact Number: {{ consultant.phone_Number }}</p>
-          <p class="article-content">Website: {{ consultant.website }}</p>
         </div>
       </article>
   {% endfor %}

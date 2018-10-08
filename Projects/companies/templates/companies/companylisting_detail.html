@@ -14,22 +14,22 @@
         </div>
         {% endif %}
       </div>
-      <h2 class="article-title">{{ object.companyName }}</h2>
+      <h2 class="article-title">{{ object.company_Name }}</h2>
       {% if object.image %}
         <img class="rounded-circle account-img" src="{{ object.image.url }}">
       {% endif %}
       <p class="article-content">Web Site: {{ object.website }}</p>
-      <p class="article-content">Number of Employees: {{ object.numEmployees }}</p>
+      <p class="article-content">Number of Employees: {{ object.number_Of_Employees }}</p>
       <p class="article-content">Industry: {{ object.industry }}</p>
-      <p class="article-content">Specialist Area: {{ object.specialistArea }}</p>
-      <p class="article-content">Type of Business: {{ object.typeOfBusiness }}</p>
+      <p class="article-content">Specialist Area: {{ object.specialist_Area }}</p>
+      <p class="article-content">Type of Business: {{ object.type_Of_Business }}</p>
       <p class="article-content">Description: {{ object.description }}</p>
 
       <br>
       <h5> Contact:</h5>
-      <p class="article-content">Name: {{ object.contactName }}</p>
+      <p class="article-content">Name: {{ object.contact_Name }}</p>
       <p class="article-content">Email: {{ object.email }}</p>
-      <p class="article-content">Phone Number: {{ object.phoneNumber }}</p>
+      <p class="article-content">Phone Number: {{ object.phone_Number }}</p>
     </div>
   </article>
 {% endblock %}
