@@ -9,15 +9,15 @@
            <a class="mr-2" href="{% url 'user-event' event.author.username %}">{{ event.author }}</a>
            <small class="text-muted">{{ event.date_posted|date:"F d, Y" }}</small>
          </div>
-         <h2><a class="article-title" href="{% url 'event-detail' event.id %}">{{ event.eventName }}</a></h2>
+         <h2><a class="article-title" href="{% url 'event-detail' event.id %}">{{ event.event_Name }}</a></h2>
          <!-- <h2 class="article-title">{{ object.image.url }}</h2>
          <img class="rounded-circle account-img" src="{{ event.image.url }}"> -->
-         <p class="article-content">Event Name: {{ event.eventName }}</p>
-         <p class="article-content">Event Time: {{ event.eventWhen }}</p>
-         <p class="article-content">Event Location: {{ event.eventLocation }}</p>
-         <p class="article-content">Registration Cost:{{ event.registrationCost }}</p>
-         <p class="article-content">Event Website: {{ event.eventWebsite }}</p>
-         <p class="article-content">Description: {{ event.eventDescription }}</p>
+         <p class="article-content">Event Name: {{ event.event_Name }}</p>
+         <p class="article-content">Event Time: {{ event.event_When }}</p>
+         <p class="article-content">Event Location: {{ event.event_Location }}</p>
+         <p class="article-content">Registration Cost:{{ event.registration_Cost }}</p>
+         <p class="article-content">Event Website: {{ event.event_Website }}</p>
+         <p class="article-content">Description: {{ event.event_Description }}</p>
        </div>
      </article>
  {% endfor %}
