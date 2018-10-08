@@ -33,9 +33,6 @@
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
               {% if user.is_authenticated %}
-                <a class="nav-item nav-link" href="{% url 'cons-create' %}">New Cons</a>
-                <a class="nav-item nav-link" href="{% url 'company-create' %}">New Comp</a>
-                <a class="nav-item nav-link" href="{% url 'job-create' %}">New Job</a>
                 <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
               {% else %}
@@ -50,6 +47,30 @@
 
     <main role="main" class="container">
       <div class="row">
+        <div class="col-md-3">
+          <div class="content-section">
+            <img src="{% static 'jj-logo.png' %}" alt="Techpalmy" width="100%" height="60%">
+            <br>
+            <br>
+                 <div class="input-group">
+    <input type="text" name="s" id="search_top" class="form-control" placeholder="Search.."/>
+<span class="input-group-btn">    
+<button type="submit" class="btn btn-default">Search</button>
+    </span>
+    </div>
+              <br>
+              <ul class="list-group">
+                {% if user.is_authenticated %}
+                <a class="list-group-item list-group-item-light" href="{% url 'cons-create' %}">New Consultants</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'company-create' %}">New Companies</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'job-create' %}">New Job</a>
+                <a class="list-group-item list-group-item-light" href="{% url 'group-create' %}">New Group</a>
+                <br>
+                {% else %}
+              {% endif %}
+              </ul>
+          </div>
+        </div>
         <div class="col-md-8">
           {% if messages %}
             {% for message in messages %}
@@ -60,24 +81,7 @@
           {% endif %}
           {% block content %}{% endblock %}
         </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <img src="{% static 'jj-logo.png' %}" alt="Smiley face" width="300" height="100">
-            <br>
-            <br>
-             <form class="form-inline">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-             </form>
-             <br>
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-          </div>
-        </div>
+        
       </div>
     </main>
 
