@@ -14,7 +14,7 @@ class EventListing(models.Model):
     date_posted = models.DateTimeField(default = timezone.now)
 
     event_Name = models.CharField(max_length = 50)
-    event_When = models.CharField(max_length = 20)
+    event_Time_dd_mm_yyyy = models.CharField(max_length = 20)
     event_Location = models.CharField(max_length = 50)
     registration_Cost = models.IntegerField()
     event_Website = models.CharField(max_length = 200)

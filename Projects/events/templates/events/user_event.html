@@ -18,7 +18,7 @@
           </div>
           <h2><a class="article-title" href="{% url 'event-detail' event.id %}">{{ event.event_Name }}</a></h2>
           <p class="article-content">Event Name: {{ event.event_Name }}</p>
-          <p class="article-content">Time: {{ event.event_When }}</p>
+          <p class="article-content">Time: {{ event.event_Time_dd_mm_yyyy }}</p>
           <p class="article-content">Location: {{ event.event_Location }}</p>
           <p class="article-content">Registration Cost: ${{ event.registration_Cost }}</p>
           <p class="article-content">Website: {{ event.event_Website }}</p>
