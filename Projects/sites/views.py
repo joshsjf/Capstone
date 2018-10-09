@@ -37,33 +37,19 @@ def search(request):
 	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
-	context = {'data': results}
+	context = {'data': results, 'item': query}
 
 	return render(request, template, context)
+
 
 class IndexView(ListView):
 	template_name = 'sites/index.html'
 	model = JobListing
 	context_object_name = 'data'
-	def get_context_data(self, **kwargs):
-		context = super(IndexView, self).get_context_data(**kwargs)
-		context.update({
-			'character_universe_list': JobListing.objects.order_by('-date_posted'),
-			'more_context': CompanyListing.objects.order_by('-date_posted'),
-		})
-		return context
 
 	def get_queryset(self):
 		return JobListing.objects.order_by('-date_posted')
 
-class EventsPageView(TemplateView):
-	template_name = "sites/events.html"
-
-class GroupsPageView(TemplateView):
-	template_name = "sites/groups.html"
-
-class EducationPageView(TemplateView):
-	template_name = "sites/education.html"
 
 class AboutPageView(TemplateView):
 	template_name = "sites/about.html"

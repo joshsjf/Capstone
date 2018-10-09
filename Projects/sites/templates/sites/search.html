@@ -1,7 +1,7 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
-<h4 class="border-bottom mb-3">Search Results for: {{ data }}</h4>
+<h4 class="border-bottom mb-3">Search Results for: {{ item }} </h4>
   {% for item in data %}
     {% if item.type == 'job' %}
       {% if item.is_Expired == False %}

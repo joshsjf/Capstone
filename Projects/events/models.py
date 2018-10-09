@@ -6,7 +6,7 @@ from users.models import Profile
 
 class EventListing(models.Model):
     def __str__(self):
-        return self.title
+        return self.event_Name
 
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)

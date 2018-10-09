@@ -8,7 +8,7 @@ from PIL import Image
 
 class GroupListing(models.Model):
     def __str__(self):
-        return self.groupName
+        return self.group_Name
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
