@@ -1,6 +1,6 @@
 {% extends "sites/base.html" %}
 {% block content %}
-<h2 class="border-bottom mb-3">Events in Palmy</h2>
+<h2 class="border-bottom mb-3">Events in Palmerston North</h2>
  {% for event in data %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ event.author.profile.image.url }}">
@@ -13,9 +13,9 @@
          <!-- <h2 class="article-title">{{ object.image.url }}</h2>
          <img class="rounded-circle account-img" src="{{ event.image.url }}"> -->
          <p class="article-content">Event Name: {{ event.event_Name }}</p>
-         <p class="article-content">Time: {{ event.event_When }}</p>
+         <p class="article-content">Time: {{ event.event_Time_dd_mm_yyyy }}</p>
          <p class="article-content">Location: {{ event.event_Location }}</p>
-         <p class="article-content">Registration Cost: {{ event.registration_Cost }}</p>
+         <p class="article-content">Registration Cost: ${{ event.registration_Cost }}</p>
          <p class="article-content">Website: {{ event.event_Website }}</p>
          <p class="article-content">Description: {{ event.event_Description }}</p>
        </div>
