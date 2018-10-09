@@ -102,11 +102,13 @@ html, body {
 }
 
 .leftbar{
-    width: 22%;
+    width: 300px;
     position: fixed;
     top: 10%;
     left: 7%;
     padding: 8px 0;
+    z-index: 1;
+    overflow-x: hidden;
 }
 footer {
   position: fixed;
