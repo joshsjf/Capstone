@@ -1,0 +1,21 @@
+{% extends "sites/base.html" %}
+
+{% block content %}
+<!-- <article class="media content-section"> -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-lg-offset-3">
+                <h3 class="text-center">Sign Up for Newsletter</h3>
+                <form method="POST"> {% csrf_token %}
+                    {{ s_form }}
+                    <span class="input-group-btn">
+                        <button class="btn btn-default bg-success text-white" type="submit" >Subscribe</button>
+                    </span>
+                </form>
+            </div>
+        </div>
+        <br>
+        <a  href="{% url 'unsubscribe' %}">Unsubscribe to Newsletters</a>
+    </div>
+<!-- </article> -->
+{% endblock %}
