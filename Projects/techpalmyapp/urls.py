@@ -31,6 +31,7 @@ urlpatterns = [
     path('consultants/', include('consultants.urls')),
     path('groups/', include('groups.urls')),
     path('events/', include('events.urls')),
+    path('newsletter/', include('newsletters.urls')),
 
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),

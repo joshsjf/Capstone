@@ -51,6 +51,7 @@ INSTALLED_APPS = [
     'events.apps.EventsConfig',
     'crispy_forms',
     'django_cron',
+    'newsletters.apps.NewslettersConfig',
 ]
 
 MIDDLEWARE = [
