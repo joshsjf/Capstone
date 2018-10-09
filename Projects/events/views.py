@@ -33,13 +33,6 @@ def eventUpdateView(request, pk):
 		e_form = EventUpdateForm(instance = EventListing.objects.get(pk=pk))
 	return render(request, 'events/eventupdate_form.html', {'e_form': e_form})
 
-# class EventCreateView(LoginRequiredMixin, CreateView):
-# 	model = EventListing
-# 	fields = [] #models go here
-# 	def form_valid(self, form):
-# 		form.instance.author = self.request.user
-# 		return super().form_valid(form)
-
 class EventPageView(ListView):
 	model = EventListing
 	template_name = 'events/events.html'
