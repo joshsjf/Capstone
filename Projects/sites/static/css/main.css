@@ -101,6 +101,13 @@ html, body {
     padding-bottom: 50px;
 }
 
+.leftbar{
+    width: 22%;
+    position: fixed;
+    top: 10%;
+    left: 7%;
+    padding: 8px 0;
+}
 footer {
   position: fixed;
   line-height: 200%;
