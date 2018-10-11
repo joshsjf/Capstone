@@ -33,7 +33,7 @@ def search(request):
 	companies = CompanyListing.objects.filter(Q(company_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('company', CharField()))
 	groups = GroupListing.objects.filter(Q(group_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('group', CharField()))
 	consultants = ConsultantListing.objects.filter(Q(consultant_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('consultant', CharField()))
-
+	
 	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
@@ -46,6 +46,13 @@ class IndexView(ListView):
 	template_name = 'sites/index.html'
 	model = JobListing
 	context_object_name = 'data'
+	def get_context_data(self, **kwargs):
+		context = super(IndexView, self).get_context_data(**kwargs)
+		context.update({
+			'character_universe_list': JobListing.objects.order_by('-date_posted'),
+			'more_context': CompanyListing.objects.order_by('-date_posted'),
+		})
+		return context
 
 	def get_queryset(self):
 		return JobListing.objects.order_by('-date_posted')
