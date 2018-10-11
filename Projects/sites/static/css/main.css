@@ -2,6 +2,7 @@ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
+  margin-bottom: 60px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -91,7 +92,8 @@ a.article-title:hover {
 }
 
 html, body {
-    height: 100%;
+  position: relative;
+  min-height: 100%;
 }
 .wrapper {
     min-height: 100%;
@@ -100,11 +102,12 @@ html, body {
 }
 
 footer {
-    height: 100px;
-    margin-top:50px;
-    position: relative;
-    height:100px;
-    background: #343434;
-    color: #FFFFFF;
-    text-align: center;
+  position: fixed;
+  line-height: 200%;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+  color: #FFFFFF;
+  height: 70px;
+  background-color: #343434;
 }

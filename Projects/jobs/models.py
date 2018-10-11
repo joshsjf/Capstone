@@ -16,16 +16,19 @@ class JobListing(models.Model):
     title = models.CharField(max_length = 20)
     location = models.CharField(max_length = 20)
 
-    payrate = models.IntegerField()
-    referencenumber = models.CharField(max_length = 20)
+    pay_Rate = models.IntegerField()
+    reference_Number = models.CharField(max_length = 20)
 
     summary = models.TextField()
     description = models.TextField()
 
-    phonenumber = models.CharField(max_length = 20)
+    phone_Number = models.CharField(max_length = 20)
     company = models.CharField(max_length = 20)
 
     instructions = models.CharField(max_length = 20)
+
+    is_Expired = models.BooleanField(default=False)
+    terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
         return reverse('job-detail', kwargs={'pk': self.pk})

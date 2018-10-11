@@ -17,9 +17,10 @@ from django.contrib import admin
 from django.contrib.auth import views as auth_views
 from django.urls import path, include
 from users import views as user_views
-from jobs import views as job_views
 from django.conf import settings
 from django.conf.urls.static import static
+
+from jobs.views import JobDetailView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,6 +28,9 @@ urlpatterns = [
 
     path('companies/', include('companies.urls')),   # Companies URL's now in companies
     path('jobs/', include('jobs.urls')),
+    path('consultants/', include('consultants.urls')),
+    path('groups/', include('groups.urls')),
+    path('events/', include('events.urls')),
 
     path('register/', user_views.register, name='register'),
     path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),

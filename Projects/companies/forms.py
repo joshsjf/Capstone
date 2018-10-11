@@ -2,17 +2,15 @@ from django import forms
 from .models import CompanyListing
 
 class CompanyCreateView(forms.ModelForm):
-    tscs = forms.BooleanField(required=True)
+    terms_And_Conditions = forms.BooleanField(required=True)
 
     class Meta:
         model = CompanyListing
-        fields = ['companyName', 'isAConsultant', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
-    				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
+        fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
+    				'industry', 'specialist_Area', 'type_Of_Business', 'receive_newsletter', 'description', 'terms_And_Conditions']
 
 class CompanyUpdateForm(forms.ModelForm):
-    pk = ''
-    id = ''
     class Meta:
         model = CompanyListing
-        fields = ['companyName', 'isAConsultant', 'image', 'contactName', 'email', 'phoneNumber', 'website', 'numEmployees',
-    				'industry', 'specialistArea', 'typeOfBusiness', 'receive_newsletter', 'description', 'tscs']
+        fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
+    				'industry', 'specialist_Area', 'type_Of_Business', 'receive_newsletter', 'description', 'terms_And_Conditions']

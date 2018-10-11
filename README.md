@@ -12,4 +12,8 @@ Kenton Dyer ID: 14270246
 
 ## Sprint Tags
 
-Tag v1.2 - Sprint 2
+Sprint 2 - Tag v1.2
+
+Sprint 3 - Tag v3.1
+
+Sprint 4 - Tag v4.0

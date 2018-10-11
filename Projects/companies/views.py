@@ -15,10 +15,7 @@ def companyCreate(request, **kwargs):
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
-			if (comp.isAConsultant == True):
-				messages.success(request, "Consultant profile has been created!")
-				return redirect(reverse('consultant-detail', kwargs={'pk': comp.pk}))
-			messages.success(request, "Your Company has been created!")
+			messages.success(request, "Your company has been created!")
 			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = CompanyCreateView()
@@ -30,11 +27,6 @@ class CompanyPageView(ListView):
 	context_object_name = 'data'
 	ordering = ['-date_posted']
 
-class ConsultantPageView(ListView):
-	model = CompanyListing
-	template_name = 'companies/consultant.html'
-	context_object_name = 'data'
-	ordering = ['-date_posted']
 
 class UserCompanyPageView(ListView):
 	model = CompanyListing
@@ -47,15 +39,12 @@ class UserCompanyPageView(ListView):
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
 
-def CompanyUpdateView(request, pk):
+def companyUpdateView(request, pk):
 	if request.method  == 'POST':
 		c_form = CompanyUpdateForm(request.POST, request.FILES)
 		if c_form.is_valid():
 			c_form.instance.author = request.user
 			camp = c_form.save()
-			if (camp.isAConsultant == True):
-				messages.success(request, "Consultant profile has been updated!")
-				return redirect(reverse('consultant-detail', kwargs={'pk': camp.pk}))
 			messages.success(request, "Your Company has been updated!")
 			return redirect(reverse('company-detail', kwargs={'pk': camp.pk}))
 	else:
@@ -70,18 +59,6 @@ class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 		company = self.get_object()
 		return self.request.user == company.author
 
-class ConsultantDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
-	model = CompanyListing
-	template_name = 'companies/consultantlisting_confirm_delete.html'
-	success_url = '/consultants'
-	def test_func(self):
-		company = self.get_object()
-		return self.request.user == company.author
-
 
 class CompanyDetailView(DetailView):
 	model = CompanyListing
-
-class ConsultantDetailView(DetailView):
-	model = CompanyListing
-	template_name = 'companies/consultantlisting_detail.html'
