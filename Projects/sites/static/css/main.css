@@ -21,16 +21,17 @@ ul {
   color: #ffffff;
 }
 
-.site-header .navbar-nav .nav-link:hover {
+/*.site-header .navbar-nav .nav-link:hover {
   color: #ffffff;
   border-bottom: 3px solid black;   /* Hover Black line */
 }
-
+*/
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
 
 .content-section {
+  border: 1px solid #D3D3D3;
   background: #ffffff;
   padding: 10px 20px;
   border-top: 2px solid #dddddd;
@@ -92,11 +93,17 @@ a.article-title:hover {
     background-color: #009959;
 }
 
+/*.list-group a {
+  background-color: #009959;
+}*/
+
 html, body {
   position: relative;
   min-height: 100%;
 }
+
 .wrapper {
+  /*border: 5px solid red;*/
   min-height: 100%;
   margin-bottom: -50px;
   padding-bottom: 50px;
@@ -108,11 +115,8 @@ html, body {
   float: left; 
   top: 10%;
   left: 7%;
-  /*right: 7%;*/
   padding: 8px 0;
-  /*padding-left: 3%;*/
   padding-right: 1.5%;
-  /*padding-right: 8px;*/
 }
 
 .right {
@@ -122,7 +126,7 @@ html, body {
 
 
 @media only screen and (max-width: 765px) {
-  .left{ /*.main, .right {*/
+  .left{ 
     width: auto;
     float: center; 
     position: relative;
@@ -132,7 +136,6 @@ html, body {
     margin-right: : 10px;/
   }
   .right {
-   /*padding: 8px 0;*/
   padding-left: 0;
   }
 }
@@ -141,7 +144,6 @@ footer {
   position: fixed;
   line-height: 200%;
   text-align: center;
-  /* border: 5px solid #009959; */
   bottom: 0px;
   width: 100%;
   color: #FFFFFF;
