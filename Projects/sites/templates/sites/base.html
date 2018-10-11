@@ -8,18 +8,22 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
 
     <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
 
     <title> Techpalmy </title>
     </head>
 
-    <div class="wrapper">
-    <header class="site-header fixed-top">
+    <body>
+    <div class="wrapper"  >
+    <header class="site-header fixed-top pb-10">
       <nav class="navbar navbar-expand-md navbar-dark bg-steel">
 
+          <!--  style="background-color:lavenderblush; -->
+
         <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'sites-home' %}">Techpalmy</a>
+          <a class="navbar-brand nav-link mr-4" href="{% url 'sites-home' %}">Techpalmy</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
@@ -58,20 +62,18 @@
 
     <main role="main" class="container">
       <div class="row">
-        
-          <div class="col-md-3">
-            <div class="left">
-            <div class="content-section">
-              <img src="{% static 'jj-logo.png' %}" alt="Techpalmy" width="100%" height="60%">
-              <br>
-              <br>
-              
-                <form class="input-group" method="GET" action="{% url 'search' %}">
-                  <input type="search" name='q'  value="{{request.GET.q}}" class="form-control" placeholder="Search..."/>
-                  <span class="input-group-btn">    
-                    <button type="submit" class="btn btn-default bg-success text-white">Search</button>
-                  </span>
-                </form>
+        <div class="col-md-3">
+          <div class="content-section">
+            <img src="{% static 'jj-logo.png' %}" alt="Techpalmy" width="100%" height="60%">
+            <br>
+            <br>
+
+              <form class="input-group" method="GET" action="{% url 'search' %}">
+                <input type="search" name='q'  value="{{request.GET.q}}" class="form-control" placeholder="Search..."/>
+
+                  <button type="submit" class="btn btn-default bg-success text-white"><span class="input-group-btn fa fa-search"> </button>
+                </span>
+              </form>
 
                <br>
                 <ul class="list-group">
@@ -112,6 +114,8 @@
         <div class="nav justify-content-center " >
           <a class="nav-item nav-link text-white" href="{% url 'sites-about' %}">About Us</a>
           <a class="nav-item nav-link text-white" href="{% url 'sites-contact' %}">Contact Us</a>
+          <a href="{% url 'signup' %}"><span class="far fa-envelope"></a>
+
         </div>
       </div>
     </footer>
