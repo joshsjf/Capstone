@@ -7,9 +7,6 @@ from django.contrib.auth.decorators import login_required
 class ConsultantsPageView(TemplateView):
     template_name = "sites/consultants.html"
 
-class CompaniesPageView(TemplateView):
-    template_name = "sites/companies.html"
-
 class EventsPageView(TemplateView):
     template_name = "sites/events.html"
 
