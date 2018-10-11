@@ -96,20 +96,46 @@ html, body {
   min-height: 100%;
 }
 .wrapper {
-    min-height: 100%;
-    margin-bottom: -50px;
-    padding-bottom: 50px;
+  min-height: 100%;
+  margin-bottom: -50px;
+  padding-bottom: 50px;
 }
 
-.leftbar{
-    width: 300px;
-    position: fixed;
-    top: 10%;
-    left: 7%;
-    padding: 8px 0;
-    z-index: 1;
-    overflow-x: hidden;
+.left{
+  width: 23%;
+  position: fixed;
+  float: left; 
+  top: 10%;
+  left: 7%;
+  /*right: 7%;*/
+  padding: 8px 0;
+  /*padding-left: 3%;*/
+  padding-right: 1.5%;
+  /*padding-right: 8px;*/
 }
+
+.right {
+   /*padding: 8px 0;*/
+  padding-left: 1.5%;
+}
+
+
+@media only screen and (max-width: 765px) {
+  .left{ /*.main, .right {*/
+    width: auto;
+    float: center; 
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0 0;
+    margin-right: : 10px;/
+  }
+  .right {
+   /*padding: 8px 0;*/
+  padding-left: 0;
+}
+}
+
 footer {
   position: fixed;
   line-height: 200%;
