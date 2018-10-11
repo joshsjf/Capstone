@@ -18,20 +18,30 @@
     <body>
     <div class="wrapper"  >
     <header class="site-header fixed-top pb-10">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel">
+      <nav class="navbar bg-success navbar-expand-md navbar-dark bg-steel">
 
           <!--  style="background-color:lavenderblush; -->
 
-        <div class="container">
+        <div class="container ">
           <a class="navbar-brand nav-link mr-4" href="{% url 'sites-home' %}">Techpalmy</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
-            <div class="navbar-nav mr-auto">
+            <div class="navbar-nav  mr-auto">
               <a class="nav-item nav-link" href="{% url 'sites-home' %}">Home</a>
-              <a class="nav-item nav-link" href="{% url 'companies-home' %}">Companies</a>
+              <!-- <a class="nav-item nav-link" href="{% url 'companies-home' %}">Companies</a> -->
+              <div class="dropdown show ">
+                <a class="btn bg-success text-white dropdown-toggle active" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Companies
+                </a>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                  <a class="dropdown-item" href="{% url 'companies-home' %}">Companies Page</a>
+                  <a class="dropdown-item" href="#">Companies Map</a>
+                </div>
+              </div>
               <a class="nav-item nav-link" href="{% url 'consultants-home' %}">Consultants</a>
+              
               <a class="nav-item nav-link" href="{% url 'events-home' %}">Events</a>
               <a class="nav-item nav-link" href="{% url 'groups-home' %}">Groups</a>
               <a class="nav-item nav-link" href="{% url 'jobs-home' %}">Jobs</a>
@@ -77,14 +87,14 @@
               </form>
 
                <br>
-                <ul class="list-group">
+                <ul class="list-group ">
 
                   {% if user.is_authenticated %}
-                  <a class="list-group-item list-group-item-light" href="{% url 'consultant-create' %}">New Consultant</a>
-                  <a class="list-group-item list-group-item-light" href="{% url 'company-create' %}">New Company</a>
-                  <a class="list-group-item list-group-item-light" href="{% url 'group-create' %}">New Group</a>
-                  <a class="list-group-item list-group-item-light" href="{% url 'event-create' %}">New Event</a>
-                  <a class="list-group-item list-group-item-light" href="{% url 'job-create' %}">New Job</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'consultant-create' %}">New Consultant</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'company-create' %}">New Company</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'group-create' %}">New Group</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'event-create' %}">New Event</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'job-create' %}">New Job</a>
 
                 <br>
                 {% else %}
