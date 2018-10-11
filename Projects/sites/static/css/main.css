@@ -97,7 +97,6 @@ html, body {
   min-height: 100%;
 }
 .wrapper {
-<<<<<<< HEAD
   min-height: 100%;
   margin-bottom: -50px;
   padding-bottom: 50px;
@@ -135,13 +134,7 @@ html, body {
   .right {
    /*padding: 8px 0;*/
   padding-left: 0;
-}
-=======
-
-    min-height: 100%;
-    margin-bottom: -50px;
-    padding-bottom: 50px;
->>>>>>> eb65790b03a84c0c335934e21e63d0da3b665529
+  }
 }
 
 footer {
