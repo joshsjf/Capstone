@@ -24,30 +24,30 @@
         </div>
       </article>
     {% elif item.type == 'company' and item.is_Expired == False %}
-          <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-            <div class="media-body">
-              <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-company' item.author.username %}">{{ item.author }}</a>
-                <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
-              </div>
-              <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
-              <img class="rounded-circle account-img" src="{{ item.image.url }}">
-              <p class="article-content">Web Site: {{ item.website }}</p>
-              <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
-              <p class="article-content">Industry: {{ item.industry }}</p>
-              <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
-              <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
-              <p class="article-content">Description: {{ item.description }}</p>
-
-              <br>
-              <h5> Contact:</h5>
-              <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
-              <p class="article-content">Company Email: {{ item.email }}</p>
-              <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-company' item.author.username %}">{{ item.author }}</a>
+              <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
             </div>
-          </article>
-  {% elif item.type == 'group' and item.is_Expired == False %}
+            <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
+            <img class="rounded-circle account-img" src="{{ item.image.url }}">
+            <p class="article-content">Web Site: {{ item.website }}</p>
+            <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
+            <p class="article-content">Industry: {{ item.industry }}</p>
+            <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
+            <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
+            <p class="article-content">Description: {{ item.description }}</p>
+
+            <br>
+            <h5> Contact:</h5>
+            <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
+            <p class="article-content">Company Email: {{ item.email }}</p>
+            <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
+          </div>
+        </article>
+    {% elif item.type == 'group' and item.is_Expired == False %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
         <div class="media-body">
@@ -63,7 +63,7 @@
 
         </div>
       </article>
-  {% elif item.type == 'event' and item.is_Expired == False %}
+    {% elif item.type == 'event' and item.is_Expired == False %}
       <article class="media content-section">
         <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
         <div class="media-body">
@@ -80,27 +80,26 @@
           <p class="article-content">Description: {{ item.event_Description }}</p>
         </div>
       </article>
-  {% elif item.type == 'consultant' and item.is_Expired == False %}
-          <article class="media content-section">
-            <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-            <div class="media-body">
-              <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-consultant' item.author.username %}">{{ item.author }}</a>
-                <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
-              </div>
-              <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
-              <img class="rounded-circle account-img" src="{{ item.image.url }}">
-              <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
-              <p class="article-content">Description: {{ item.description }}</p>
+    {% elif item.type == 'consultant' and item.is_Expired == False %}
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="{% url 'user-consultant' item.author.username %}">{{ item.author }}</a>
+            <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
+          </div>
+          <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
+          <img class="rounded-circle account-img" src="{{ item.image.url }}">
+          <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
+          <p class="article-content">Description: {{ item.description }}</p>
 
-              <p class="article-content">Email: {{ item.email }}</p>
-              <p class="article-content">Contact Number: {{ item.phone_Number }}</p>
-              <p class="article-content">Website: {{ item.website }}</p>
-            </div>
-          </article>
-  {% endif %}
-
-{% endfor %}
+          <p class="article-content">Email: {{ item.email }}</p>
+          <p class="article-content">Contact Number: {{ item.phone_Number }}</p>
+          <p class="article-content">Website: {{ item.website }}</p>
+        </div>
+        </article>
+    {% endif %}
+  {% endfor %}
 
 
   {% if is_paginated %}
