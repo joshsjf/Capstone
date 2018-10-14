@@ -12,19 +12,16 @@ class ConsultantListing(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
-    is_Expired = models.BooleanField(default=False)
-
     image = models.ImageField(default='default.jpg', upload_to='consultant_pics')
-
     consultant_Name = models.CharField(max_length = 20)
     email = models.EmailField()
     phone_Number = models.CharField(max_length = 20)
     website = models.CharField(max_length = 20)
     industry = models.CharField(max_length = 20)
     specialist_Area = models.CharField(max_length = 20)
-
     receive_Newsletter = models.BooleanField()
     description = models.TextField()
+    is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
