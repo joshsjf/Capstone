@@ -1,5 +1,9 @@
 from django_cron import CronJobBase, Schedule
 from jobs.models import JobListing
+from companies.models import CompanyListing
+from consultants.models import ConsultantListing
+from events.models import EventListing
+from groups.models import GroupListing
 from django.utils.timezone import now
 from datetime import datetime, timedelta
 
@@ -17,5 +21,5 @@ class MyCronJob(CronJobBase):
         items += ConsultantListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
         items += EventListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
         for item in items:
-            item.is_expired = True
-            item.save()
+            item.is_Expired = True
+            item.save()     // where does this save to??
