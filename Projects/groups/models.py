@@ -12,7 +12,6 @@ class GroupListing(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
-    is_Expired = models.BooleanField(default=False)
 
     group_Name = models.CharField(max_length = 20)
     image = models.ImageField(default='default.jpg', upload_to='group_pics')
@@ -20,6 +19,7 @@ class GroupListing(models.Model):
     date = models.CharField(max_length = 20)
     location = models.CharField(max_length = 20)
     description = models.TextField()
+    is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):

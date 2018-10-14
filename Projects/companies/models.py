@@ -14,8 +14,6 @@ class CompanyListing(models.Model):
     #All the fields Companies will have
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
-    is_Expired = models.BooleanField(default=False)
-
     image = models.ImageField(default='default.jpg', upload_to='company_pics')
     company_Name = models.CharField(max_length = 20)
     contact_Name = models.CharField(max_length = 20)
@@ -23,13 +21,12 @@ class CompanyListing(models.Model):
     phone_Number = models.CharField(max_length = 20)
     website = models.CharField(max_length = 35)
     number_Of_Employees = models.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(1)])
-
     industry = models.CharField(max_length = 20)
     specialist_Area = models.CharField(max_length = 20)
     type_Of_Business = models.CharField(max_length = 20)
-
     receive_newsletter = models.BooleanField()
     description = models.TextField()
+    s_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
