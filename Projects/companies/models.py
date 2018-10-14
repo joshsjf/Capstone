@@ -26,7 +26,7 @@ class CompanyListing(models.Model):
     type_Of_Business = models.CharField(max_length = 20)
     receive_newsletter = models.BooleanField()
     description = models.TextField()
-    s_Expired = models.BooleanField(default=False)
+    is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
