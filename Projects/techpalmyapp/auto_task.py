@@ -12,6 +12,10 @@ class MyCronJob(CronJobBase):
     def do(self):
         #Items older than 7 days
         items = JobListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
+        items += CompanyListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
+        items += GroupListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
+        items += ConsultantListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
+        items += EventListing.objects.filter(date_posted__gte=datetime.now()-timedelta(days=7))
         for item in items:
             item.is_expired = True
             item.save()

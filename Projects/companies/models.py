@@ -14,6 +14,7 @@ class CompanyListing(models.Model):
     #All the fields Companies will have
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
+    is_Expired = models.BooleanField(default=False)
 
     image = models.ImageField(default='default.jpg', upload_to='company_pics')
     company_Name = models.CharField(max_length = 20)

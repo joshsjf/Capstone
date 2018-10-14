@@ -2,6 +2,7 @@
 {% block content %}
  <h2 class="border-bottom mb-3">Consultants in Palmerston North</h2>
  {% for consultant in data %}
+ {% if consultant.is_Expired == False %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ consultant.author.profile.image.url }}">
        <div class="media-body">
@@ -19,5 +20,6 @@
          <p class="article-content">Website: {{ consultant.website }}</p>
        </div>
      </article>
+ {% endif %}
  {% endfor %}
 {% endblock content %}

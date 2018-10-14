@@ -12,6 +12,7 @@ class ConsultantListing(models.Model):
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(default = timezone.now)
+    is_Expired = models.BooleanField(default=False)
 
     image = models.ImageField(default='default.jpg', upload_to='consultant_pics')
 

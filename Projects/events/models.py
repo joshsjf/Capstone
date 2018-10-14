@@ -12,6 +12,7 @@ class EventListing(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     # author = models.CharField(max_length = 30)
     date_posted = models.DateTimeField(default = timezone.now)
+    is_Expired = models.BooleanField(default=False)
 
     event_Name = models.CharField(max_length = 50)
     event_Time_dd_mm_yyyy = models.CharField(max_length = 20)

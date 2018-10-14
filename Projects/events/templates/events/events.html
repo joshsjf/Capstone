@@ -2,6 +2,7 @@
 {% block content %}
 <h2 class="border-bottom mb-3">Events in Palmerston North</h2>
  {% for event in data %}
+ {% if event.is_Expired == False %}
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ event.author.profile.image.url }}">
        <div class="media-body">
@@ -20,5 +21,6 @@
          <p class="article-content">Description: {{ event.event_Description }}</p>
        </div>
      </article>
+ {% endif %}
  {% endfor %}
 {% endblock content %}
