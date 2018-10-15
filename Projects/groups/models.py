@@ -11,8 +11,8 @@ class GroupListing(models.Model):
         return self.group_Name
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_posted = models.DateTimeField(default = timezone.now)
-
+    date_posted = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
     group_Name = models.CharField(max_length = 20)
     image = models.ImageField(default='default.jpg', upload_to='group_pics')
 
