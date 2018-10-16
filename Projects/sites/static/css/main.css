@@ -69,6 +69,10 @@ a.article-title:hover {
   text-decoration: none;
 }
 
+.list-group a:hover{
+  color: black;
+}
+
 .article-svg {
   width: 25px;
   height: 25px;
@@ -92,17 +96,12 @@ a.article-title:hover {
     background-color: #009959;
 }
 
-/*.list-group a {
-  background-color: #009959;
-}*/
-
 html, body {
   position: relative;
   min-height: 100%;
 }
 
 .wrapper {
-  /*border: 5px solid red;*/
   min-height: 100%;
   margin-bottom: -50px;
   padding-bottom: 50px;
@@ -115,7 +114,7 @@ html, body {
   top: 10%;
   left: 7%;
   padding: 8px 0;
-  padding-right: 1.5%;
+  padding-right: 3%;
 }
 
 .right {
@@ -134,7 +133,7 @@ footer {
   background-color: #343434;
 }
 
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 770px) {
   .left{
     width: auto;
     float: center;
