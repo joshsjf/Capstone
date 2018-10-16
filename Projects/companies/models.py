@@ -25,7 +25,6 @@ class CompanyListing(models.Model):
     industry = models.CharField(max_length = 20)
     specialist_Area = models.CharField(max_length = 20)
     type_Of_Business = models.CharField(max_length = 20)
-    receive_newsletter = models.BooleanField()
     description = models.TextField()
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
