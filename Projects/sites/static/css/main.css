@@ -112,7 +112,7 @@ html, body {
 .left{
   width: 23%;
   position: fixed;
-  float: left; 
+  float: left;
   top: 10%;
   left: 7%;
   padding: 8px 0;
@@ -125,10 +125,10 @@ html, body {
 }
 
 
-@media only screen and (max-width: 765px) {
-  .left{ 
+@media only screen and (max-width: 760px) {
+  .left{
     width: auto;
-    float: center; 
+    float: center;
     position: relative;
     top: 0;
     left: 0;
