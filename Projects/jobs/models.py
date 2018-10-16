@@ -10,7 +10,8 @@ class JobListing(models.Model):
 
     #All the fields Jobs will have
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_posted = models.DateTimeField(default = timezone.now)
+    date_posted = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
     #Get user company, name, ph
     category = models.CharField(max_length = 20)
     title = models.CharField(max_length = 20)
