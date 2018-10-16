@@ -1,1 +1,1 @@
-Welcome to our Newsletter, If you would like to unsubscribe visit http://127.0.0.1:8000/newsletter/unsubscribe
+Welcome to our Newsletter, If you would like to unsubscribe visit http://localhost:8000/
