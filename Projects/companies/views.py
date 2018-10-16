@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from companies.forms import CompanyCreateView, CompanyUpdateForm
 from django.urls import reverse
 
-
+#
 def companyCreate(request, **kwargs):
 	if request.method == 'POST':
 		form = CompanyCreateView(request.POST, request.FILES,)
@@ -41,16 +41,28 @@ class UserCompanyPageView(ListView):
 
 def companyUpdateView(request, pk):
 	if request.method  == 'POST':
-		c_form = CompanyUpdateForm(request.POST, request.FILES)
-		if c_form.is_valid():
-			c_form.instance.author = request.user
-			camp = c_form.save()
+		form = CompanyCreateView(request.POST, request.FILES)
+		if form.is_valid():
+			form.instance.author = request.user
+			comp = form.save()
 			messages.success(request, "Your Company has been updated!")
-			return redirect(reverse('company-detail', kwargs={'pk': camp.pk}))
+			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
-		c_form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
-	return render(request, 'companies/companyupdate_form.html', {'c_form': c_form})
+		form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
+	return render(request, 'companies/companyupdate_form.html', {'form': form})
 
+class CompanyUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+	model = CompanyListing
+	fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
+				'industry', 'specialist_Area', 'type_Of_Business', 'receive_newsletter', 'description', 'terms_And_Conditions']
+
+	def form_valid(self, form):
+		form.instance.author = self.request.user
+		return super().form_valid(form)
+
+	def test_func(self):
+		company = self.get_object()
+		return self.request.user == company.author
 
 class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = CompanyListing

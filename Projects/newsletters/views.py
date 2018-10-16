@@ -2,6 +2,7 @@ from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render
 from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template
 
 from .models import NewsletterUser, Newsletter
@@ -73,3 +74,29 @@ def control_newsletter(request):
     }
     template = 'control_panel/control_newsletter.html'
     return render(request, template, context)
+
+def control_newsletter_list(request):
+    newsletters = Newsletter.objects.all()
+    paginator = Paginator(newsletters, 5)
+    page = (request.GET.get('page'))
+
+    try:
+        items = paginator.page(page)
+    except PageNotAnInteger:
+        items = paginator.page(1)
+    except EmptyPage:
+        items = paginator.page(paginator.num_pages)
+
+    index = items.number - 1
+    max_index = len(paginator.page_range)
+    start_index = index - 5 if index >= max_index -5 else 0
+    end_index = index + 5 if index <= max_index -5 else max_index
+    page_range = paginator.page_range[start_index:end_index]
+
+
+    context = {
+        "items": items,
+        "page_range": page_range
+    }
+    template = "control_panel/control_newsletter_list.html"
+    return render(request,template, context)

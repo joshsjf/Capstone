@@ -1,0 +1,43 @@
+{% extends "sites/base.html" %}
+{% block content %}
+{% if user.is_superuser %}
+    <p>Hello, admin.</p>
+{% else %}
+    <p>Hello, ordinary visitor.</p>
+{% endif %}
+<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1 class="page-header">All Newsletters</h1>
+        </div>
+        <div class="col-sm-2">
+            <a class="bg-success text-white" href="{% url "control_newsletter" %}"><button type="button" class="btn btn-success">New Newsletter</a>
+        </div>
+    </div>
+    <div class="table-responsive table-hover">
+        <table class="table">
+            <thead>
+                <th>Subject</th>
+                <th>Status</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                    <tr>
+                        <td>{{ item.subject }}</td>
+                        <td>{{ item.status }}</td>
+                        <td>{{ item.created }}</td>
+                        <td>{{ item.updated }}</td>
+                        <td><a href="#">Edit</a></td>
+                        <td><a href="#">Delete</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% include "control_panel/pagination.html" %}
+</div>
+{% endblock %}
