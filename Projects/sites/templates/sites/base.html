@@ -86,7 +86,7 @@
                 </span>
               </form>
 
-               <br>
+              <br>
                 <ul class="list-group ">
 
                   {% if user.is_authenticated %}
@@ -100,6 +100,7 @@
                 {% else %}
 
                 {% endif %}
+
                 </ul>
             </div>
           </div>
@@ -107,7 +108,6 @@
           <div class="col-md-8">
             {% block content %}{% endblock %}
           </div>
-        </div>
       </div>
     </main>
 
