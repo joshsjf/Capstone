@@ -2,7 +2,6 @@ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
-  margin-bottom: 60px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -124,6 +123,16 @@ html, body {
   padding-left: 1.5%;
 }
 
+footer {
+  position: fixed;
+  line-height: 200%;
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+  color: #FFFFFF;
+  height: 70px;
+  background-color: #343434;
+}
 
 @media only screen and (max-width: 760px) {
   .left{
@@ -138,15 +147,8 @@ html, body {
   .right {
   padding-left: 0;
   }
-}
-
-footer {
-  position: fixed;
-  line-height: 200%;
-  text-align: center;
-  bottom: 0px;
-  width: 100%;
-  color: #FFFFFF;
-  height: 70px;
-  background-color: #343434;
+  footer {
+      position: relative;
+      height: auto;
+  }
 }
