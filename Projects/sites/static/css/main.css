@@ -2,7 +2,7 @@ body {
   background: #fafafa;
   color: #333333;
   margin-top: 5rem;
-  margin-bottom: 60px;
+  margin-bottom: 70px;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -70,6 +70,10 @@ a.article-title:hover {
   text-decoration: none;
 }
 
+.list-group a:hover{
+  color: black;
+}
+
 .article-svg {
   width: 25px;
   height: 25px;
@@ -93,17 +97,12 @@ a.article-title:hover {
     background-color: #009959;
 }
 
-/*.list-group a {
-  background-color: #009959;
-}*/
-
 html, body {
   position: relative;
   min-height: 100%;
 }
 
 .wrapper {
-  /*border: 5px solid red;*/
   min-height: 100%;
   margin-bottom: -50px;
   padding-bottom: 50px;
@@ -116,28 +115,12 @@ html, body {
   top: 10%;
   left: 7%;
   padding: 8px 0;
-  padding-right: 1.5%;
+  padding-right: 3%;
 }
 
 .right {
    /*padding: 8px 0;*/
   padding-left: 1.5%;
-}
-
-
-@media only screen and (max-width: 760px) {
-  .left{
-    width: auto;
-    float: center;
-    position: relative;
-    top: 0;
-    left: 0;
-    padding: 0 0;
-    margin-right: : 10px;/
-  }
-  .right {
-  padding-left: 0;
-  }
 }
 
 footer {
@@ -149,4 +132,26 @@ footer {
   color: #FFFFFF;
   height: 70px;
   background-color: #343434;
+}
+
+@media only screen and (max-width: 770px) {
+  .left{
+    width: auto;
+    float: center;
+    position: relative;
+    top: 0;
+    left: 0;
+    padding: 0 0;
+    margin-right: : 10px;
+  }
+  .right {
+  padding-left: 0;
+  }
+  footer {
+      position: relative;
+      height: auto;
+  }
+  body {
+      margin-bottom: 0px;
+  }
 }

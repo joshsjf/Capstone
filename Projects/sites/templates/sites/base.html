@@ -86,7 +86,7 @@
                 </span>
               </form>
 
-               <br>
+              <br>
                 <ul class="list-group ">
 
                   {% if user.is_authenticated %}
@@ -103,14 +103,21 @@
                 {% else %}
 
                 {% endif %}
+
                 </ul>
             </div>
           </div>
         </div>
           <div class="col-md-8">
+          {% if messages %}
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+          {% endfor %}
+          {% endif %}
             {% block content %}{% endblock %}
           </div>
-        </div>
       </div>
     </main>
 

@@ -12,6 +12,8 @@ class CompanyListing(models.Model):
         return self.company_Name
 
     #All the fields Companies will have
+
+
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     date_posted = models.DateTimeField(auto_now_add=True)
     last_updated = models.DateTimeField(auto_now=True)
@@ -19,13 +21,13 @@ class CompanyListing(models.Model):
     company_Name = models.CharField(max_length = 20)
     contact_Name = models.CharField(max_length = 20)
     email = models.EmailField()
+    takes_On_Summer_Students = models.BooleanField(default=False)
     phone_Number = models.CharField(max_length = 20)
     website = models.CharField(max_length = 35)
     number_Of_Employees = models.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(1)])
     industry = models.CharField(max_length = 20)
     specialist_Area = models.CharField(max_length = 20)
     type_Of_Business = models.CharField(max_length = 20)
-    receive_newsletter = models.BooleanField()
     description = models.TextField()
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()

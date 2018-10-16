@@ -23,13 +23,12 @@ def consultantCreate(request, **kwargs):
 
 
 def consultantUpdateView(request, pk):
-	if request.method  == 'POST':
-		c_form = ConsultantUpdateForm(request.POST, request.FILES)
-		if c_form.is_valid():
-			c_form.instance.author = request.user
-			camp = c_form.save()
-			messages.success(request, "Consultant profile has been updated!")
-			return redirect(reverse('consultant-detail', kwargs={'pk': camp.pk}))
+	instance = get_object_or_404(ConsultantListing, id=pk)
+	form = ConsultantUpdateForm(request.POST or None, instance=instance)
+	if form.is_valid():
+		form.save()
+		messages.success(request, "Consultant profile has been updated!")
+		return redirect(reverse('consultant-detail', kwargs={'pk': pk}))
 	else:
 		c_form = ConsultantUpdateForm(instance = ConsultantListing.objects.get(pk=pk))
 	return render(request, 'consultants/consultantupdate_form.html', {'c_form': c_form})

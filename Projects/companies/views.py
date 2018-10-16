@@ -38,8 +38,8 @@ class UserCompanyPageView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
-
 def companyUpdateView(request, pk):
+<<<<<<< HEAD
 	if request.method  == 'POST':
 		form = CompanyCreateView(request.POST, request.FILES)
 		if form.is_valid():
@@ -47,6 +47,13 @@ def companyUpdateView(request, pk):
 			comp = form.save()
 			messages.success(request, "Your Company has been updated!")
 			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
+=======
+	instance = get_object_or_404(CompanyListing, id=pk)
+	form = CompanyUpdateForm(request.POST or None, instance=instance)
+	if form.is_valid():
+		form.save()
+		return redirect(reverse('company-detail', kwargs={'pk': pk}))
+>>>>>>> master
 	else:
 		form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
 	return render(request, 'companies/companyupdate_form.html', {'form': form})
