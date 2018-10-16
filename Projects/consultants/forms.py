@@ -2,7 +2,7 @@ from django import forms
 from .models import ConsultantListing
 
 class ConsultantCreateView(forms.ModelForm):
-    terms_And_Conditions = forms.BooleanField(required=True)
+    terms_And_Conditions = forms.BooleanField(required=True, label = "<a href='/termsandconditions' target='_blank'>Terms and Conditions</a>")
 
     class Meta:
         model = ConsultantListing

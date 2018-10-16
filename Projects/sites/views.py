@@ -33,7 +33,7 @@ def search(request):
 	companies = CompanyListing.objects.filter(Q(company_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('company', CharField()))
 	groups = GroupListing.objects.filter(Q(group_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('group', CharField()))
 	consultants = ConsultantListing.objects.filter(Q(consultant_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('consultant', CharField()))
-	
+
 	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 
@@ -63,3 +63,6 @@ class AboutPageView(TemplateView):
 
 class ContactPageView(TemplateView):
 	template_name = "sites/contact.html"
+
+class TermsAndCondition(TemplateView):
+	template_name = "sites/termsandconditions.html"
