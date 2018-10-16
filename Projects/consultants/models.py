@@ -11,7 +11,8 @@ class ConsultantListing(models.Model):
         return self.consultant_Name
 
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    date_posted = models.DateTimeField(default = timezone.now)
+    date_posted = models.DateTimeField(auto_now_add=True)
+    last_updated = models.DateTimeField(auto_now=True)
     image = models.ImageField(default='default.jpg', upload_to='consultant_pics')
     consultant_Name = models.CharField(max_length = 20)
     email = models.EmailField()

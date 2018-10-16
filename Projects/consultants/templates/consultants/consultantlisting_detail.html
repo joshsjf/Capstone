@@ -6,7 +6,8 @@
     <div class="media-body">
       <div class="article-metadata">
         <a class="mr-2" href="{% url 'user-consultant' object.author.username %}">{{ object.author }}</a>
-        <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small>
+        <small class="text-muted">{{ object.date_posted|date:"F d, Y" }}</small> <br/>
+        <small class="text-muted">LastModified: {{ object.last_updated }}</small>
         {% if object.author == user %}
         <div>
           <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'consultant-update' object.id %}">Update</a>

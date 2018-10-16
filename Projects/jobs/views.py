@@ -4,6 +4,7 @@ from .models import JobListing
 from django.contrib.auth.models import User
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
+from django.utils import timezone
 from django.db.models import Q
 import datetime
 from jobs.forms import JobCreateForm

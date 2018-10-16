@@ -105,14 +105,6 @@
           </div>
         </div>
           <div class="col-md-8">
-            <div class="right">
-            {% if messages %}
-            {% for message in messages %}
-              <div class="alert alert-{{ message.tags }}">
-                  {{ message }}
-              </div>
-            {% endfor %}
-            {% endif %}
             {% block content %}{% endblock %}
           </div>
         </div>
@@ -125,7 +117,7 @@
         <div class="nav justify-content-center " >
           <a class="nav-item nav-link text-white" href="{% url 'sites-about' %}">About Us</a>
           <a class="nav-item nav-link text-white" href="{% url 'sites-contact' %}">Contact Us</a>
-          <a href="{% url 'signup' %}"><span class="far fa-envelope"></a>
+          <a class="nav-item nav-link text-white" href="{% url 'signup' %}"><span class="far fa-envelope"> Subscribe to Newsletter</a>
 
         </div>
       </div>
