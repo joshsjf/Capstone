@@ -22,13 +22,11 @@ def eventCreate(request):
 	return render(request, 'events/eventlisting_form.html', {'form': form})
 
 def eventUpdateView(request, pk):
-	if request.method  == 'POST':
-		e_form = EventUpdateForm(request.POST, request.FILES)
-		if e_form.is_valid():
-			e_form.instance.author = request.user
-			camp = e_form.save()
-			messages.success(request, "Your event has been updated!")
-			return redirect(reverse('event-detail', kwargs={'pk': camp.pk}))
+	instance = get_object_or_404(EventListing, id=pk)
+	form = EventUpdateForm(request.POST or None, instance=instance)
+	if form.is_valid():
+		form.save()
+		return redirect(reverse('event-detail', kwargs={'pk': pk}))
 	else:
 		e_form = EventUpdateForm(instance = EventListing.objects.get(pk=pk))
 	return render(request, 'events/eventupdate_form.html', {'e_form': e_form})

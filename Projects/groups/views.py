@@ -23,13 +23,11 @@ def groupCreate(request, **kwargs):
 
 
 def groupUpdateView(request, pk):
-	if request.method  == 'POST':
-		g_form = GroupUpdateForm(request.POST, request.FILES)
-		if g_form.is_valid():
-			g_form.instance.author = request.user
-			camp = g_form.save()
-			messages.success(request, "Group profile has been updated!")
-			return redirect(reverse('group-detail', kwargs={'pk': camp.pk}))
+	instance = get_object_or_404(GroupListing, id=pk)
+	form = GroupUpdateForm(request.POST or None, instance=instance)
+	if form.is_valid():
+		form.save()
+		return redirect(reverse('group-detail', kwargs={'pk': pk}))
 	else:
 		g_form = GroupUpdateForm(instance = GroupListing.objects.get(pk=pk))
 	return render(request, 'groups/groupupdate_form.html', {'g_form': g_form})
