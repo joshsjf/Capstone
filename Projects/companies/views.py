@@ -39,37 +39,15 @@ class UserCompanyPageView(ListView):
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
 def companyUpdateView(request, pk):
-<<<<<<< HEAD
-	if request.method  == 'POST':
-		form = CompanyCreateView(request.POST, request.FILES)
-		if form.is_valid():
-			form.instance.author = request.user
-			comp = form.save()
-			messages.success(request, "Your Company has been updated!")
-			return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
-=======
 	instance = get_object_or_404(CompanyListing, id=pk)
 	form = CompanyUpdateForm(request.POST or None, instance=instance)
 	if form.is_valid():
-		form.save()
-		return redirect(reverse('company-detail', kwargs={'pk': pk}))
->>>>>>> master
+		comp = form.save()
+		messages.success(request, "Your Company has been updated!")
+		return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
 	return render(request, 'companies/companyupdate_form.html', {'form': form})
-
-class CompanyUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
-	model = CompanyListing
-	fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
-				'industry', 'specialist_Area', 'type_Of_Business', 'receive_newsletter', 'description', 'terms_And_Conditions']
-
-	def form_valid(self, form):
-		form.instance.author = self.request.user
-		return super().form_valid(form)
-
-	def test_func(self):
-		company = self.get_object()
-		return self.request.user == company.author
 
 class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = CompanyListing

@@ -20,7 +20,7 @@ class EventListing(models.Model):
     event_Website = models.CharField(max_length = 200)
     event_Description = models.TextField()
     is_Expired = models.BooleanField(default=False)
-    terms_And_Conditions = models.BooleanField(default=False)
+    terms_And_Conditions = models.BooleanField()
 
     def get_absolute_url(self):
         return reverse('event-detail', kwargs={'pk': self.pk})

@@ -15,6 +15,7 @@ def job_create(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form = form.save()
+			messages.success(request, "Your job has been created!")
 			return redirect(reverse('job-detail', kwargs={'pk': form.pk}))
 	else:
 		form = JobCreateForm(initial={
@@ -30,6 +31,7 @@ def jobUpdateView(request, pk):
 	form = JobUpdateForm(request.POST or None, instance=instance)
 	if form.is_valid():
 		form.save()
+		messages.success(request, "Your job has been created!")
 		return redirect(reverse('job-detail', kwargs={'pk': pk}))
 	else:
 		g_form = JobUpdateForm(instance = JobListing.objects.get(pk=pk))
