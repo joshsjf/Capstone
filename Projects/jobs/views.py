@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.db.models import Q
 import datetime
-from jobs.forms import JobCreateForm
+from jobs.forms import JobCreateForm, JobUpdateForm
 
 def job_create(request):
 	if request.method == 'POST':
@@ -24,6 +24,16 @@ def job_create(request):
 		)
 	return render(request, 'jobs/joblisting_form.html', {'form': form})
 
+
+def jobUpdateView(request, pk):
+	instance = get_object_or_404(JobListing, id=pk)
+	form = JobUpdateForm(request.POST or None, instance=instance)
+	if form.is_valid():
+		form.save()
+		return redirect(reverse('job-detail', kwargs={'pk': pk}))
+	else:
+		g_form = JobUpdateForm(instance = JobListing.objects.get(pk=pk))
+	return render(request, 'jobs/jobupdate_form.html', {'g_form': g_form})
 
 class JobPageView(ListView):
 	model = JobListing
