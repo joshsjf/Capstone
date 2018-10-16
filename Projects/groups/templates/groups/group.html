@@ -1,8 +1,9 @@
 {% extends "sites/base.html" %}
 {% block content %}
  <h2 class="border-bottom mb-3">Groups in Palmerston North</h2>
+ <div class="row">
  {% for group in data %}
-  <div class="row">
+
     {% if group.is_Expired == False %}
       <div class="col-md-6">
      <article class="media content-section">

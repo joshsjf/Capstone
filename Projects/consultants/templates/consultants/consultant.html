@@ -1,8 +1,9 @@
 {% extends "sites/base.html" %}
 {% block content %}
  <h2 class="border-bottom mb-3">Consultants in Palmerston North</h2>
- {% for consultant in data %}
  <div class="row">
+ {% for consultant in data %}
+
  {% if consultant.is_Expired == False %}
   <div class="col-md-6">
      <article class="media content-section">
