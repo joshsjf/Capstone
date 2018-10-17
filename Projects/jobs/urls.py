@@ -1,6 +1,5 @@
 from django.urls import path
 from .views import (JobPageView, JobDetailView,
-                    JobUpdateView,
                     JobDeleteView, UserJobPageView)
 from . import views as job_views
 

@@ -24,7 +24,7 @@ def groupCreate(request, **kwargs):
 
 def groupUpdateView(request, pk):
 	instance = get_object_or_404(GroupListing, id=pk)
-	form = GroupUpdateForm(request.POST or None, instance=instance)
+	form = GroupUpdateForm(request.POST or None, request.FILES, instance=instance)
 	if form.is_valid():
 		form.save()
 		return redirect(reverse('group-detail', kwargs={'pk': pk}))
