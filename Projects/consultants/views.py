@@ -27,6 +27,7 @@ def consultantUpdateView(request, pk):
 	form = ConsultantUpdateForm(request.POST or None, instance=instance)
 	if form.is_valid():
 		form.save()
+		messages.success(request, "Consultant profile has been updated!")
 		return redirect(reverse('consultant-detail', kwargs={'pk': pk}))
 	else:
 		c_form = ConsultantUpdateForm(instance = ConsultantListing.objects.get(pk=pk))

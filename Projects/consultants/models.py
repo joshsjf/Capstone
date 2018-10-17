@@ -20,7 +20,6 @@ class ConsultantListing(models.Model):
     website = models.CharField(max_length = 20)
     industry = models.CharField(max_length = 20)
     specialist_Area = models.CharField(max_length = 20)
-    receive_Newsletter = models.BooleanField()
     description = models.TextField()
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
