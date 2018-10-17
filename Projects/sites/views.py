@@ -42,20 +42,20 @@ def search(request):
 	return render(request, template, context)
 
 
-class IndexView(ListView):
-	template_name = 'sites/index.html'
-	model = JobListing
-	context_object_name = 'data'
-	def get_context_data(self, **kwargs):
-		context = super(IndexView, self).get_context_data(**kwargs)
-		context.update({
-			'character_universe_list': JobListing.objects.order_by('-date_posted'),
-			'more_context': CompanyListing.objects.order_by('-date_posted'),
-		})
-		return context
-
-	def get_queryset(self):
-		return JobListing.objects.order_by('-date_posted')
+# class IndexView(ListView):
+# 	template_name = 'sites/index.html'
+# 	model = JobListing
+# 	context_object_name = 'data'
+# 	def get_context_data(self, **kwargs):
+# 		context = super(IndexView, self).get_context_data(**kwargs)
+# 		context.update({
+# 			'character_universe_list': JobListing.objects.order_by('-date_posted'),
+# 			'more_context': CompanyListing.objects.order_by('-date_posted'),
+# 		})
+# 		return context
+#
+# 	def get_queryset(self):
+# 		return JobListing.objects.order_by('-date_posted')
 
 
 class AboutPageView(TemplateView):
