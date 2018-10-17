@@ -11,7 +11,7 @@ from django.urls import reverse
 
 def companyCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = CompanyCreateView(request.POST, request.FILES,)
+		form = CompanyCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
