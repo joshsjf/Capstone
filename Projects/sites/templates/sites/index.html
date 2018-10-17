@@ -9,7 +9,7 @@
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-jobs' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
+            <small class="text-muted">Job - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'job-detail' item.id %}">{{ item.title }}</a></h2>
           <p class="article-content">Category: {{ item.category }}</p>
@@ -29,7 +29,7 @@
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-company' item.author.username %}">{{ item.author }}</a>
-              <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
+              <small class="text-muted">Company - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
             <img class="rounded-circle account-img" src="{{ item.image.url }}">
@@ -53,7 +53,7 @@
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-group' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
+            <small class="text-muted">Group - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'group-detail' item.id %}">{{ item.group_Name }}</a></h2>
           <img class="rounded-circle account-img" src="{{ item.image.url }}">
@@ -69,7 +69,7 @@
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-event' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
+            <small class="text-muted">Event - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'event-detail' item.id %}">{{ item.event_Name }}</a></h2>
           <p class="article-content">Event Name: {{ item.event_Name }}</p>
@@ -86,7 +86,7 @@
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-consultant' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
+            <small class="text-muted">Consultant - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
           <img class="rounded-circle account-img" src="{{ item.image.url }}">

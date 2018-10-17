@@ -21,6 +21,18 @@ def companyCreate(request, **kwargs):
 		form = CompanyCreateView()
 	return render(request, 'companies/companylisting_form.html', {'form': form})
 
+def companyUpdateView(request, pk):
+	instance = get_object_or_404(CompanyListing, id=pk)
+	form = CompanyUpdateForm(request.POST or None, instance=instance)
+	if form.is_valid():
+		form.save()
+		messages.success(request, "Your company has been updated!")
+		return redirect(reverse('company-detail', kwargs={'pk': pk}))
+	else:
+		c_form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
+	return render(request, 'companies/companyupdate_form.html', {'c_form': c_form})
+
+
 class CompanyPageView(ListView):
 	model = CompanyListing
 	template_name = 'companies/company.html'
@@ -37,16 +49,6 @@ class UserCompanyPageView(ListView):
 	def get_queryset(self):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
-
-def companyUpdateView(request, pk):
-	instance = get_object_or_404(CompanyListing, id=pk)
-	form = CompanyUpdateForm(request.POST or None, instance=instance)
-	if form.is_valid():
-		form.save()
-		return redirect(reverse('company-detail', kwargs={'pk': pk}))
-	else:
-		c_form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
-	return render(request, 'companies/companyupdate_form.html', {'c_form': c_form})
 
 
 class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
