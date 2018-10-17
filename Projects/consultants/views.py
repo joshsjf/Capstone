@@ -11,7 +11,7 @@ from django.urls import reverse
 
 def consultantCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = ConsultantCreateView(request.POST, request.FILES,)
+		form = ConsultantCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
