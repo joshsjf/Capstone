@@ -92,8 +92,8 @@
                   {% if user.is_authenticated %}
                   <a class="list-group-item bg-success text-white" href="{% url 'consultant-create' %}">New Consultant</a>
                   <a class="list-group-item bg-success text-white" href="{% url 'company-create' %}">New Company</a>
-                  <a class="list-group-item bg-success text-white" href="{% url 'group-create' %}">New Group</a>
                   <a class="list-group-item bg-success text-white" href="{% url 'event-create' %}">New Event</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'group-create' %}">New Group</a>
                   <a class="list-group-item bg-success text-white" href="{% url 'job-create' %}">New Job</a>
                   {% if user.is_superuser %}
                     <a class="list-group-item bg-success text-white" href="{% url 'control_newsletter_list' %}">Newsletters</a>

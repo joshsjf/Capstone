@@ -11,7 +11,7 @@ from django.urls import reverse
 
 def groupCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = GroupCreateView(request.POST, request.FILES,)
+		form = GroupCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
@@ -24,7 +24,7 @@ def groupCreate(request, **kwargs):
 
 def groupUpdateView(request, pk):
 	instance = get_object_or_404(GroupListing, id=pk)
-	form = GroupUpdateForm(request.POST or None, instance=instance)
+	form = GroupUpdateForm(request.POST or None, request.FILES, instance=instance)
 	if form.is_valid():
 		form.save()
 		messages.success(request, "Your group has been updated!")

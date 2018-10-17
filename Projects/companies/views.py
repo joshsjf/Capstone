@@ -11,7 +11,7 @@ from django.urls import reverse
 #
 def companyCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = CompanyCreateView(request.POST, request.FILES,)
+		form = CompanyCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
@@ -20,6 +20,18 @@ def companyCreate(request, **kwargs):
 	else:
 		form = CompanyCreateView()
 	return render(request, 'companies/companylisting_form.html', {'form': form})
+
+def companyUpdateView(request, pk):
+	instance = get_object_or_404(CompanyListing, id=pk)
+	form = CompanyUpdateForm(request.POST or None, request.FILES, instance=instance)
+	if form.is_valid():
+		form.save()
+		messages.success(request, "Your company has been updated!")
+		return redirect(reverse('company-detail', kwargs={'pk': pk}))
+	else:
+		c_form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
+	return render(request, 'companies/companyupdate_form.html', {'c_form': c_form})
+
 
 class CompanyPageView(ListView):
 	model = CompanyListing
@@ -38,16 +50,6 @@ class UserCompanyPageView(ListView):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return CompanyListing.objects.filter(author=user).order_by('-date_posted')
 
-def companyUpdateView(request, pk):
-	instance = get_object_or_404(CompanyListing, id=pk)
-	form = CompanyUpdateForm(request.POST or None, instance=instance)
-	if form.is_valid():
-		comp = form.save()
-		messages.success(request, "Your Company has been updated!")
-		return redirect(reverse('company-detail', kwargs={'pk': comp.pk}))
-	else:
-		form = CompanyUpdateForm(instance = CompanyListing.objects.get(pk=pk))
-	return render(request, 'companies/companyupdate_form.html', {'form': form})
 
 class CompanyDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = CompanyListing

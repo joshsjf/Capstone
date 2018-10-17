@@ -11,7 +11,7 @@ from django.urls import reverse
 
 def consultantCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = ConsultantCreateView(request.POST, request.FILES,)
+		form = ConsultantCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
@@ -24,7 +24,7 @@ def consultantCreate(request, **kwargs):
 
 def consultantUpdateView(request, pk):
 	instance = get_object_or_404(ConsultantListing, id=pk)
-	form = ConsultantUpdateForm(request.POST or None, instance=instance)
+	form = ConsultantUpdateForm(request.POST or None, request.FILES, instance=instance)
 	if form.is_valid():
 		form.save()
 		messages.success(request, "Consultant profile has been updated!")
