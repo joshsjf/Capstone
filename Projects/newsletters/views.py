@@ -109,7 +109,7 @@ def newsletter_signup(request):
 	if s_form.is_valid():
 		instance = s_form.save(commit=False)
 		if NewsletterUser.objects.filter(email=instance.email).exists():
-			messages.warning(request, 'Your email already exists in our database', 'alert alert-warning alert-dismissable')
+			messages.warning(request, 'Your email is already signed up to the newsletter', 'alert alert-warning alert-dismissable')
 		else:
 			instance.save()
 			messages.success(request, 'You have been subscribed to the newsletter', 'alert alert-success alert-dismissable')
@@ -136,7 +136,7 @@ def newsletter_unsubscribe(request):
 		instance = u_form.save(commit=False)
 		if NewsletterUser.objects.filter(email=instance.email).exists():
 			NewsletterUser.objects.filter(email=instance.email).delete()
-			messages.success(request, 'You have successfully unsubscribed', 'alert alert-success alert-dismissable')
+			messages.success(request, 'You have successfully unsubscribed!', 'alert alert-success alert-dismissable')
 			subject = "You have been successfully unsubscribed"
 			from_email = settings.EMAIL_HOST_USER
 			to_email = [instance.email]
@@ -145,7 +145,7 @@ def newsletter_unsubscribe(request):
 			message.attach_alternative(html_template, "text/html")
 			message.send()
 		else:
-			messages.warning(request, 'Your email is not in our database', 'alert alert-warning alert-dismissable')
+			messages.warning(request, 'Your email is not curently subsrcibed', 'alert alert-warning alert-dismissable')
 	context = {
 		'u_form': u_form,
 	}
