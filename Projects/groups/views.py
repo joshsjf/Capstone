@@ -11,7 +11,7 @@ from django.urls import reverse
 
 def groupCreate(request, **kwargs):
 	if request.method == 'POST':
-		form = GroupCreateView(request.POST, request.FILES,)
+		form = GroupCreateView(request.POST, request.FILES)
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
