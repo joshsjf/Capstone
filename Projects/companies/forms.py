@@ -10,7 +10,7 @@ class CompanyCreateView(forms.ModelForm):
     )
 
     takes_On_Summer_Students = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Do you take on Summer Students?",
-                                  initial='', widget=forms.Select(), required=True)
+                                  initial=False, widget=forms.Select(), required=True)
     class Meta:
         model = CompanyListing
         fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',

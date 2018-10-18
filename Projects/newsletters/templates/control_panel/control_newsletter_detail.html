@@ -1,0 +1,15 @@
+{% extends "sites/base.html" %}
+
+{% block content %}
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <div class="page-header">
+            <h1>{{ newsletter.subject}}</h1>
+        </div>
+        {{ newsletter.body }}
+        <div class="col-sm-8 col-sm-offset-4">
+            <div class="col-sm-2"><a href="{% url 'control_newsletter_edit' pk=newsletter.pk %}"><button class="btn btn-success">Edit</button></div>
+            <div class="col-sm-2"><a href="{% url 'control_newsletter_delete' pk=newsletter.pk %}"><button class="btn btn-success">Delete</button></div>
+            <div class="col-sm-2"><a href="{% url 'control_newsletter' %}"><button class="btn btn-success">New</button></a></div>
+        </div>
+    </div>
+{% endblock %}

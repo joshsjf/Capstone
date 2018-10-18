@@ -1,11 +1,12 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class NewsletterUser(models.Model):
-    def __str__(self):
-        return self.email
-
     email= models.EmailField()
     date_Added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.email
 
 
 class Newsletter(models.Model):

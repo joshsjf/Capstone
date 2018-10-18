@@ -15,7 +15,7 @@ def eventCreate(request):
 		if form.is_valid():
 			form.instance.author = request.user
 			form = form.save()
-			messages.success(request, "Event created.")
+			messages.success(request, "Your event has been created!")
 			return redirect(reverse('event-detail', kwargs={'pk': form.pk}))
 	else:
 		form = EventCreateView()
@@ -26,6 +26,7 @@ def eventUpdateView(request, pk):
 	form = EventUpdateForm(request.POST or None, instance=instance)
 	if form.is_valid():
 		form.save()
+		messages.success(request, "Your event has been updated!")
 		return redirect(reverse('event-detail', kwargs={'pk': pk}))
 	else:
 		e_form = EventUpdateForm(instance = EventListing.objects.get(pk=pk))

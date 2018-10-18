@@ -1,5 +1,5 @@
 from django.urls import path
-from . views import  CompanyPageView, CompanyDetailView, CompanyCreateView, CompanyDeleteView, UserCompanyPageView
+from . views import   CompanyPageView, CompanyDetailView, CompanyCreateView, CompanyDeleteView, UserCompanyPageView
 from . import views as company_views
 
 urlpatterns = [

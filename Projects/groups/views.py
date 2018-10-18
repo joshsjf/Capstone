@@ -15,7 +15,7 @@ def groupCreate(request, **kwargs):
 		if form.is_valid():
 			form.instance.author = request.user
 			comp = form.save()
-			messages.success(request, "Group profile has been created!")
+			messages.success(request, "Your group has been created!")
 			return redirect(reverse('group-detail', kwargs={'pk': comp.pk}))
 	else:
 		form = GroupCreateView()
@@ -27,6 +27,7 @@ def groupUpdateView(request, pk):
 	form = GroupUpdateForm(request.POST or None, request.FILES, instance=instance)
 	if form.is_valid():
 		form.save()
+		messages.success(request, "Your group has been updated!")
 		return redirect(reverse('group-detail', kwargs={'pk': pk}))
 	else:
 		g_form = GroupUpdateForm(instance = GroupListing.objects.get(pk=pk))

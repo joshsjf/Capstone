@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'django_cron',
     'newsletters.apps.NewslettersConfig',
+    'control_panel.apps.ControlPanelConfig',
 ]
 
 MIDDLEWARE = [

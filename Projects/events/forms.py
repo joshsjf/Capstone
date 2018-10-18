@@ -5,10 +5,10 @@ class EventCreateView(forms.ModelForm):
     terms_And_Conditions = forms.BooleanField(required=True, label = "<a href='/termsandconditions' target='_blank'>Terms and Conditions</a>")
     class Meta:
         model = EventListing
-        fields = ['event_Name', 'event_Time_dd_mm_yyyy', 'event_Location', 'event_Description', 'registration_Cost', 'event_Website']
+        fields = ['event_Name', 'event_Time_dd_mm_yyyy', 'event_Location', 'event_Description', 'registration_Cost', 'event_Website', 'terms_And_Conditions']
 
 class EventUpdateForm(forms.ModelForm):
     terms_And_Conditions = forms.BooleanField(required=True, label = "<a href='/termsandconditions' target='_blank'>Terms and Conditions</a>")
     class Meta:
         model = EventListing
-        fields = ['event_Name', 'event_Time_dd_mm_yyyy', 'event_Location', 'event_Description', 'registration_Cost', 'event_Website']
+        fields = ['event_Name', 'event_Time_dd_mm_yyyy', 'event_Location', 'event_Description', 'registration_Cost', 'event_Website', 'terms_And_Conditions']

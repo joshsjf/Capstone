@@ -8,7 +8,7 @@ from django.contrib.auth.decorators import login_required
 from companies.forms import CompanyCreateView, CompanyUpdateForm
 from django.urls import reverse
 
-
+#
 def companyCreate(request, **kwargs):
 	if request.method == 'POST':
 		form = CompanyCreateView(request.POST, request.FILES)
