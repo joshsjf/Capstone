@@ -9,6 +9,7 @@ from consultants.models import ConsultantListing
 from groups.models import GroupListing
 from events.models import EventListing
 from django.db.models import Value, CharField, Q
+from django.contrib.postgres.search import SearchQuery
 
 
 def home(request):
@@ -26,17 +27,19 @@ def home(request):
 
 def search(request):
 	template = 'sites/search.html'
-	query = request.GET.get('q')
+	queryitem = request.GET.get('q')
+	queryset = queryitem.split(' ')
+	results = []
+	for query in queryset:
+		jobs = JobListing.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('job', CharField()))
+		events = EventListing.objects.filter(Q(event_Name__icontains=query) | Q(event_Description__icontains=query)).annotate(type=Value('event', CharField()))
+		companies = CompanyListing.objects.filter(Q(company_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('company', CharField()))
+		groups = GroupListing.objects.filter(Q(group_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('group', CharField()))
+		consultants = ConsultantListing.objects.filter(Q(consultant_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('consultant', CharField()))
 
-	jobs = JobListing.objects.filter(Q(title__icontains=query) | Q(summary__icontains=query)).annotate(type=Value('job', CharField()))
-	events = EventListing.objects.filter(Q(event_Name__icontains=query) | Q(event_Description__icontains=query)).annotate(type=Value('event', CharField()))
-	companies = CompanyListing.objects.filter(Q(company_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('company', CharField()))
-	groups = GroupListing.objects.filter(Q(group_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('group', CharField()))
-	consultants = ConsultantListing.objects.filter(Q(consultant_Name__icontains=query) | Q(description__icontains=query)).annotate(type=Value('consultant', CharField()))
-
-	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
+		results.extend(list(jobs) + list(events) + list(companies) + list(groups) + list(consultants))
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
-
+	results = list(set(results))
 	context = {'data': results, 'item': query}
 
 	return render(request, template, context)
