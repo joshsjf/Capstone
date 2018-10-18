@@ -99,8 +99,6 @@ def newsletter_signup(request):
 			subject = "Thank you for Joining Our Newsletter"
 			from_email = settings.EMAIL_HOST_USER
 			to_email = [instance.email]
-			with open(settings.BASE_DIR + "/newsletters/templates/newsletters/signup_email.txt") as f:
-				signup_message = f.read()
 			message = EmailMultiAlternatives(subject=subject, from_email=from_email, to=to_email)
 			html_template = get_template("newsletters/signup_email.html").render()
 			message.attach_alternative(html_template, "text/html")
