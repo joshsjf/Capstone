@@ -1,105 +1,130 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
-<h4 class="border-bottom mb-3">Search Results for: {{ item }} </h4>
-  {% for item in data %}
-    {% if item.type == 'job' %}
-      {% if item.is_Expired == False %}
-      <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-jobs' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
+  {% if len > 0 %}
+    <h4> {{len}} result(s) found for <b>{{item}}</b> </h4>
+    {% for item in data %}
+      {% if item.type == 'job' and item.is_Expired == False %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-jobs' item.author.username %}">{{ item.author }}</a>
+              <small class="text-muted">Job - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'job-detail' item.id %}">{{ item.title }}</a></h2>
+            <p class="article-content">Category: {{ item.category }}</p>
+            <p class="article-content">Location: {{ item.location }}</p>
+            <p class="article-content">Payrate ${{ item.pay_Rate }}</p>
+            <p class="article-content">Reference #{{ item.reference_Number }}</p>
+            <p class="article-content">Summary<br/>{{ item.summary }}</p>
+            <p class="article-content">Description<br/>{{ item.description }}</p>
+            <p class="article-content">Phone: {{ item.phone_Number }}</p>
+            <p class="article-content">Company: {{ item.company }}</p>
+            <p class="article-content">Instructions: {{ item.instructions }}</p>
           </div>
-          <h2><a class="article-title" href="{% url 'job-detail' item.id %}">{{ item.title }}</a></h2>
-          <p class="article-content">Category: {{ item.category }}</p>
-          <p class="article-content">Location: {{ item.location }}</p>
-          <p class="article-content">Payrate ${{ item.pay_Rate }}</p>
-          <p class="article-content">Reference #{{ item.reference_Number }}</p>
-          <p class="article-content">Summary<br/>{{ item.summary }}</p>
-          <p class="article-content">Description<br/>{{ item.description }}</p>
-          <p class="article-content">Phone: {{ item.phone_Number }}</p>
-          <p class="article-content">Company: {{ item.company }}</p>
-          <p class="article-content">Instructions: {{ item.instructions }}</p>
-        </div>
-      </article>
+        </article>
+      {% elif item.type == 'company' and item.is_Expired == False %}
+          <article class="media content-section">
+            <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+            <div class="media-body">
+              <div class="article-metadata">
+                <a class="mr-2" href="{% url 'user-company' item.author.username %}">{{ item.author }}</a>
+                <small class="text-muted">Company - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
+              </div>
+              <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
+              <img class="rounded-circle account-img" src="{{ item.image.url }}">
+              <p class="article-content">Web Site: {{ item.website }}</p>
+              <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
+              <p class="article-content">Industry: {{ item.industry }}</p>
+              <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
+              <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
+              <p class="article-content">Description: {{ item.description }}</p>
+
+              <br>
+              <h5> Contact:</h5>
+              <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
+              <p class="article-content">Company Email: {{ item.email }}</p>
+              <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
+            </div>
+          </article>
+      {% elif item.type == 'group' and item.is_Expired == False %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-group' item.author.username %}">{{ item.author }}</a>
+              <small class="text-muted">Group - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'group-detail' item.id %}">{{ item.group_Name }}</a></h2>
+            <img class="rounded-circle account-img" src="{{ item.image.url }}">
+            <p class="article-content">Description: {{ item.description }}</p>
+            <p class="article-content">Date: {{ item.date }}</p>
+            <p class="article-content">Location: {{ item.location }}</p>
+
+          </div>
+        </article>
+      {% elif item.type == 'event' and item.is_Expired == False %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-event' item.author.username %}">{{ item.author }}</a>
+              <small class="text-muted">Event - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'event-detail' item.id %}">{{ item.event_Name }}</a></h2>
+            <p class="article-content">Event Name: {{ item.event_Name }}</p>
+            <p class="article-content">Time: {{ item.event_When }}</p>
+            <p class="article-content">Location: {{ item.event_Location }}</p>
+            <p class="article-content">Registration Cost: ${{ item.registration_Cost }}</p>
+            <p class="article-content">Website: {{ item.event_Website }}</p>
+            <p class="article-content">Description: {{ item.event_Description }}</p>
+          </div>
+        </article>
+      {% elif item.type == 'consultant' and item.is_Expired == False %}
+        <article class="media content-section">
+          <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
+          <div class="media-body">
+            <div class="article-metadata">
+              <a class="mr-2" href="{% url 'user-consultant' item.author.username %}">{{ item.author }}</a>
+              <small class="text-muted">Consultant - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
+            </div>
+            <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
+            <img class="rounded-circle account-img" src="{{ item.image.url }}">
+            <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
+            <p class="article-content">Description: {{ item.description }}</p>
+
+            <p class="article-content">Email: {{ item.email }}</p>
+            <p class="article-content">Contact Number: {{ item.phone_Number }}</p>
+            <p class="article-content">Website: {{ item.website }}</p>
+          </div>
+          </article>
       {% endif %}
-    {% elif item.type == 'company' %}
-      <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-company' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
-          </div>
-          <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
-          <img class="rounded-circle account-img" src="{{ item.image.url }}">
-          <p class="article-content">Web Site: {{ item.website }}</p>
-          <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
-          <p class="article-content">Industry: {{ item.industry }}</p>
-          <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
-          <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
-          <p class="article-content">Description: {{ item.description }}</p>
+    {% endfor %}
+  {% else %}
+    <h4> No results found for <b> {{item}}</b></4>
+  {% endif %}
 
-          <br>
-          <h5> Contact:</h5>
-          <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
-          <p class="article-content">Company Email: {{ item.email }}</p>
-          <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
-        </div>
-      </article>
-  {% elif item.type == 'group' %}
-      <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-group' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
-          </div>
-          <h2><a class="article-title" href="{% url 'group-detail' item.id %}">{{ item.group_Name }}</a></h2>
-          <img class="rounded-circle account-img" src="{{ item.image.url }}">
-          <p class="article-content">Description: {{ item.description }}</p>
-          <p class="article-content">Date: {{ item.date }}</p>
-          <p class="article-content">Location: {{ item.location }}</p>
 
-        </div>
-      </article>
-  {% elif item.type == 'event' %}
-      <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-        <div class="media-body">
-          <div class="article-metadata">
-            <a class="mr-2" href="{% url 'user-event' item.author.username %}">{{ item.author }}</a>
-            <small class="text-muted">{{ item.date_posted|date:"F d, Y" }}</small>
-          </div>
-          <h2><a class="article-title" href="{% url 'event-detail' item.id %}">{{ item.event_Name }}</a></h2>
-          <p class="article-content">Time: {{ item.event_When }}</p>
-          <p class="article-content">Location: {{ item.event_Location }}</p>
-          <p class="article-content">Registration Cost: {{ item.registration_Cost }}</p>
-          <p class="article-content">Website: {{ item.event_Website }}</p>
-          <p class="article-content">Description: {{ item.event_Description }}</p>
-        </div>
-      </article>
-  {% elif item.type == 'consultant' %}
-  <article class="media content-section">
-    <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
-    <div class="media-body">
-      <div class="article-metadata">
-        <a class="mr-2" href="{% url 'user-consultant' item.author.username %}">{{ item.author }}</a>
-        <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
-      </div>
-      <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
-      <img class="rounded-circle account-img" src="{{ item.image.url }}">
-      <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
-      <p class="article-content">Description: {{ item.description }}</p>
+  {% if is_paginated %}
 
-      <p class="article-content">Email: {{ item.email }}</p>
-      <p class="article-content">Contact Number: {{ item.phone_Number }}</p>
-      <p class="article-content">Website: {{ item.website }}</p>
-    </div>
-  </article>
+    {% if page_obj.has_previous %}
+      <a class="btn btn-outline-info mb-4" href="?page=1"> First </a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}"> Previous </a>
     {% endif %}
-  {% endfor %}
+
+    {% for num in page_obj.paginator.page_range %}
+      {% if page_obj.number == num %}
+        <a class="btn btn-info mb-4" href="?page={{ num }}"> {{ num }} </a>
+      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ num }}"> {{ num }} </a>
+      {% endif %}
+    {% endfor %}
+    {% if page_obj.has_next %}
+      <a class="btn btn-outline-info mb-4" href="?page={{page_obj.next_page_number}}"> Next </a>
+      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}"> Last </a>
+    {% endif %}
+
+  {% endif %}
 
 {% endblock %}
