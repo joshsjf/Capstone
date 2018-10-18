@@ -37,9 +37,8 @@ def control_newsletter(request):
 			body = newsletter.body
 			from_email = settings.EMAIL_HOST_USER
 			html_message = render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results})
-			plain_message = strip_tags(html_message)
 			for newsletteruser in newsletter.email.all():
-				send_mail(message=body, subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], html_message=html_message, fail_silently=True)
+				send_mail(html_message=html_message, subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], message=body, fail_silently=True)
 			messages.success(request, 'The newsletter has been created', 'alert alert-success alert-dismissable')
 			return redirect('control_newsletter_detail', pk=newsletter.pk)
 
@@ -52,6 +51,15 @@ def control_newsletter(request):
 
 # Edit a Newsletter
 def control_newsletter_edit(request, pk):
+	jobs = JobListing.objects.all().order_by('-date_posted').annotate(type=Value('job', CharField()))
+	companies = CompanyListing.objects.all().order_by('-date_posted').annotate(type=Value('company', CharField()))
+	events = EventListing.objects.all().order_by('-date_posted').annotate(type=Value('event', CharField()))
+	groups = GroupListing.objects.all().order_by('-date_posted').annotate(type=Value('group', CharField()))
+	consultants = ConsultantListing.objects.all().order_by('-date_posted').annotate(type=Value('consultant', CharField()))
+
+	results = list(jobs) + list(events) + list(companies) + list(groups) + list(consultants)
+	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
+
 	newsletter = get_object_or_404(Newsletter, pk=pk)
 
 	if request.method == "POST":
@@ -62,8 +70,9 @@ def control_newsletter_edit(request, pk):
 				subject = newsletter.subject
 				body = newsletter.body
 				from_email = settings.EMAIL_HOST_USER
+				html_message = render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results})
 				for newsletteruser in newsletter.email.all():
-					send_mail(subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], message=body, fail_silently=True)
+					send_mail(html_message=html_message, subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], message=body, fail_silently=True)
 				messages.success(request, 'The newsletter has been updated', 'alert alert-success alert-dismissable')
 			return redirect('control_newsletter_detail', pk=newsletter.pk)
 	else:
@@ -75,32 +84,6 @@ def control_newsletter_edit(request, pk):
 
 	template = 'control_panel/control_newsletter.html'
 	return render(request, template, context)
-
-
-# def control_newsletter_edit(request, pk):
-#     newsletter = get_object_or_404(Newsletter, pk=pk)
-#
-#     if request.method == "POST":
-#         form = NewsletterCreationForm(request.POST, instance=newsletter)
-#         if form.is_valid():
-#             newsletter = form.save()
-#             if newsletter.status == 'Published':
-#                 subject = newsletter.subject
-#                 body = newsletter.body
-#                 from_email = settings.EMAIL_HOST_USER
-#                 for newsletteruser in newsletter.email.all():
-#                     send_mail(subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], message=body, fail_silently=True)
-#                 messages.success(request, 'The newsletter has been updated', 'alert alert-success alert-dismissable')
-#             return redirect('control_newsletter_detail', pk=newsletter.pk)
-#     else:
-#         form = NewsletterCreationForm(instance=newsletter)
-#
-#     context = {
-#         "form": form,
-#     }
-#
-#     template = 'control_panel/control_newsletter.html'
-#     return render(request, template, context)
 
 
 # Newsletter Sign Up
@@ -154,10 +137,9 @@ def newsletter_unsubscribe(request):
 
 # Display ALL Newsletters
 def control_newsletter_list(request):
-	newsletters = Newsletter.objects.all()
+	newsletters = Newsletter.objects.all().order_by('-created')
 	paginator = Paginator(newsletters, 5)
 	page = (request.GET.get('page'))
-
 	try:
 		items = paginator.page(page)
 	except PageNotAnInteger:
@@ -197,6 +179,7 @@ def control_newsletter_delete(request, pk):
 		form = NewsletterCreationForm(request.POST, instance=newsletter)
 		if form.is_valid():
 			newsletter.delete()
+			messages.success(request, 'The newsletter has been deleted!', 'alert alert-success alert-dismissable')
 			return redirect('control_newsletter_list')
 
 	else:

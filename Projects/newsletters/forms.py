@@ -6,6 +6,7 @@ class NewsletterUserSignUpForm(forms.ModelForm):
 
     class Meta:
         model = NewsletterUser
+        ordering = ['-id']
         fields = ['email']
 
         def clean_email(self):
@@ -16,4 +17,5 @@ class NewsletterCreationForm(forms.ModelForm):
 
     class Meta:
         model = Newsletter
+        ordering = ['-id']
         fields = ['subject', 'body', 'email', 'status']

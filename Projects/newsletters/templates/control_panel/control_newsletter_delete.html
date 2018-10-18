@@ -5,6 +5,7 @@
   <form method="POST"> {% csrf_token %}
       {{ form|crispy }}
    <button class="btn btn-danger" type="submit">Delete</button>
+   <a class="btn btn-outline-secondary" href="{% url 'control_newsletter_list' %}"> Cancel </a>
   </form>
 
 {% endblock %}
