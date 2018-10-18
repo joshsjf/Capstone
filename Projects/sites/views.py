@@ -40,7 +40,7 @@ def search(request):
 		results.extend(list(jobs) + list(events) + list(companies) + list(groups) + list(consultants))
 	results = sorted(results, key=lambda obj: obj.date_posted, reverse=True)
 	results = list(set(results))
-	context = {'data': results, 'item': query}
+	context = {'data': results, 'item': query, 'len': len(results)}
 
 	return render(request, template, context)
 
