@@ -23,7 +23,7 @@ def companyCreate(request, **kwargs):
 
 def companyUpdateView(request, pk):
 	instance = get_object_or_404(CompanyListing, id=pk)
-	form = CompanyUpdateForm(request.POST or None, request.FILES, instance=instance)
+	form = CompanyUpdateForm(request.POST, request.FILES, instance=instance)
 	if form.is_valid():
 		form.save()
 		messages.success(request, "Your company has been updated!")
