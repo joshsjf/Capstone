@@ -39,6 +39,10 @@ class CompanyPageView(ListView):
 	context_object_name = 'data'
 	ordering = ['-date_posted']
 
+class CompanyMapView(ListView):
+	model = CompanyListing
+	template_name = 'companies/companiesmap.html'
+	context_object_name = 'data'
 
 class UserCompanyPageView(ListView):
 	model = CompanyListing
