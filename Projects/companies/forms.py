@@ -13,7 +13,7 @@ class CompanyCreateView(forms.ModelForm):
                                   initial=False, widget=forms.Select(), required=True)
     class Meta:
         model = CompanyListing
-        fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
+        fields = ['company_Name', 'lat', 'lon', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
     				'industry', 'specialist_Area', 'type_Of_Business', 'description', 'takes_On_Summer_Students', 'terms_And_Conditions']
 
 class CompanyUpdateForm(forms.ModelForm):
@@ -28,5 +28,5 @@ class CompanyUpdateForm(forms.ModelForm):
                                   initial='', widget=forms.Select(), required=True)
     class Meta:
         model = CompanyListing
-        fields = ['company_Name', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
+        fields = ['company_Name', 'lat', 'lon', 'image', 'contact_Name', 'email', 'phone_Number', 'website', 'number_Of_Employees',
     				'industry', 'specialist_Area', 'type_Of_Business', 'description', 'takes_On_Summer_Students', 'terms_And_Conditions']
