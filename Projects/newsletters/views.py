@@ -1,10 +1,12 @@
 from django.conf import settings
 from django.contrib import messages
 from django.shortcuts import render, get_object_or_404, redirect
-from django.core.mail import send_mail, EmailMultiAlternatives
+from django.core.mail import send_mail, EmailMultiAlternatives, EmailMessage
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.template.loader import get_template, render_to_string
 from django.utils.html import strip_tags
+
+from email.mime.image import MIMEImage
 
 from jobs.models import JobListing
 from companies.models import CompanyListing
@@ -33,19 +35,19 @@ def control_newsletter(request):
 		instance = form.save()
 		newsletter = Newsletter.objects.get(id=instance.id)
 		if newsletter.status == "Published":
-			subject = newsletter.subject
-			body = newsletter.body
-			from_email = settings.EMAIL_HOST_USER
-			html_message = render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results})
+			subject, from_email, body = newsletter.subject, settings.EMAIL_HOST_USER, newsletter.body
 			for newsletteruser in newsletter.email.all():
-				send_mail(html_message=html_message, subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], message=body, fail_silently=True)
-			messages.success(request, 'The newsletter has been created', 'alert alert-success alert-dismissable')
+				mail = EmailMultiAlternatives(subject=subject,to=[newsletteruser.email], from_email=from_email)
+				mail.attach_alternative(render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results}), "text/html")
+				mail.send()
+			messages.success(request, 'The newsletter has been created and sent!', 'alert alert-success alert-dismissable')
 			return redirect('control_newsletter_detail', pk=newsletter.pk)
-
+		elif newsletter.status == "Draft":
+			messages.success(request, 'The newsletter draft has been saved!', 'alert alert-success alert-dismissable')
+			return redirect('control_newsletter_detail', pk=newsletter.pk)
 	context = {
 		"form": form,
 	}
-
 	template = 'control_panel/control_newsletter.html'
 	return render(request, template, context)
 
@@ -67,14 +69,16 @@ def control_newsletter_edit(request, pk):
 		if form.is_valid():
 			newsletter = form.save()
 			if newsletter.status == 'Published':
-				subject = newsletter.subject
-				body = newsletter.body
-				from_email = settings.EMAIL_HOST_USER
-				html_message = render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results})
+				subject, from_email, body = newsletter.subject, settings.EMAIL_HOST_USER, newsletter.body
 				for newsletteruser in newsletter.email.all():
-					send_mail(html_message=html_message, subject=subject, from_email=from_email, recipient_list=[newsletteruser.email], message=body, fail_silently=True)
-				messages.success(request, 'The newsletter has been updated', 'alert alert-success alert-dismissable')
-			return redirect('control_newsletter_detail', pk=newsletter.pk)
+					mail = EmailMultiAlternatives(subject=subject,to=[newsletteruser.email], from_email=from_email)
+					mail.attach_alternative(render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results}), "text/html")
+					mail.send()
+				messages.success(request, 'The newsletter has been updated and sent!', 'alert alert-success alert-dismissable')
+				return redirect('control_newsletter_detail', pk=newsletter.pk)
+			elif newsletter.status == "Draft":
+				messages.success(request, 'The newsletter draft has been saved!', 'alert alert-success alert-dismissable')
+				return redirect('control_newsletter_detail', pk=newsletter.pk)
 	else:
 		form = NewsletterCreationForm(instance=newsletter)
 
@@ -126,7 +130,7 @@ def newsletter_unsubscribe(request):
 			message.attach_alternative(html_template, "text/html")
 			message.send()
 		else:
-			messages.warning(request, 'Your email is not curently subsrcibed', 'alert alert-warning alert-dismissable')
+			messages.warning(request, 'Your email is not curently subsrcibed!', 'alert alert-warning alert-dismissable')
 	context = {
 		'u_form': u_form,
 	}
