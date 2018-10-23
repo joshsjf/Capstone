@@ -18,11 +18,9 @@ src="https://www.google.com/maps/embed/v1/place?key=AIzaSyCdQ222tU8oGgQZc-lfwm-o
 
   <script type="text/javascript">
     var locations = [
-      ['Advantage Computers Ltd - 46 Grey St', -40.352304, 175.610519],
-      ['The Plaza', -40.356413, 175.613955],
-      ['The Warehouse', -40.361369, 175.601692],
-      ['Supercheap Auto', -40.350973, 175.608619],
-      ['Palmerston North Hospital', -40.338849, 175.620376]
+      {% for item in data %}
+        ["{{item.company_Name}}", "{{item.lat}}", "{{item.lon}}"],
+      {% endfor %}
     ];
 
     var map = new google.maps.Map(document.getElementById('map'), {
