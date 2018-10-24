@@ -22,8 +22,9 @@
           <p class="article-content">Number of Employees: {{ company.number_Of_Employees }}</p>
           <p class="article-content">Industry: {{ company.industry }}</p>
           <p class="article-content">Specialist Area: {{ company.specialist_Area }}</p>
-          <p class="article-content">Type of Business: {{ company.type_Of_Business }}</p>
-          <p class="article-content ">Taking on Summer Students: {{ company.takes_On_Summer_Students }}</p>
+            {% if company.takes_On_Summer_Students == Yes %}
+             <p class="article-content "><b>We take summer students</b></p>
+            {% endif %}
           <p class="article-content">Description: {{ company.description }}</p>
 
           <br>
