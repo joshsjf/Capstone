@@ -23,7 +23,7 @@
       <p class="article-content">Number of Employees: {{ object.number_Of_Employees }}</p>
       <p class="article-content">Industry: {{ object.industry }}</p>
       <p class="article-content">Specialist Area: {{ object.specialist_Area }}</p>
-      {% if company.takes_On_Summer_Students == Yes %}
+      {% if object.takes_On_Summer_Students == True %}
        <p class="article-content "><b>We take summer students</b></p>
       {% endif %}
       <p class="article-content">Description: {{ object.description }}</p>
