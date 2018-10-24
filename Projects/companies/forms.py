@@ -2,15 +2,19 @@ from django import forms
 from .models import CompanyListing
 
 class CompanyCreateView(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CompanyCreateView, self).__init__(*args, **kwargs)
+        self.fields['lat'].required = False
+        self.fields['lon'].required = False
+
+
     terms_And_Conditions = forms.BooleanField(required=True, label = "<a href='/termsandconditions' target='_blank'>Terms and Conditions</a>")
 
     TRUE_FALSE_CHOICES = (
         (True, 'Yes'),
         (False, 'No')
     )
-
-    lat = forms.FloatField(initial = -40.357048, required=False)
-    lon = forms.FloatField(initial = 175.612380, required=False)
 
     takes_On_Summer_Students = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Do you take on Summer Students?",
                                   initial=False, widget=forms.Select(), required=True)
@@ -28,9 +32,6 @@ class CompanyUpdateForm(forms.ModelForm):
         (True, 'Yes'),
         (False, 'No')
     )
-
-    lat = forms.FloatField(initial = -40.357048, required=False)
-    lon = forms.FloatField(initial = 175.612380, required=False)
 
     takes_On_Summer_Students = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Do you take on Summer Students?",
                                   initial='', widget=forms.Select(), required=True)
