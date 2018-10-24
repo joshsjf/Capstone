@@ -11,18 +11,18 @@
        <div class="media-body">
          <div class="article-metadata">
            <a class="mr-2" href="{% url 'user-jobs' job.author.username %}">{{ job.author }}</a>
-           <small class="text-muted">Listed: {{ job.date_posted|date:"F d, Y" }}</small>
+           <small class="text-muted"><b>Listed:</b> {{ job.date_posted|date:"F d, Y" }}</small>
          </div>
          <h2><a class="article-title" href="{% url 'job-detail' job.id %}">{{ job.title }}</a></h2>
-         <p class="article-content">Category: {{ job.category }}</p>
+         <p class="article-content"><b>Category:</b> {{ job.category }}</p>
 
-         <p class="article-content">Location: {{ job.location }}</p>
-         <p class="article-content">Pay Rate: ${{ job.pay_Rate }}</p>
-         <p class="article-content">Reference Number: {{ job.reference_Number }}</p>
-         <p class="article-content">Summary:<br/>{{ job.summary }}</p>
-         <p class="article-content">Description:<br/>{{ job.description }}</p>
-         <p class="article-content">Phone Number: {{ job.phone_Number }}</p>
-         <p class="article-content">Company: {{ job.company }}</p>
+         <p class="article-content"><b>Location:</b> {{ job.location }}</p>
+         <p class="article-content"><b>Pay Rate:</b> ${{ job.pay_Rate }}</p>
+         <p class="article-content"><b>Reference Number:</b> {{ job.reference_Number }}</p>
+         <p class="article-content"><b>Summary:</b> <br/>{{ job.summary }}</p>
+         <p class="article-content"><b>Description:</b> <br/>{{ job.description }}</p>
+         <p class="article-content"><b>Phone Number:</b> {{ job.phone_Number }}</p>
+         <p class="article-content"><b>Company:</b> {{ job.company }}</p>
        </div>
      </article>
    </div>
