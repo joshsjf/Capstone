@@ -32,11 +32,7 @@
               <small class="text-muted">Company - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
-<<<<<<< HEAD
             <img class="listing-img" src="{{ item.image.url }}">
-=======
-            <img class="account-img" src="{{ item.image.url }}">
->>>>>>> b1720127c16140126d7157887bb2e0c14850e595
             <p class="article-content">Web Site: {{ item.website }}</p>
             <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
             <p class="article-content">Industry: {{ item.industry }}</p>
@@ -60,11 +56,7 @@
             <small class="text-muted">Group - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'group-detail' item.id %}">{{ item.group_Name }}</a></h2>
-<<<<<<< HEAD
           <img class="listing-img" src="{{ item.image.url }}">
-=======
-          <img class="account-img" src="{{ item.image.url }}">
->>>>>>> b1720127c16140126d7157887bb2e0c14850e595
           <p class="article-content">Description: {{ item.description }}</p>
           <p class="article-content">Location: {{ item.location }}</p>
 
@@ -96,11 +88,8 @@
             <small class="text-muted">Consultant - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
-<<<<<<< HEAD
           <img class="listing-img" src="{{ item.image.url }}">
-=======
           <img class="account-img" src="{{ item.image.url }}">
->>>>>>> b1720127c16140126d7157887bb2e0c14850e595
           <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
           <p class="article-content">Description: {{ item.description }}</p>
 
