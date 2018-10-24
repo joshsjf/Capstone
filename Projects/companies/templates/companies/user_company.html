@@ -17,6 +17,7 @@
             {% endif %}
           </div>
           <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.company_Name }}</a></h2>
+          <img class="listing-img" src="{{ company.image.url }}">
           <p class="article-content">Web Site: {{ company.website }}</p>
           <p class="article-content">Number of Employees: {{ company.number_Of_Employees }}</p>
           <p class="article-content">Industry: {{ company.industry }}</p>

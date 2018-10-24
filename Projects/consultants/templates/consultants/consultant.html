@@ -14,7 +14,7 @@
            <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
          </div>
          <h2><a class="article-title" href="{% url 'consultant-detail' consultant.id %}">{{ consultant.consultant_Name }}</a></h2>
-         <img class="account-img" src="{{ consultant.image.url }}">
+         <img class="listing-img"src="{{ consultant.image.url }}">
          <p class="article-content">Specialist Area: {{ consultant.specialist_Area }}</p>
          <p class="article-content">Description: {{ consultant.description }}</p>
 

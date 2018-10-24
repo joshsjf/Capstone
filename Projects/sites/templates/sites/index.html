@@ -32,7 +32,7 @@
               <small class="text-muted">Company - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
             </div>
             <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
-            <img class="rounded-circle account-img" src="{{ item.image.url }}">
+            <img class="listing-img" src="{{ item.image.url }}">
             <p class="article-content">Web Site: {{ item.website }}</p>
             <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
             <p class="article-content">Industry: {{ item.industry }}</p>
@@ -56,9 +56,8 @@
             <small class="text-muted">Group - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'group-detail' item.id %}">{{ item.group_Name }}</a></h2>
-          <img class="rounded-circle account-img" src="{{ item.image.url }}">
+          <img class="listing-img" src="{{ item.image.url }}">
           <p class="article-content">Description: {{ item.description }}</p>
-          <!-- <p class="article-content">Date: {{ item.date }}</p> -->
           <p class="article-content">Location: {{ item.location }}</p>
 
         </div>
@@ -89,7 +88,7 @@
             <small class="text-muted">Consultant - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
-          <img class="rounded-circle account-img" src="{{ item.image.url }}">
+          <img class="listing-img" src="{{ item.image.url }}">
           <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
           <p class="article-content">Description: {{ item.description }}</p>
 

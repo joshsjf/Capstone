@@ -17,7 +17,7 @@
             {% endif %}
           </div>
           <h2><a class="article-title" href="{% url 'group-detail' group.id %}">{{ group.group_Name }}</a></h2>
-          <img class="account-img" src="{{ group.image.url }}">
+          <img class="listing-img" src="{{ group.image.url }}">
           <p class="article-content">Description: {{ group.description }}</p>
         </div>
       </article>
