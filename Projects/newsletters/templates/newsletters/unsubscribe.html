@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-lg-6 col-lg-offset-3">
-            <h3 class="text-center">Unsubscribe for Newsletter</h3>
+            <h3 class="text-center">Unsubscribe from Newsletter</h3>
             <br>
             <form method="POST"> {% csrf_token %}
                 <div class="input-group">
@@ -18,5 +18,5 @@
     </div>
 </div>
 <br>
-<a  href="{% url 'signup' %}">Sign up to Newsletters</a>
+<a  href="{% url 'signup' %}">Subscribe to Newsletters</a>
 {% endblock %}
