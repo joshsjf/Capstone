@@ -26,7 +26,7 @@ def contactUs(request):
 		instance = c_form.save()
 		contact = ContactUs.objects.get(id=instance.id)
 		subject = instance.subject
-		mail = EmailMultiAlternatives(to=[settings.EMAIL_HOST_USER])
+		mail = EmailMultiAlternatives(to=[settings.EMAIL_HOST_USER], subject=subject)
 		mail.attach_alternative(render_to_string("sites/contact_message.html", {'all_items_feed': contact}), "text/html")
 		mail.send()
 		messages.success(request, 'The message has been sent, thanks!', 'alert alert-success alert-dismissable')
