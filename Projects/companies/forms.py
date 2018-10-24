@@ -26,6 +26,12 @@ class CompanyCreateView(forms.ModelForm):
 # 'type_Of_Business'
 
 class CompanyUpdateForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CompanyCreateView, self).__init__(*args, **kwargs)
+        self.fields['lat'].required = False
+        self.fields['lon'].required = False
+
     terms_And_Conditions = forms.BooleanField(required=True, label = "<a href='/termsandconditions' target='_blank'>Terms and Conditions</a>")
 
     TRUE_FALSE_CHOICES = (
