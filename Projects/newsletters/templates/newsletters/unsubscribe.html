@@ -1,11 +1,13 @@
 {% extends "sites/base.html" %}
 
 {% block content %}
+
 <div class="container">
     <div class="row">
-        <div class="col-lg-6 col-lg-offset-3">
-            <h3 class="text-center">Unsubscribe from Newsletter</h3>
+        <div class="col-lg-10 col-lg-offset-3">
+            <h3>Unsubscribe from Newsletter</h3>
             <br>
+
             <form method="POST"> {% csrf_token %}
                 <div class="input-group">
                     {{ u_form }}
@@ -14,9 +16,11 @@
                     </span>
                 </div>
             </form>
+
+            <br>
+            <a  href="{% url 'signup' %}">Subscribe to Newsletters</a>
         </div>
     </div>
 </div>
-<br>
-<a  href="{% url 'signup' %}">Subscribe to Newsletters</a>
+
 {% endblock %}

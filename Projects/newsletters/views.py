@@ -33,18 +33,6 @@ def control_newsletter(request):
 	form = NewsletterCreationForm(request.POST or None)
 	if form.is_valid():
 		instance = form.save()
-		newsletter = Newsletter.objects.get(id=instance.id)
-		if newsletter.status == "Send":
-			subject, from_email, body = newsletter.subject, settings.EMAIL_HOST_USER, newsletter.body
-			for newsletteruser in newsletter.email.all():
-				mail = EmailMultiAlternatives(subject=subject,to=[newsletteruser.email], from_email=from_email)
-				mail.attach_alternative(render_to_string('newsletters/newsletter_template.html', {'all_items_feed': results}), "text/html")
-				mail.send()
-			messages.success(request, 'The newsletter has been created and sent!', 'alert alert-success alert-dismissable')
-			return redirect('control_newsletter_list')
-		elif newsletter.status == "Draft":
-			messages.success(request, 'The newsletter draft has been saved!', 'alert alert-success alert-dismissable')
-			return redirect('control_newsletter_list')
 	context = {
 		"form": form,
 	}
