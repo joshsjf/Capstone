@@ -107,6 +107,7 @@ def newsletter_signup(request):
 			html_template = get_template("newsletters/signup_email.html").render()
 			message.attach_alternative(html_template, "text/html")
 			message.send()
+			return redirect('sites-home')
 
 	context = {
 		's_form': s_form,
@@ -129,6 +130,7 @@ def newsletter_unsubscribe(request):
 			html_template = get_template("newsletters/unsubscribe_email.html").render()
 			message.attach_alternative(html_template, "text/html")
 			message.send()
+			return redirect('sites-home')
 		else:
 			messages.warning(request, 'Your email is not curently subsrcibed!', 'alert alert-warning alert-dismissable')
 	context = {
