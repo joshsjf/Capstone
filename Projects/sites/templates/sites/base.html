@@ -19,9 +19,6 @@
     <div class="wrapper"  >
     <header class="site-header fixed-top pb-10">
       <nav class="navbar bg-success navbar-expand-md navbar-dark bg-steel">
-
-          <!--  style="background-color:lavenderblush; -->
-
         <div class="container ">
           <a class="navbar-brand nav-link mr-4" href="{% url 'sites-home' %}">Tech Palmy</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,14 +27,13 @@
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="navbar-nav  mr-auto">
               <a class="nav-item nav-link" href="{% url 'sites-home' %}"><i class="fas fa-home"></i> Home</a>
-              <!-- <a class="nav-item nav-link" href="{% url 'companies-home' %}">Companies</a> -->
-              <div class="dropdown show ">
+              <div class="dropdown show">
                 <a class="btn bg-success text-white dropdown-toggle active" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="fas fa-briefcase"></i> Companies
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                   <a class="dropdown-item" href="{% url 'companies-home' %}"><i class="fas fa-briefcase"></i> Companies Page</a>
-                  <a class="dropdown-item" href="{% url 'companies-map' %}"><i class="fas fa-map-marker-alt"></i> Companies Map</a>
+                  <a class="dropdown-item" href="{% url 'companies-map' %}"><i class="fas fa-map-marked-alt"></i> Companies Map</a>
                 </div>
               </div>
               <a class="nav-item nav-link" href="{% url 'consultants-home' %}"><i class="fas fa-user-tie"></i></i> Consultants</a>

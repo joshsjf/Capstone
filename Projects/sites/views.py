@@ -11,6 +11,32 @@ from events.models import EventListing
 from django.db.models import Value, CharField, Q
 from django.contrib.postgres.search import SearchQuery
 
+from django.template.loader import get_template, render_to_string
+from django.shortcuts import render, get_object_or_404, redirect
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail, EmailMultiAlternatives, EmailMessage
+
+from .models import ContactUs
+from .forms import ContactUsForm
+
+def contactUs(request):
+	c_form = ContactUsForm(request.POST or None)
+	if c_form.is_valid():
+		instance = c_form.save()
+		contact = ContactUs.objects.get(id=instance.id)
+		subject = instance.subject
+		mail = EmailMultiAlternatives(to=[settings.EMAIL_HOST_USER])
+		mail.attach_alternative(render_to_string("sites/contact_message.html", {'all_items_feed': contact}), "text/html")
+		mail.send()
+		messages.success(request, 'The message has been sent, thanks!', 'alert alert-success alert-dismissable')
+		return redirect('sites-home')
+	context = {
+		"c_form": c_form,
+	}
+	template = 'sites/contact.html'
+	return render(request, template, {'c_form': c_form})
+
 
 def home(request):
 	jobs = JobListing.objects.all().order_by('-date_posted').annotate(type=Value('job', CharField()))
@@ -45,6 +71,16 @@ def search(request):
 	return render(request, template, context)
 
 
+class AboutPageView(TemplateView):
+	template_name = "sites/about.html"
+
+class ContactPageView(TemplateView):
+	template_name = "sites/contact.html"
+
+class TermsAndCondition(TemplateView):
+	template_name = "sites/termsandconditions.html"
+
+
 # class IndexView(ListView):
 # 	template_name = 'sites/index.html'
 # 	model = JobListing
@@ -59,13 +95,3 @@ def search(request):
 #
 # 	def get_queryset(self):
 # 		return JobListing.objects.order_by('-date_posted')
-
-
-class AboutPageView(TemplateView):
-	template_name = "sites/about.html"
-
-class ContactPageView(TemplateView):
-	template_name = "sites/contact.html"
-
-class TermsAndCondition(TemplateView):
-	template_name = "sites/termsandconditions.html"

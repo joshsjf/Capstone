@@ -12,7 +12,7 @@ class NewsletterUser(models.Model):
 class Newsletter(models.Model):
     EMAIL_STATUS_CHOICES = (
         ('Draft', 'Draft'),
-        ('Published', 'Published')
+        ('Send', 'Send')
     )
     subject = models.CharField(max_length=250)
     body = models.TextField()

@@ -1,35 +1,26 @@
 {% extends "sites/base.html" %}
+{% load crispy_forms_tags %}
 {% block content %}
 
  <!-- Container (Contact Section) -->
-<div id="contact" class="container">
-  <h1>Contact Us</h1>
-  <p><em>We love tech, do you? share your thoughts</em></p>
 
-  <div class="row">
-    <div class="col-md-3">
-      <p>Fan? Drop a note.</p>
-      <p><span class="glyphicon glyphicon-map-marker"></span>NZ palmerston North</p>
-      <p><span class="glyphicon glyphicon-phone"></span>Phone: 06 123456789</p>
-      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
-    </div>
-    <div class="col-md-9">
-      <div class="row">
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="name" name="name" placeholder="Name" type="text" required>
-        </div>
-        <div class="col-sm-6 form-group">
-          <input class="form-control" id="email" name="email" placeholder="Email" type="email" required>
-        </div>
+ <div class="content-section">
+    <form method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      <fieldset class="form-group">
+             <legend class="border-bottom mb-4"> Contact Us </legend>
+        {{ c_form|crispy }}
+      </fieldset>
+      <div class="form=group">
+        <button class="btn btn-outline-info" type="submit"> Send </button>
       </div>
-      <textarea class="form-control" id="comments" name="comments" placeholder="Comment" rows="5"></textarea>
-      <br>
-      <div class="row">
-        <div class="col-md-12 form-group">
-          <button class="btn pull-right" type="submit">Send</button>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+    </form>
+ </div>
+
 {% endblock content %}
+
+<!-- <p><em>We love tech, do you? share your thoughts</em></p>
+<p>Fan? Drop a note.</p>
+<p><span class="glyphicon glyphicon-map-marker"></span>NZ palmerston North</p>
+<p><span class="glyphicon glyphicon-phone"></span>Phone: 06 123456789</p>
+<p><span class="glyphicon glyphicon-envelope"></span>Email: pnorth_chair@itp.nz</p> -->
