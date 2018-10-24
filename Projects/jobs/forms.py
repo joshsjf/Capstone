@@ -11,7 +11,7 @@ class JobCreateForm(forms.ModelForm):
     class Meta:
         model = JobListing
         fields = ['category', 'title', 'location', 'pay_Rate', 'reference_Number',
-    			'summary', 'description', 'phone_Number', 'company', 'instructions', 'terms_And_Conditions']
+    			'summary', 'description', 'phone_Number', 'company', 'terms_And_Conditions']
 
     def get_absolute_url(self):
         return reverse('job-detail', kwargs={'pk': self.pk})
@@ -21,4 +21,4 @@ class JobUpdateForm(forms.ModelForm):
     class Meta:
         model = JobListing
         fields = ['category', 'title', 'location', 'pay_Rate', 'reference_Number',
-    			'summary', 'description', 'phone_Number', 'company', 'instructions', 'terms_And_Conditions']
+    			'summary', 'description', 'phone_Number', 'company', 'terms_And_Conditions']
