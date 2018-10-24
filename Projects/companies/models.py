@@ -32,8 +32,8 @@ class CompanyListing(models.Model):
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
 
-    lat = models.FloatField()
-    lon = models.FloatField()
+    lat = models.FloatField(null=True)
+    lon = models.FloatField(null=True)
 
     def get_absolute_url(self):
         return reverse('company-detail', kwargs={'pk': self.pk})
