@@ -11,6 +11,12 @@ from events.models import EventListing
 from django.db.models import Value, CharField, Q
 from django.contrib.postgres.search import SearchQuery
 
+from django.template.loader import get_template, render_to_string
+from django.shortcuts import render, get_object_or_404, redirect
+from django.conf import settings
+from django.contrib import messages
+from django.core.mail import send_mail, EmailMultiAlternatives, EmailMessage
+
 from .models import ContactUs
 from .forms import ContactUsForm
 
@@ -18,9 +24,16 @@ def contactUs(request):
 	c_form = ContactUsForm(request.POST or None)
 	if c_form.is_valid():
 		instance = c_form.save()
-
-		messages.success(request, 'The newsletter has been created and sent!', 'alert alert-success alert-dismissable')
-		return redirect('sites-about')
+		contact = ContactUs.objects.get(id=instance.id)
+		subject, from_email, body= instance.subject, instance.email, instance.message
+		mail = EmailMultiAlternatives(subject=subject,to=[settings.EMAIL_HOST_USER], body=body)
+		mail.attach_alternative(render_to_string("sites/contact_message.html", {'all_items_feed': contact}), "text/html")
+		mail.send()
+		messages.success(request, 'The message has been sent, thanks!', 'alert alert-success alert-dismissable')
+		return redirect('control_newsletter_list')
+	context = {
+		"c_form": c_form,
+	}
 	template = 'sites/contact.html'
 	return render(request, template, {'c_form': c_form})
 
