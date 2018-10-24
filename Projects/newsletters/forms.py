@@ -18,4 +18,4 @@ class NewsletterCreationForm(forms.ModelForm):
     class Meta:
         model = Newsletter
         ordering = ['-id']
-        fields = ['subject', 'body', 'email', 'status']
+        fields = ['subject', 'email', 'status']
