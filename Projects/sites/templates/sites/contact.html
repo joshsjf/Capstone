@@ -4,11 +4,15 @@
 
  <!-- Container (Contact Section) -->
 
+
+
  <div class="content-section">
     <form method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       <fieldset class="form-group">
              <legend class="border-bottom mb-4"> Contact Us </legend>
+            <p><b>Phone:</b> 06 123456789</p>
+            <p><b>Email:</b> pnorth_chair@itp.nz</p>
         {{ c_form|crispy }}
       </fieldset>
       <div class="form=group">
@@ -19,8 +23,4 @@
 
 {% endblock content %}
 
-<!-- <p><em>We love tech, do you? share your thoughts</em></p>
-<p>Fan? Drop a note.</p>
-<p><span class="glyphicon glyphicon-map-marker"></span>NZ palmerston North</p>
-<p><span class="glyphicon glyphicon-phone"></span>Phone: 06 123456789</p>
-<p><span class="glyphicon glyphicon-envelope"></span>Email: pnorth_chair@itp.nz</p> -->
+
