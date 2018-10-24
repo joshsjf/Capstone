@@ -25,12 +25,12 @@ def contactUs(request):
 	if c_form.is_valid():
 		instance = c_form.save()
 		contact = ContactUs.objects.get(id=instance.id)
-		subject, from_email, body= instance.subject, instance.email, instance.message
-		mail = EmailMultiAlternatives(subject=subject,to=[settings.EMAIL_HOST_USER], body=body)
+		subject = instance.subject
+		mail = EmailMultiAlternatives(to=[settings.EMAIL_HOST_USER])
 		mail.attach_alternative(render_to_string("sites/contact_message.html", {'all_items_feed': contact}), "text/html")
 		mail.send()
 		messages.success(request, 'The message has been sent, thanks!', 'alert alert-success alert-dismissable')
-		return redirect('control_newsletter_list')
+		return redirect('sites-home')
 	context = {
 		"c_form": c_form,
 	}
