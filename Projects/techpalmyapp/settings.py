@@ -30,7 +30,6 @@ ALLOWED_HOSTS = []
 
 CRON_CLASSES = [
     "techpalmyapp.auto_task.MyCronJob",
-    # ...
 ]
 
 # Application definition

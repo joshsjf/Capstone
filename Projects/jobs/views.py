@@ -6,6 +6,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.db.models import Q
+from django.contrib import messages
 import datetime
 from jobs.forms import JobCreateForm, JobUpdateForm
 
@@ -52,7 +53,7 @@ class UserJobPageView(ListView):
 	def get_queryset(self):
 		user = get_object_or_404(User, username=self.kwargs.get('username'))
 		return JobListing.objects.filter(author=user).order_by('-date_posted')
-		
+
 
 class JobDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 	model = JobListing
