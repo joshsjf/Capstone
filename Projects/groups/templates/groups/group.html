@@ -15,8 +15,8 @@
          </div>
          <h2><a class="article-title" href="{% url 'group-detail' group.id %}">{{ group.group_Name }}</a></h2>
          <img class="listing-img" src="{{ group.image.url }}">
-         <p class="article-content">Description: {{ group.description }}</p>
-         <p class="article-content">Location: {{ group.location }}</p>
+         <p class="article-content"><b>Description:</b> {{ group.description }}</p>
+         <p class="article-content"><b>Location:</b> {{ group.location }}</p>
 
        </div>
      </article>

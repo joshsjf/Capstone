@@ -12,15 +12,15 @@
             <small class="text-muted">Job - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'job-detail' item.id %}">{{ item.title }}</a></h2>
-          <p class="article-content">Category: {{ item.category }}</p>
-          <p class="article-content">Location: {{ item.location }}</p>
-          <p class="article-content">Payrate ${{ item.pay_Rate }}</p>
-          <p class="article-content">Reference #{{ item.reference_Number }}</p>
-          <p class="article-content">Summary<br/>{{ item.summary }}</p>
-          <p class="article-content">Description<br/>{{ item.description }}</p>
-          <p class="article-content">Phone: {{ item.phone_Number }}</p>
-          <p class="article-content">Company: {{ item.company }}</p>
-          <p class="article-content">Instructions: {{ item.instructions }}</p>
+          <p class="article-content"><b>Category:</b> {{ item.category }}</p>
+          <p class="article-content"><b>Location:</b> {{ item.location }}</p>
+          <p class="article-content"><b>Payrate:</b> ${{ item.pay_Rate }}</p>
+          <p class="article-content"><b>Reference:</b> #{{ item.reference_Number }}</p>
+          <p class="article-content"><b>Summary:</b><br/>{{ item.summary }}</p>
+          <p class="article-content"><b>Description:</b><br/>{{ item.description }}</p>
+          <p class="article-content"><b>Phone:</b> {{ item.phone_Number }}</p>
+          <p class="article-content"><b>Company:</b> {{ item.company }}</p>
+          <p class="article-content"><b>Instructions:</b> {{ item.instructions }}</p>
         </div>
       </article>
     {% elif item.type == 'company' and item.is_Expired == False %}
@@ -33,18 +33,18 @@
             </div>
             <h2><a class="article-title" href="{% url 'company-detail' item.id %}">{{ item.company_Name }}</a></h2>
             <img class="listing-img" src="{{ item.image.url }}">
-            <p class="article-content">Web Site: {{ item.website }}</p>
-            <p class="article-content">Number of Employees: {{ item.number_Of_Employees }}</p>
-            <p class="article-content">Industry: {{ item.industry }}</p>
-            <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
-            <p class="article-content">Type of Business: {{ item.type_Of_Business }}</p>
-            <p class="article-content">Description: {{ item.description }}</p>
+            <p class="article-content"><b>Web Site:</b> {{ item.website }}</p>
+            <p class="article-content"><b>Number of Employees:</b> {{ item.number_Of_Employees }}</p>
+            <p class="article-content"><b>Industry:</b> {{ item.industry }}</p>
+            <p class="article-content"><b>Specialist Area:</b> {{ item.specialist_Area }}</p>
+            <p class="article-content"><b>Type of Business:</b> {{ item.type_Of_Business }}</p>
+            <p class="article-content"><b>Description:</b> {{ item.description }}</p>
 
             <br>
             <h5> Contact:</h5>
-            <p class="article-content">Contact Name: {{ item.contact_Name }}</p>
-            <p class="article-content">Company Email: {{ item.email }}</p>
-            <p class="article-content">Phone Number: {{ item.phone_Number }}</p>
+            <p class="article-content"><b>Contact Name:</b> {{ item.contact_Name }}</p>
+            <p class="article-content"><b>Company Email:</b> {{ item.email }}</p>
+            <p class="article-content"><b>Phone Number:</b> {{ item.phone_Number }}</p>
           </div>
         </article>
     {% elif item.type == 'group' and item.is_Expired == False %}
@@ -57,8 +57,8 @@
           </div>
           <h2><a class="article-title" href="{% url 'group-detail' item.id %}">{{ item.group_Name }}</a></h2>
           <img class="listing-img" src="{{ item.image.url }}">
-          <p class="article-content">Description: {{ item.description }}</p>
-          <p class="article-content">Location: {{ item.location }}</p>
+          <p class="article-content"><b>Description:</b> {{ item.description }}</p>
+          <p class="article-content"><b>Location:</b> {{ item.location }}</p>
 
         </div>
       </article>
@@ -71,12 +71,12 @@
             <small class="text-muted">Event - Posted: {{ item.date_posted|date:"F d, Y" }}</small>
           </div>
           <h2><a class="article-title" href="{% url 'event-detail' item.id %}">{{ item.event_Name }}</a></h2>
-          <p class="article-content">Event Name: {{ item.event_Name }}</p>
-          <p class="article-content">Time: {{ item.event_When }}</p>
-          <p class="article-content">Location: {{ item.event_Location }}</p>
-          <p class="article-content">Registration Cost: ${{ item.registration_Cost }}</p>
-          <p class="article-content">Website: {{ item.event_Website }}</p>
-          <p class="article-content">Description: {{ item.event_Description }}</p>
+          <p class="article-content"><b>Event Name:</b> {{ item.event_Name }}</p>
+          <p class="article-content"><b>Time:</b> {{ item.event_When }}</p>
+          <p class="article-content"><b>Location:</b> {{ item.event_Location }}</p>
+          <p class="article-content"><b>Registration Cost:</b> ${{ item.registration_Cost }}</p>
+          <p class="article-content"><b>Website:</b> {{ item.event_Website }}</p>
+          <p class="article-content"><b>Description:</b> {{ item.event_Description }}</p>
         </div>
       </article>
     {% elif item.type == 'consultant' and item.is_Expired == False %}
@@ -90,12 +90,12 @@
           <h2><a class="article-title" href="{% url 'consultant-detail' item.id %}">{{ item.consultant_Name }}</a></h2>
           <img class="listing-img" src="{{ item.image.url }}">
           <img class="account-img" src="{{ item.image.url }}">
-          <p class="article-content">Specialist Area: {{ item.specialist_Area }}</p>
-          <p class="article-content">Description: {{ item.description }}</p>
+          <p class="article-content"><b>Specialist Area:</b> {{ item.specialist_Area }}</p>
+          <p class="article-content"><b>Description:</b> {{ item.description }}</p>
 
-          <p class="article-content">Email: {{ item.email }}</p>
-          <p class="article-content">Contact Number: {{ item.phone_Number }}</p>
-          <p class="article-content">Website: {{ item.website }}</p>
+          <p class="article-content"><b>Email:</b> {{ item.email }}</p>
+          <p class="article-content"><b>Contact Number:</b> {{ item.phone_Number }}</p>
+          <p class="article-content"><b>Website:</b> {{ item.website }}</p>
         </div>
         </article>
     {% endif %}
