@@ -22,7 +22,9 @@
          <p class="article-content "><b>Industry:</b> {{ company.industry }}</p>
          <p class="article-content "><b>Specialist Area:</b> {{ company.specialist_Area }}</p>
          <p class="article-content "><b>Type of Business:</b> {{ company.type_Of_Business }}</p>
-         <p class="article-content "><b>Taking on Summer Students:</b> {{ company.takes_On_Summer_Students }}</p>
+         <% if company.takes_On_Summer_Students == True %>
+          <p class="article-content "><b>We take summer students</p>
+         <% endif %>
          <br>
          <p class="article-content "><b>Description:</b> {{ company.description }}</p>
 
