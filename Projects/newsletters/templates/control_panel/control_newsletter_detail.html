@@ -5,11 +5,7 @@
         <div class="page-header">
             <h1>{{ newsletter.subject}}</h1>
         </div>
-        {{ newsletter.body }}
-        <div class="col-sm-8 col-sm-offset-4">
-            <div class="col-sm-2"><a href="{% url 'control_newsletter_edit' pk=newsletter.pk %}"><button class="btn btn-success">Edit</button></div>
-            <div class="col-sm-2"><a href="{% url 'control_newsletter_delete' pk=newsletter.pk %}"><button class="btn btn-success">Delete</button></div>
-            <div class="col-sm-2"><a href="{% url 'control_newsletter' %}"><button class="btn btn-success">New</button></a></div>
-        </div>
+        <a href="{% url 'control_newsletter_delete' pk=newsletter.pk %}"><button class="btn btn-danger" type="submit">Delete</button>
+        <a class="btn btn-outline-secondary" href="{% url 'control_newsletter_edit' pk=newsletter.pk %}"> Edit </a>
     </div>
 {% endblock %}
