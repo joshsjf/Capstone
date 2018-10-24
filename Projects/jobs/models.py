@@ -21,7 +21,6 @@ class JobListing(models.Model):
     description = models.TextField()
     phone_Number = models.CharField(max_length = 200)
     company = models.CharField(max_length = 200)
-    instructions = models.CharField(max_length = 500)
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
 
