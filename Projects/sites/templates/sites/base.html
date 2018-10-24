@@ -42,7 +42,7 @@
               </div>
               <a class="nav-item nav-link" href="{% url 'consultants-home' %}"><i class="fas fa-user-tie"></i></i> Consultants</a>
 
-              <a class="nav-item nav-link" href="{% url 'events-home' %}"><i class="far fa-calendar-alt"></i> Events</a>
+              <a class="nav-item nav-link" href="{% url 'events-home' %}"><i class="fas fa-calendar-alt"></i> Events</a>
               <a class="nav-item nav-link" href="{% url 'groups-home' %}"><i class="fas fa-users"></i> Groups</a>
               <a class="nav-item nav-link" href="{% url 'jobs-home' %}"><i class="fas fa-clipboard-list"></i> Jobs</a>
             </div>
@@ -90,13 +90,13 @@
                 <ul class="list-group ">
 
                   {% if user.is_authenticated %}
-                  <a class="list-group-item bg-success text-white" href="{% url 'consultant-create' %}">New Consultant</a>
-                  <a class="list-group-item bg-success text-white" href="{% url 'company-create' %}">New Company</a>
-                  <a class="list-group-item bg-success text-white" href="{% url 'event-create' %}">New Event</a>
-                  <a class="list-group-item bg-success text-white" href="{% url 'group-create' %}">New Group</a>
-                  <a class="list-group-item bg-success text-white" href="{% url 'job-create' %}">New Job</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'consultant-create' %}"><i class="fas fa-user-tie"></i></i> New Consultant</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'company-create' %}"><i class="fas fa-briefcase"></i> New Company</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'event-create' %}"><i class="fas fa-calendar-alt"></i> New Event</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'group-create' %}"><i class="fas fa-users"></i> New Group</a>
+                  <a class="list-group-item bg-success text-white" href="{% url 'job-create' %}"><i class="fas fa-clipboard-list"></i> New Job</a>
                   {% if user.is_superuser %}
-                    <a class="list-group-item bg-success text-white" href="{% url 'control_newsletter_list' %}">Newsletters</a>
+                    <a class="list-group-item bg-success text-white" href="{% url 'control_newsletter_list' %}"><i class="fas fa-envelope"></i> Newsletters</a>
                   {% endif %}
 
                 <br>
