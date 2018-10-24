@@ -27,7 +27,7 @@ class CompanyListing(models.Model):
     number_Of_Employees = models.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(1)])
     industry = models.CharField(max_length = 50)
     specialist_Area = models.CharField(max_length = 50)
-    type_Of_Business = models.CharField(max_length = 50)
+    # type_Of_Business = models.CharField(max_length = 50)
     description = models.TextField()
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()
