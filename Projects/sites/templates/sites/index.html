@@ -49,7 +49,7 @@
         </article>
     {% elif item.type == 'group' and item.is_Expired == False %}
       <article class="media content-section">
-        <img class="article-img" src="{{ item.author.profile.image.url }}">
+        <img class="rounded-circle article-img" src="{{ item.author.profile.image.url }}">
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-group' item.author.username %}">{{ item.author }}</a>
