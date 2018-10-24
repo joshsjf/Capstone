@@ -9,6 +9,9 @@ class CompanyCreateView(forms.ModelForm):
         (False, 'No')
     )
 
+    lat = forms.FloatField(initial = -40.357048, required=False)
+    lon = forms.FloatField(initial = 175.612380, required=False)
+
     takes_On_Summer_Students = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Do you take on Summer Students?",
                                   initial=False, widget=forms.Select(), required=True)
     class Meta:
@@ -25,6 +28,9 @@ class CompanyUpdateForm(forms.ModelForm):
         (True, 'Yes'),
         (False, 'No')
     )
+
+    lat = forms.FloatField(initial = -40.357048, required=False)
+    lon = forms.FloatField(initial = 175.612380, required=False)
 
     takes_On_Summer_Students = forms.ChoiceField(choices = TRUE_FALSE_CHOICES, label="Do you take on Summer Students?",
                                   initial='', widget=forms.Select(), required=True)
