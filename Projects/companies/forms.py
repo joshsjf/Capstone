@@ -28,7 +28,7 @@ class CompanyCreateView(forms.ModelForm):
 class CompanyUpdateForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
-        super(CompanyCreateView, self).__init__(*args, **kwargs)
+        super(CompanyUpdateForm, self).__init__(*args, **kwargs)
         self.fields['lat'].required = False
         self.fields['lon'].required = False
 
