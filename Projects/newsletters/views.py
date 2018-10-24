@@ -100,7 +100,7 @@ def newsletter_signup(request):
 		else:
 			instance.save()
 			messages.success(request, 'You have been subscribed to the newsletter', 'alert alert-success alert-dismissable')
-			subject = "Thanks for joining the Tech Palmy Newsletter"
+			subject = "Tech Palmy Newsletter"
 			from_email = settings.EMAIL_HOST_USER
 			to_email = [instance.email]
 			message = EmailMultiAlternatives(subject=subject, from_email=from_email, to=to_email)
@@ -122,7 +122,7 @@ def newsletter_unsubscribe(request):
 		if NewsletterUser.objects.filter(email=instance.email).exists():
 			NewsletterUser.objects.filter(email=instance.email).delete()
 			messages.success(request, 'You have successfully unsubscribed!', 'alert alert-success alert-dismissable')
-			subject = "You have been successfully unsubscribed"
+			subject = "Tech Palmy Newsletter"
 			from_email = settings.EMAIL_HOST_USER
 			to_email = [instance.email]
 			message = EmailMultiAlternatives(subject=subject, from_email=from_email, to=to_email)
