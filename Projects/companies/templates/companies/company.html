@@ -17,10 +17,11 @@
          </div>
          <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.company_Name }}</a></h2>
          <img class="listing-img" src="{{ company.image.url }}">
-         <p class="article-content "><b>Web Site:</b> {{ company.website }}</p>
+         <p class="article-content "  ><b>Web Site:</b> <a href="{company.website}">{{ company.website }}</a></p>
          <p class="article-content "><b>Number of Employees:</b> {{ company.number_Of_Employees }}</p>
          <p class="article-content "><b>Industry:</b> {{ company.industry }}</p>
          <p class="article-content "><b>Specialist Area:</b> {{ company.specialist_Area }}</p>
+         <p class="article-content "><b>Type of Business:</b> {{ company.type_Of_Business }}</p>
          <p class="article-content "><b>Taking on Summer Students:</b> {{ company.takes_On_Summer_Students }}</p>
          <br>
          <p class="article-content "><b>Description:</b> {{ company.description }}</p>

@@ -19,19 +19,18 @@
       {% if object.image %}
         <img class="listing-img" src="{{ object.image.url }}">
       {% endif %}
-      <p class="article-content">Web Site: {{ object.website }}</p>
-      <p class="article-content">Number of Employees: {{ object.number_Of_Employees }}</p>
-      <p class="article-content">Industry: {{ object.industry }}</p>
-      <p class="article-content">Specialist Area: {{ object.specialist_Area }}</p>
-      <p class="article-content">Type of Business: {{ object.type_Of_Business }}</p>
-      <p class="article-content ">Taking on Summer Students: {{ object.takes_On_Summer_Students }}</p>
-      <p class="article-content">Description: {{ object.description }}</p>
+      <p class="article-content"><b>Web Site:</b> {{ object.website }}</p>
+      <p class="article-content"><b>Number of Employees:</b> {{ object.number_Of_Employees }}</p>
+      <p class="article-content"><b>Industry:</b> {{ object.industry }}</p>
+      <p class="article-content"><b>Specialist Area:</b> {{ object.specialist_Area }}</p>
+      <p class="article-content "><b>Taking on Summer Students:</b> {{ object.takes_On_Summer_Students }}</p>
+      <p class="article-content"><b>Description:</b> {{ object.description }}</p>
 
       <br>
       <h5> Contact:</h5>
-      <p class="article-content">Name: {{ object.contact_Name }}</p>
-      <p class="article-content">Email: {{ object.email }}</p>
-      <p class="article-content">Phone Number: {{ object.phone_Number }}</p>
+      <p class="article-content"><b>Name:</b> {{ object.contact_Name }}</p>
+      <p class="article-content"><b>Email:</b> {{ object.email }}</p>
+      <p class="article-content"><b>Phone Number:</b> {{ object.phone_Number }}</p>
     </div>
   </article>
 {% endblock %}
