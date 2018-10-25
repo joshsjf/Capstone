@@ -18,12 +18,12 @@
           </div>
           <h2><a class="article-title" href="{% url 'consultant-detail' consultant.id %}">{{ consultant.consultant_Name }}</a></h2>
           <img class="listing-img" src="{{ consultant.image.url }}">
-          <p class="article-content">Specialist Area: {{ consultant.specialist_Area }}</p>
-          <p class="article-content">Description: {{ consultant.description }}</p>
+          <p class="article-content"><b>Specialist Area:</b> {{ consultant.specialist_Area }}</p>
+          <p class="article-content"><b>Description:</b> {{ consultant.description }}</p>
 
-          <p class="article-content">Email: {{ consultant.email }}</p>
-          <p class="article-content">Contact Number: {{ consultant.phone_Number }}</p>
-          <p class="article-content">Website: {{ consultant.website }}</p>
+          <p class="article-content"><b>Email:</b> {{ consultant.email }}</p>
+          <p class="article-content"><b>Contact Number:</b> {{ consultant.phone_Number }}</p>
+          <p class="article-content"><b>Website:</b> {{ consultant.website }}</p>
         </div>
       </article>
   {% endfor %}

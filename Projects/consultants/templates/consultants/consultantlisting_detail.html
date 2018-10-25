@@ -19,12 +19,12 @@
       {% if object.image %}
         <img class="listing-img" src="{{ object.image.url }}">
       {% endif %}
-      <p class="article-content">Specialist Area: {{ object.specialist_Area }}</p>
-      <p class="article-content">Description: {{ object.description }}</p>
+      <p class="article-content"><b>Specialist Area:</b> {{ object.specialist_Area }}</p>
+      <p class="article-content"><b>Description:</b> {{ object.description }}</p>
 
-      <p class="article-content">Email: {{ object.email }}</p>
-      <p class="article-content">Contact Number: {{ object.phone_Number }}</p>
-      <p class="article-content">Website: {{ object.website }}</p>
+      <p class="article-content"><b>Email:</b> {{ object.email }}</p>
+      <p class="article-content"><b>Contact Number:</b> {{ object.phone_Number }}</p>
+      <p class="article-content"><b>Website:</b> {{ object.website }}</p>
     </div>
   </article>
 {% endblock %}
