@@ -19,12 +19,23 @@
       {% if object.image %}
         <img class="listing-img" src="{{ object.image.url }}">
       {% endif %}
+<<<<<<< HEAD
       <p class="article-content"><b>Web Site:</b> {{ object.website }}</p>
       <p class="article-content"><b>Number of Employees:</b> {{ object.number_Of_Employees }}</p>
       <p class="article-content"><b>Industry:</b> {{ object.industry }}</p>
       <p class="article-content"><b>Specialist Area:</b> {{ object.specialist_Area }}</p>
       <p class="article-content "><b>Taking on Summer Students:</b> {{ object.takes_On_Summer_Students }}</p>
       <p class="article-content"><b>Description:</b> {{ object.description }}</p>
+=======
+      <p class="article-content">Web Site: {{ object.website }}</p>
+      <p class="article-content">Number of Employees: {{ object.number_Of_Employees }}</p>
+      <p class="article-content">Industry: {{ object.industry }}</p>
+      <p class="article-content">Specialist Area: {{ object.specialist_Area }}</p>
+      {% if object.takes_On_Summer_Students == True %}
+       <p class="article-content "><b>We take summer students</b></p>
+      {% endif %}
+      <p class="article-content">Description: {{ object.description }}</p>
+>>>>>>> 3c2fef95ee9ee0a5f8c82b2b52b8ef647b13701e
 
       <br>
       <h5> Contact:</h5>
