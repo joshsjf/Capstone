@@ -1,11 +1,11 @@
 {% extends "sites/base.html" %}
 {% block content %}
  <h2 class="border-bottom mb-3">Groups in Palmerston North</h2>
- <div class="row">
+ <!-- <div class="row"> -->
  {% for group in data %}
 
     {% if group.is_Expired == False %}
-      <div class="col-md-6">
+      <!-- <div class="col-md-6"> -->
      <article class="media content-section">
        <img class="rounded-circle article-img" src="{{ group.author.profile.image.url }}">
        <div class="media-body">
@@ -20,8 +20,8 @@
 
        </div>
      </article>
-   </div>
+   <!-- </div> -->
      {% endif %}
  {% endfor %}
-</div>
+<!-- </div> -->
 {% endblock content %}
