@@ -17,7 +17,7 @@
          </div>
          <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.company_Name }}</a></h2>
          <img class="listing-img" src="{{ company.image.url }}">
-         <p class="article-content "><b>Web Site:</b> {{ company.website }}</p>
+         <p class="article-content "  ><b>Web Site:</b> <a href="{company.website}">{{ company.website }}</a></p>
          <p class="article-content "><b>Number of Employees:</b> {{ company.number_Of_Employees }}</p>
          <p class="article-content "><b>Industry:</b> {{ company.industry }}</p>
          <p class="article-content "><b>Specialist Area:</b> {{ company.specialist_Area }}</p>

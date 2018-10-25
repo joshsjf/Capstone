@@ -17,14 +17,14 @@
 
       </div>
       <h2 class="article-title">{{ object.title }}</h2>
-      <p class="article-content">Category: {{ object.category }}</p>
-      <p class="article-content">Location: {{ object.location }}</p>
-      <p class="article-content">Payrate ${{ object.pay_Rate }}</p>
-      <p class="article-content">Reference #{{ object.reference_Number }}</p>
-      <p class="article-content">Summary<br/>{{ object.summary }}</p>
-      <p class="article-content">Description<br/>{{ object.description }}</p>
-      <p class="article-content">Phone: {{ object.phone_Number }}</p>
-      <p class="article-content">Company: {{ object.company }}</p>
+      <p class="article-content"><b>Category:</b> {{ object.category }}</p>
+      <p class="article-content"><b>Location:</b> {{ object.location }}</p>
+      <p class="article-content"><b>Payrate</b> ${{ object.pay_Rate }}</p>
+      <p class="article-content"><b>Reference</b> #{{ object.reference_Number }}</p>
+      <p class="article-content"><b>Summary</b><br/>{{ object.summary }}</p>
+      <p class="article-content"><b>Description</b><br/>{{ object.description }}</p>
+      <p class="article-content"><b>Phone:</b> {{ object.phone_Number }}</p>
+      <p class="article-content"><b>Company:</b> {{ object.company }}</p>
     </div>
   </article>
 {% endblock %}

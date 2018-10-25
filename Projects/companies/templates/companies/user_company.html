@@ -18,20 +18,20 @@
           </div>
           <h2><a class="article-title" href="{% url 'company-detail' company.id %}">{{ company.company_Name }}</a></h2>
           <img class="listing-img" src="{{ company.image.url }}">
-          <p class="article-content">Web Site: {{ company.website }}</p>
-          <p class="article-content">Number of Employees: {{ company.number_Of_Employees }}</p>
-          <p class="article-content">Industry: {{ company.industry }}</p>
-          <p class="article-content">Specialist Area: {{ company.specialist_Area }}</p>
+          <p class="article-content"><b>Web Site:</b> {{ company.website }}</p>
+          <p class="article-content"><b>Number of Employees:</b> {{ company.number_Of_Employees }}</p>
+          <p class="article-content"><b>Industry:</b> {{ company.industry }}</p>
+          <p class="article-content"><b>Specialist Area:</b> {{ company.specialist_Area }}</p>
           {% if company.takes_On_Summer_Students == True %}
            <p class="article-content "><b>We take summer students</b></p>
           {% endif %}
-          <p class="article-content">Description: {{ company.description }}</p>
+          <p class="article-content"><b>Description:</b> {{ company.description }}</p>
 
           <br>
           <h5> Contact:</h5>
-          <p class="article-content">Contact Name: {{ company.contact_Name }}</p>
-          <p class="article-content">Company Email: {{ company.email }}</p>
-          <p class="article-content">Phone Number: {{ company.phone_number }}</p>
+          <p class="article-content"><b>Contact Name:</b> {{ company.contact_Name }}</p>
+          <p class="article-content"><b>Company Email:</b> {{ company.email }}</p>
+          <p class="article-content"><b>Phone Number:</b> {{ company.phone_number }}</p>
         </div>
       </article>
   {% endfor %}
