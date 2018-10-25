@@ -18,7 +18,7 @@
          <p class="article-content"><b>Time:</b> {{ event.event_Time_dd_mm_yyyy }}</p>
          <p class="article-content"><b>Location:</b> {{ event.event_Location }}</p>
          <p class="article-content"><b>Registration</b> Cost: ${{ event.registration_Cost }}</p>
-         <p class="article-content"><b>Website:</b> {{ event.event_Website }}</p>
+         <p class="article-content"><b>Website:</b><a href="{{ item.event_Website }}">{{ item.event_Website }}</a></p>
          <p class="article-content"><b>Description:</b> {{ event.event_Description }}</p>
        </div>
      </article>

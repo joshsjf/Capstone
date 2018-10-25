@@ -16,12 +16,12 @@
         {% endif %}
 
       </div>
-      <p class="article-content">Event Name: {{ object.event_Name }}</p>
-      <p class="article-content">Time: {{ object.event_Time_dd_mm_yyyy }}</p>
-      <p class="article-content">Location: {{ object.event_Location }}</p>
-      <p class="article-content">Registration Cost: ${{ object.registration_Cost }}</p>
-      <p class="article-content">Website: {{ object.event_Website }}</p>
-      <p class="article-content">Description: {{ object.event_Description }}</p>
+      <p class="article-content"><b>Event Name:</b> {{ object.event_Name }}</p>
+      <p class="article-content"><b>Time:</b> {{ object.event_Time_dd_mm_yyyy }}</p>
+      <p class="article-content"><b>Location:</b> {{ object.event_Location }}</p>
+      <p class="article-content"><b>Registration Cost:</b> ${{ object.registration_Cost }}</p>
+      <p class="article-content"><b>Website: </b><a href="{{ object.event_Website }}">{{ object.event_Website }}</a></p>
+      <p class="article-content"><b>Description: </b>{{ object.event_Description }}</p>
     </div>
   </article>
 {% endblock %}
