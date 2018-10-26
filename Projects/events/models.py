@@ -17,7 +17,7 @@ class EventListing(models.Model):
     event_Time_dd_mm_yyyy = models.CharField(max_length = 10)
     event_Location = models.CharField(max_length = 200)
     registration_Cost = models.IntegerField()
-    event_Website = models.CharField(max_length = 200)
+    event_Website = models.CharField(default="https://", max_length = 200)
     event_Description = models.TextField()
     is_Expired = models.BooleanField(default=False)
     terms_And_Conditions = models.BooleanField()

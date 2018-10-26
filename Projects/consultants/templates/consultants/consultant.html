@@ -4,27 +4,28 @@
  <div class="row">
  {% for consultant in data %}
 
- {% if consultant.is_Expired == False %}
-  <div class="col-md-6">
-     <article class="media content-section">
-       <img class="rounded-circle article-img" src="{{ consultant.author.profile.image.url }}">
-       <div class="media-body">
-         <div class="article-metadata">
-           <a class="mr-2" href="{% url 'user-consultant' consultant.author.username %}">{{ consultant.author }}</a>
-           <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
-         </div>
-         <h2><a class="article-title" href="{% url 'consultant-detail' consultant.id %}">{{ consultant.consultant_Name }}</a></h2>
-         <img class="listing-img"src="{{ consultant.image.url }}">
-         <p class="article-content"><b>Specialist Area:</b> {{ consultant.specialist_Area }}</p>
-         <p class="article-content"><b>Description:</b> {{ consultant.description }}</p>
+     {% if consultant.is_Expired == False %}
+      <div class="col-md-6">
+         <article class="media content-section">
+           <img class="rounded-circle article-img" src="{{ consultant.author.profile.image.url }}">
+           <div class="media-body">
+             <div class="article-metadata">
+               <a class="mr-2" href="{% url 'user-consultant' consultant.author.username %}">{{ consultant.author }}</a>
+               <small class="text-muted">{{ consultant.date_posted|date:"F d, Y" }}</small>
+             </div>
+             <h2><a class="article-title" href="{% url 'consultant-detail' consultant.id %}">{{ consultant.consultant_Name }}</a></h2>
+             <img class="listing-img"src="{{ consultant.image.url }}">
+             <p class="article-content"><b>Specialist Area:</b> {{ consultant.specialist_Area }}</p>
+             <p class="article-content"><b>Description:</b> {{ consultant.description }}</p>
 
-         <p class="article-content"><b>Email:</b> {{ consultant.email }}</p>
-         <p class="article-content"><b>Contact Number:</b> {{ consultant.phone_Number }}</p>
-         <p class="article-content"><b>Website:</b><a href="{consultant.website}"> {{ consultant.website }}</a></p>
+             <p class="article-content"><b>Email:</b> {{ consultant.email }}</p>
+             <p class="article-content"><b>Contact Number:</b> {{ consultant.phone_Number }}</p>
+             <p class="article-content"><b>Website:</b><a href="{{ consultant.website }}"> {{ consultant.website }}</a></p>
+           </div>
+         </article>
        </div>
-     </article>
-   </div>
- {% endif %}
+     {% endif %}
+
  {% endfor %}
 </div>
 {% endblock content %}

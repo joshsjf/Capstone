@@ -23,7 +23,7 @@ class CompanyListing(models.Model):
     email = models.EmailField()
     takes_On_Summer_Students = models.BooleanField()
     phone_Number = models.CharField(max_length = 20)
-    website = models.CharField(max_length = 100)
+    website = models.CharField(default="https://", max_length = 100)
     number_Of_Employees = models.IntegerField(validators=[MaxValueValidator(1000), MinValueValidator(1)])
     industry = models.CharField(max_length = 50)
     specialist_Area = models.CharField(max_length = 50)
