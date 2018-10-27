@@ -24,7 +24,7 @@
 
       <p class="article-content"><b>Email:</b> {{ object.email }}</p>
       <p class="article-content"><b>Contact Number:</b> {{ object.phone_Number }}</p>
-      <p class="article-content"><b>Website:</b> {{ object.website }}</p>
+      <p class="article-content"><b>Website:</b><a href="{{ object.website }}"> {{ object.website }}</a></p>
     </div>
   </article>
 {% endblock %}

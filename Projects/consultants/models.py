@@ -17,7 +17,7 @@ class ConsultantListing(models.Model):
     consultant_Name = models.CharField(max_length = 100)
     email = models.EmailField()
     phone_Number = models.CharField(max_length = 200)
-    website = models.CharField(max_length = 200)
+    website = models.CharField(default="https://", max_length = 200)
     industry = models.CharField(max_length = 200)
     specialist_Area = models.CharField(max_length = 200)
     description = models.TextField()

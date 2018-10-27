@@ -19,7 +19,7 @@
       {% if object.image %}
         <img class="listing-img" src="{{ object.image.url }}">
       {% endif %}
-      <p class="article-content"><b>Web Site:</b> {{ object.website }}</p>
+      <p class="article-content"><b>Web Site:</b> <a href="{{ object.website }}"> {{ object.website }}</a></p>
       <p class="article-content"><b>Number of Employees:</b> {{ object.number_Of_Employees }}</p>
       <p class="article-content"><b>Industry:</b> {{ object.industry }}</p>
       <p class="article-content"><b>Specialist Area:</b> {{ object.specialist_Area }}</p>
