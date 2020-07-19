@@ -7,7 +7,7 @@ This is the collaborative repository for our groups capstone project: Tech Palmy
 # Team:
 Glen Ward ID: 13051097 </br>
 Judah McNicholl ID: 16058955 </br>
-Josh Fleet ID: 15390549 </br>
+J Fleet ID: 15390549 </br>
 Kenton Dyer ID: 14270246
 
 ## Sprint Tags
